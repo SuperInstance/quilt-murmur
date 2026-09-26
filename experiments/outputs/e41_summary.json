@@ -1,0 +1,224 @@
+{
+ "task": "E41",
+ "verdict": "NO-CANDIDATE",
+ "hpick": [
+  {
+   "delta": 0,
+   "h": 0.3,
+   "founderRateMax": 13.114035,
+   "h2Trips": 16,
+   "w1PreTrips": 0,
+   "g1Trips": 29,
+   "pass": false,
+   "separation": -0.178394
+  },
+  {
+   "delta": 0,
+   "h": 0.35,
+   "founderRateMax": 9.824561,
+   "h2Trips": 5,
+   "w1PreTrips": 0,
+   "g1Trips": 19,
+   "pass": false,
+   "separation": -0.178394
+  },
+  {
+   "delta": 0,
+   "h": 0.4,
+   "founderRateMax": 6.842105,
+   "h2Trips": 2,
+   "w1PreTrips": 0,
+   "g1Trips": 10,
+   "pass": false,
+   "separation": -0.178394
+  },
+  {
+   "delta": 0,
+   "h": 0.45,
+   "founderRateMax": 4.166667,
+   "h2Trips": 2,
+   "w1PreTrips": 0,
+   "g1Trips": 6,
+   "pass": false,
+   "separation": -0.178394
+  },
+  {
+   "delta": 0,
+   "h": 0.5,
+   "founderRateMax": 2.763158,
+   "h2Trips": 0,
+   "w1PreTrips": 0,
+   "g1Trips": 3,
+   "pass": false,
+   "separation": -0.178394
+  },
+  {
+   "delta": 0,
+   "h": 0.55,
+   "founderRateMax": 1.535088,
+   "h2Trips": 0,
+   "w1PreTrips": 0,
+   "g1Trips": 2,
+   "pass": false,
+   "separation": -0.178394
+  },
+  {
+   "delta": 0,
+   "h": 0.6,
+   "founderRateMax": 1.052632,
+   "h2Trips": 0,
+   "w1PreTrips": 0,
+   "g1Trips": 0,
+   "pass": false,
+   "separation": -0.178394
+  },
+  {
+   "delta": 0.05,
+   "h": 0.3,
+   "founderRateMax": 12.938596,
+   "h2Trips": 15,
+   "w1PreTrips": 0,
+   "g1Trips": 26,
+   "pass": false,
+   "separation": -0.197379
+  },
+  {
+   "delta": 0.05,
+   "h": 0.35,
+   "founderRateMax": 10.087719,
+   "h2Trips": 10,
+   "w1PreTrips": 0,
+   "g1Trips": 17,
+   "pass": false,
+   "separation": -0.197379
+  },
+  {
+   "delta": 0.05,
+   "h": 0.4,
+   "founderRateMax": 6.973684,
+   "h2Trips": 3,
+   "w1PreTrips": 0,
+   "g1Trips": 10,
+   "pass": false,
+   "separation": -0.197379
+  },
+  {
+   "delta": 0.05,
+   "h": 0.45,
+   "founderRateMax": 5,
+   "h2Trips": 2,
+   "w1PreTrips": 0,
+   "g1Trips": 8,
+   "pass": false,
+   "separation": -0.197379
+  },
+  {
+   "delta": 0.05,
+   "h": 0.5,
+   "founderRateMax": 3.114035,
+   "h2Trips": 0,
+   "w1PreTrips": 0,
+   "g1Trips": 4,
+   "pass": false,
+   "separation": -0.197379
+  },
+  {
+   "delta": 0.05,
+   "h": 0.55,
+   "founderRateMax": 1.885965,
+   "h2Trips": 0,
+   "w1PreTrips": 0,
+   "g1Trips": 3,
+   "pass": false,
+   "separation": -0.197379
+  },
+  {
+   "delta": 0.05,
+   "h": 0.6,
+   "founderRateMax": 1.140351,
+   "h2Trips": 0,
+   "w1PreTrips": 0,
+   "g1Trips": 0,
+   "pass": false,
+   "separation": -0.197379
+  },
+  {
+   "delta": 0.1,
+   "h": 0.3,
+   "founderRateMax": 12.54386,
+   "h2Trips": 13,
+   "w1PreTrips": 0,
+   "g1Trips": 24,
+   "pass": false,
+   "separation": -0.258554
+  },
+  {
+   "delta": 0.1,
+   "h": 0.35,
+   "founderRateMax": 10.438596,
+   "h2Trips": 10,
+   "w1PreTrips": 0,
+   "g1Trips": 15,
+   "pass": false,
+   "separation": -0.258554
+  },
+  {
+   "delta": 0.1,
+   "h": 0.4,
+   "founderRateMax": 7.45614,
+   "h2Trips": 3,
+   "w1PreTrips": 0,
+   "g1Trips": 9,
+   "pass": false,
+   "separation": -0.258554
+  },
+  {
+   "delta": 0.1,
+   "h": 0.45,
+   "founderRateMax": 5.175439,
+   "h2Trips": 2,
+   "w1PreTrips": 0,
+   "g1Trips": 8,
+   "pass": false,
+   "separation": -0.258554
+  },
+  {
+   "delta": 0.1,
+   "h": 0.5,
+   "founderRateMax": 3.114035,
+   "h2Trips": 0,
+   "w1PreTrips": 0,
+   "g1Trips": 4,
+   "pass": false,
+   "separation": -0.258554
+  },
+  {
+   "delta": 0.1,
+   "h": 0.55,
+   "founderRateMax": 2.280702,
+   "h2Trips": 0,
+   "w1PreTrips": 0,
+   "g1Trips": 2,
+   "pass": false,
+   "separation": -0.258554
+  },
+  {
+   "delta": 0.1,
+   "h": 0.6,
+   "founderRateMax": 1.315789,
+   "h2Trips": 0,
+   "w1PreTrips": 0,
+   "g1Trips": 0,
+   "pass": false,
+   "separation": -0.258554
+  }
+ ],
+ "chain": {
+  "rows": 6,
+  "tip": "0xece28a9ba65b01de",
+  "verify": {
+   "ok": true,
+   "links": 6
+  }
+ }
+}
