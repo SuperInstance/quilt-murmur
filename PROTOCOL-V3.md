@@ -128,3 +128,30 @@ should DECLARE origins — the protocol rewards honesty with speed.
    receipted fix (quality-raising grafts) is the same operator with an
    honest bar — the same class of fix as replacing reward-trust with
    provenance: when a signal saturates, change the signal, not the season.
+
+
+## v3.1 addendum — admission + fractional influence (E21, receipted)
+
+The v3 envelope is unchanged; two bus-side layers compose over Provenance
+(`murmur/admission.mjs`; provenance.mjs untouched):
+
+1. **Fractional per-murmur attribution.** Influence multiplier
+   `m = (1 - s_j) * (alpha + (1 - alpha) * n_j)` with a continuous echo-score
+   `s_j` (EWMA of corroborated edge-alignment rate, MIRROR-GUARDED: a
+   conviction requires strict directional dominance — ported from the v3 hard
+   layer's finding #2) and per-murmur value-novelty `n_j` vs the present
+   crowd. Hard tags remain as backstop CAPS on the extremes.
+   RECEIPTED: the fractional floor is mesh-wide and cancels under
+   normalization — correctness is RELATIVE (copiers sink below honest
+   voices), never absolute.
+2. **Cold-start admission.** Joiners are PROBATIONARY (x epsNew) until
+   age >= admitWindow AND >= minEdgesIndep independent novelty edges AND mean
+   |p - pooled| <= admitErr; the AGGREGATE probationary influence mass is
+   capped at capShare of each round's total (fixed-point redistribution).
+   Founders are admitted by acclamation (D1).
+
+Open problems carried forward: the spin-up exposure is influence-real but
+error-masked while the copied source is truthful — a toxic-source leg is
+needed to price the cap correctly (next round); fractional novelty vanishes
+in dense honest meshes (value-space crowding) — per-murmur direction
+(finding #0 all the way down) is the next lever.

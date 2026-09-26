@@ -1,0 +1,3791 @@
+{
+ "experiment": "E22 — the cross-fleet bracket: arena minds vs mesh minds under one ration",
+ "config": {
+  "seq": 3,
+  "kind": "run.config",
+  "seeds": 8,
+  "rounds": 400,
+  "regimes": 3,
+  "flipP": 0.02,
+  "senders": 12,
+  "arms": 6,
+  "rationK": 4,
+  "thetaRange": [
+   0.15,
+   0.85
+  ],
+  "fitMap": "fit_j(k) = clamp(mu_j + lam_j*(theta_k-0.5), 0.05, 0.95), mu~U(0.30,0.60), lam~U(-0.45,0.45), per seed",
+  "rewardNoise": 0.08,
+  "acuities": "stratified 4x[0.05,0.10] / 4x[0.10,0.20] / 3x[0.20,0.30] shuffled; sender12 sigma=0.06 (high-acuity look)",
+  "rationCurrencies": {
+   "mesh": "K subscribed whispers per round, gated in-sheet; pooled through HedgeTrust",
+   "arena": "K arm-reward probes per round (probe(j,t) = the paired reward stream); saturates at M-1 = 5 (re-probing the played arm is information-free)",
+   "accounting": "ration counted in observations, not bytes; both families also collect the played reward"
+  },
+  "adversary": {
+   "turnRound": 150,
+   "arena": "clean best-fixed ARM booby-trapped: mean reward -0.4 for t>=150 (must un-learn); trap targets the seed's clean best arm so un-learning is real",
+   "mesh": "sender #12 turns liar: reports 1-truth with prob 0.8 (high-acuity look); HedgeTrust must demote",
+   "receiptedAsymmetry": "family-specific adversary worlds over identical paired streams: each family meets the adversary in its own currency"
+  },
+  "hedge": {
+   "eta": 0.35,
+   "share": 0.03
+  },
+  "meshHyper": {
+   "epsPick": 0.15,
+   "epsSub": 0.15,
+   "beta": 0.25,
+   "bins": [
+    0.3333333333333333,
+    0.6666666666666666
+   ],
+   "creditRule": "bin-posterior: reward re-weights bins; senders in reward-favored bins earn (0.5 + 0.7*2*(post_b - 1/3)); unsubscribed get neutral 0.5 (trust tracks evidence consumed)"
+  },
+  "arenaHyper": {
+   "ucbC": 1,
+   "chordBorder": "top-2 gap < 8% of top score -> softmax(scores / (0.25*range)), vault-elected",
+   "eps": 0.1
+  },
+  "resonance": {
+   "theta": "pi*p_i (SUBSCRIBED senders only)",
+   "omega": "pi*(p_i - prev subscribed p_i)",
+   "coupling": "agreementMatrix a_ij = 1 - 2|p_i - p_j|",
+   "dt": 0.1,
+   "K": 1.2,
+   "steps": 10,
+   "freezeR": 0.45
+  },
+  "reproducibility": "all randomness from vault streamFor (offline MOCK); Math.random patched onto the vault stream per seed, restored in finally (e15 pattern); arena arms run NO sheet (that asymmetry is the point)",
+  "c3": "K in {2,4,8} x 12 seeds, clean world; K=4 row reuses C1 clean runs for seeds 0-11 (identical paired streams by construction)",
+  "row_hash": "0x3dd5a0989cbe1656"
+ },
+ "preflight": {
+  "cells": 61,
+  "maxDiff": 0,
+  "zeroInfluenceDiff": 0,
+  "whisperFormulaReaders": 1,
+  "envReaders": 0,
+  "scorePurity": true,
+  "diffs": [
+   "0.00e+0",
+   "0.00e+0",
+   "0.00e+0"
+  ]
+ },
+ "vault": {
+  "mock": true,
+  "liveJobs": 0,
+  "bits": 2048,
+  "poolDigest": "0xd93adc08741478a5"
+ },
+ "sheetVerify": {
+  "seq": 13,
+  "kind": "sheet.verify",
+  "everyRounds": 20,
+  "tol": 1e-9,
+  "checks": 2400,
+  "mismatches": 0,
+  "maxDiff": 1.11e-16,
+  "scope": "every mesh arm, every seed, every world (main bracket + C3 legs)",
+  "row_hash": "0x04ebb77263058a45"
+ },
+ "perArm": {
+  "ucb1": {
+   "clean": {
+    "n": 8,
+    "meanTotalFix": 0.21,
+    "sdTotalFix": 1.65,
+    "meanTotalDyn": 3.04,
+    "sdTotalDyn": 2.96,
+    "segFix": [
+     0,
+     0.0041,
+     -0.0059,
+     -0.0001,
+     -0.0002,
+     -0.0033,
+     0.0033,
+     0.0065
+    ]
+   },
+   "adv": {
+    "n": 8,
+    "meanTotalFix": 1.51,
+    "sdTotalFix": 2.31,
+    "meanTotalDyn": 9.49,
+    "sdTotalDyn": 5.2,
+    "segFix": [
+     -0.0373,
+     -0.0428,
+     -0.0529,
+     0.1423,
+     0.0029,
+     0.0038,
+     0.0094,
+     0.0049
+    ]
+   },
+   "advTag": "advArena",
+   "deltaPost150": {
+    "mean": 0.0314,
+    "sd": 0.0236,
+    "n": 8
+   },
+   "recovery": {
+    "meanRecovery": 218.9,
+    "recovered": 8,
+    "of": 8,
+    "perSeed": [
+     220,
+     236,
+     195,
+     217,
+     234,
+     215,
+     189,
+     245
+    ]
+   },
+   "trap": {
+    "playsPost150": 21.8,
+    "playsBySeg": [
+     0,
+     0,
+     0,
+     21,
+     0.75,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "chord": {
+   "clean": {
+    "n": 8,
+    "meanTotalFix": 2.84,
+    "sdTotalFix": 3.14,
+    "meanTotalDyn": 5.67,
+    "sdTotalDyn": 4.37,
+    "segFix": [
+     0.0167,
+     0.0134,
+     -0.0044,
+     0.0062,
+     0.0038,
+     -0.002,
+     0.009,
+     0.0141
+    ]
+   },
+   "adv": {
+    "n": 8,
+    "meanTotalFix": 6.27,
+    "sdTotalFix": 3.39,
+    "meanTotalDyn": 14.25,
+    "sdTotalDyn": 3.69,
+    "segFix": [
+     -0.0209,
+     -0.024,
+     -0.0473,
+     0.1357,
+     0.0192,
+     0.0176,
+     0.0285,
+     0.0167
+    ]
+   },
+   "advTag": "advArena",
+   "deltaPost150": {
+    "mean": 0.0373,
+    "sd": 0.0203,
+    "n": 8
+   },
+   "recovery": {
+    "meanRecovery": 228.5,
+    "recovered": 8,
+    "of": 8,
+    "perSeed": [
+     223,
+     306,
+     205,
+     216,
+     233,
+     195,
+     189,
+     261
+    ]
+   },
+   "trap": {
+    "playsPost150": 23.4,
+    "playsBySeg": [
+     0,
+     0,
+     0,
+     19.13,
+     2.25,
+     0.63,
+     0.88,
+     0.5
+    ]
+   }
+  },
+  "epsgreedy": {
+   "clean": {
+    "n": 8,
+    "meanTotalFix": 4.39,
+    "sdTotalFix": 1.88,
+    "meanTotalDyn": 7.22,
+    "sdTotalDyn": 3.97,
+    "segFix": [
+     0.0076,
+     0.0121,
+     0.0004,
+     0.0125,
+     0.0132,
+     0.0084,
+     0.015,
+     0.0187
+    ]
+   },
+   "adv": {
+    "n": 8,
+    "meanTotalFix": 5.16,
+    "sdTotalFix": 3.05,
+    "meanTotalDyn": 13.14,
+    "sdTotalDyn": 4.46,
+    "segFix": [
+     -0.0292,
+     -0.0325,
+     -0.0441,
+     0.1372,
+     0.0093,
+     0.0196,
+     0.0253,
+     0.0177
+    ]
+   },
+   "advTag": "advArena",
+   "deltaPost150": {
+    "mean": 0.0282,
+    "sd": 0.0157,
+    "n": 8
+   },
+   "recovery": {
+    "meanRecovery": 213.9,
+    "recovered": 8,
+    "of": 8,
+    "perSeed": [
+     218,
+     236,
+     193,
+     220,
+     220,
+     195,
+     189,
+     240
+    ]
+   },
+   "trap": {
+    "playsPost150": 23.6,
+    "playsBySeg": [
+     0,
+     0,
+     0,
+     19.5,
+     1,
+     1.38,
+     1,
+     0.75
+    ]
+   }
+  },
+  "meshD": {
+   "clean": {
+    "n": 8,
+    "meanTotalFix": 7.45,
+    "sdTotalFix": 2.81,
+    "meanTotalDyn": 10.28,
+    "sdTotalDyn": 3.9,
+    "segFix": [
+     0.0223,
+     0.0207,
+     0.0112,
+     0.0193,
+     0.0102,
+     0.0248,
+     0.016,
+     0.0245
+    ]
+   },
+   "adv": {
+    "n": 8,
+    "meanTotalFix": 9.01,
+    "sdTotalFix": 2.36,
+    "meanTotalDyn": 11.84,
+    "sdTotalDyn": 4.62,
+    "segFix": [
+     0.0266,
+     0.0296,
+     0.0133,
+     0.0162,
+     0.0222,
+     0.025,
+     0.0202,
+     0.027
+    ]
+   },
+   "advTag": "advMesh",
+   "deltaPost150": {
+    "mean": 0.0032,
+    "sd": 0.0066,
+    "n": 8
+   },
+   "recovery": {
+    "meanRecovery": 200.5,
+    "recovered": 8,
+    "of": 8,
+    "perSeed": [
+     189,
+     189,
+     281,
+     189,
+     189,
+     189,
+     189,
+     189
+    ]
+   },
+   "liar": {
+    "weightAt145": 0.0849,
+    "weightAt200": 0.0739,
+    "weightAt399": 0.0779,
+    "demoteRound": 154,
+    "demotedSeeds": 8,
+    "liarSubscribedRoundsPost150": 83,
+    "rBefore": 0.8373,
+    "rAfter": 0.7374,
+    "freezes": 0
+   },
+   "c4": {
+    "corrR_nextDyn": -0.02,
+    "corrR_nextFix": -0.0249,
+    "corrR_poolErr": -0.3206
+   }
+  },
+  "meshE": {
+   "clean": {
+    "n": 8,
+    "meanTotalFix": 7.4,
+    "sdTotalFix": 2.8,
+    "meanTotalDyn": 10.23,
+    "sdTotalDyn": 2.93,
+    "segFix": [
+     0.0347,
+     0.0205,
+     0.0122,
+     0.0154,
+     0.0082,
+     0.0124,
+     0.0205,
+     0.0239
+    ]
+   },
+   "adv": {
+    "n": 8,
+    "meanTotalFix": 7.15,
+    "sdTotalFix": 2.46,
+    "meanTotalDyn": 9.98,
+    "sdTotalDyn": 4.37,
+    "segFix": [
+     0.0315,
+     0.0291,
+     0.0239,
+     0.0075,
+     0.0083,
+     0.0115,
+     0.0081,
+     0.023
+    ]
+   },
+   "advTag": "advMesh",
+   "deltaPost150": {
+    "mean": -0.0044,
+    "sd": 0.0092,
+    "n": 8
+   },
+   "recovery": {
+    "meanRecovery": 189.1,
+    "recovered": 8,
+    "of": 8,
+    "perSeed": [
+     189,
+     190,
+     189,
+     189,
+     189,
+     189,
+     189,
+     189
+    ]
+   },
+   "liar": {
+    "weightAt145": 0.0729,
+    "weightAt200": 0.0718,
+    "weightAt399": 0.0772,
+    "demoteRound": 150,
+    "demotedSeeds": 8,
+    "liarSubscribedRoundsPost150": 42.3,
+    "rBefore": 0.8549,
+    "rAfter": 0.7729,
+    "freezes": 0
+   },
+   "c4": {
+    "corrR_nextDyn": -0.0117,
+    "corrR_nextFix": -0.014,
+    "corrR_poolErr": -0.2738
+   }
+  },
+  "meshF": {
+   "clean": {
+    "n": 8,
+    "meanTotalFix": 8.92,
+    "sdTotalFix": 2.84,
+    "meanTotalDyn": 11.75,
+    "sdTotalDyn": 5.03,
+    "segFix": [
+     0.0362,
+     0.0327,
+     0.0225,
+     0.0126,
+     0.0143,
+     0.0196,
+     0.0197,
+     0.0207
+    ]
+   },
+   "adv": {
+    "n": 8,
+    "meanTotalFix": 8.17,
+    "sdTotalFix": 2.09,
+    "meanTotalDyn": 11,
+    "sdTotalDyn": 2.95,
+    "segFix": [
+     0.0402,
+     0.027,
+     0.0158,
+     0.0072,
+     0.0149,
+     0.0144,
+     0.015,
+     0.0289
+    ]
+   },
+   "advTag": "advMesh",
+   "deltaPost150": {
+    "mean": -0.0013,
+    "sd": 0.0065,
+    "n": 8
+   },
+   "recovery": {
+    "meanRecovery": 189,
+    "recovered": 8,
+    "of": 8,
+    "perSeed": [
+     189,
+     189,
+     189,
+     189,
+     189,
+     189,
+     189,
+     189
+    ]
+   },
+   "liar": {
+    "weightAt145": 0.0866,
+    "weightAt200": 0.0779,
+    "weightAt399": 0.0751,
+    "demoteRound": 166.1,
+    "demotedSeeds": 8,
+    "liarSubscribedRoundsPost150": 66.1,
+    "rBefore": 0.8674,
+    "rAfter": 0.8008,
+    "freezes": 25.3
+   },
+   "c4": {
+    "corrR_nextDyn": -0.0126,
+    "corrR_nextFix": -0.0134,
+    "corrR_poolErr": -0.2695
+   }
+  }
+ },
+ "c1": {
+  "seq": 10,
+  "kind": "c1.answer",
+  "claim": "C1 clean bracket: mean total regret vs best-fixed arm at 400, matched ration K=4 (no adversary)",
+  "ranking": [
+   {
+    "arm": "ucb1",
+    "meanTotalFix": 0.21,
+    "sd": 1.65
+   },
+   {
+    "arm": "chord",
+    "meanTotalFix": 2.84,
+    "sd": 3.14
+   },
+   {
+    "arm": "epsgreedy",
+    "meanTotalFix": 4.39,
+    "sd": 1.88
+   },
+   {
+    "arm": "meshE",
+    "meanTotalFix": 7.4,
+    "sd": 2.8
+   },
+   {
+    "arm": "meshD",
+    "meanTotalFix": 7.45,
+    "sd": 2.81
+   },
+   {
+    "arm": "meshF",
+    "meanTotalFix": 8.92,
+    "sd": 2.84
+   }
+  ],
+  "familyMean": {
+   "arena": 2.48,
+   "mesh": 7.92
+  },
+  "familyWinner": "arena",
+  "winner": "ucb1",
+  "verdict": "ucb1 wins the clean bracket; by family, arena buys less regret (2.5 vs 7.9)",
+  "earlySeg": {
+   "ucb1": 0,
+   "chord": 0.0167,
+   "epsgreedy": 0.0076,
+   "meshD": 0.0223,
+   "meshE": 0.0347,
+   "meshF": 0.0362
+  },
+  "lateSeg": {
+   "ucb1": 0.0065,
+   "chord": 0.0141,
+   "epsgreedy": 0.0187,
+   "meshD": 0.0245,
+   "meshE": 0.0239,
+   "meshF": 0.0207
+  },
+  "dynamicOracleRegret": {
+   "ucb1": 3.04,
+   "chord": 5.67,
+   "epsgreedy": 7.22,
+   "meshD": 10.28,
+   "meshE": 10.23,
+   "meshF": 11.75
+  },
+  "row_hash": "0xfa571789611bb78d"
+ },
+ "c2": {
+  "seq": 11,
+  "kind": "c2.answer",
+  "claim": "C2 adversary leg: paired Δregret (per round, t>=150 vs clean twin) per family; recovery rounds",
+  "perArmDelta": {
+   "ucb1": {
+    "mean": 0.0314,
+    "sd": 0.0236,
+    "n": 8
+   },
+   "chord": {
+    "mean": 0.0373,
+    "sd": 0.0203,
+    "n": 8
+   },
+   "epsgreedy": {
+    "mean": 0.0282,
+    "sd": 0.0157,
+    "n": 8
+   },
+   "meshD": {
+    "mean": 0.0032,
+    "sd": 0.0066,
+    "n": 8
+   },
+   "meshE": {
+    "mean": -0.0044,
+    "sd": 0.0092,
+    "n": 8
+   },
+   "meshF": {
+    "mean": -0.0013,
+    "sd": 0.0065,
+    "n": 8
+   }
+  },
+  "perArmDeltaTotal": {
+   "ucb1": 1.3,
+   "chord": 3.43,
+   "epsgreedy": 0.77,
+   "meshD": 1.56,
+   "meshE": -0.25,
+   "meshF": -0.75
+  },
+  "familyDelta": {
+   "arena": 0.0323,
+   "mesh": -0.0008
+  },
+  "familyWinner": "mesh",
+  "recovery": {
+   "ucb1": 218.9,
+   "chord": 228.5,
+   "epsgreedy": 213.9,
+   "meshD": 200.5,
+   "meshE": 189.1,
+   "meshF": 189
+  },
+  "recoveredCounts": {
+   "ucb1": "8/8",
+   "chord": "8/8",
+   "epsgreedy": "8/8",
+   "meshD": "8/8",
+   "meshE": "8/8",
+   "meshF": "8/8"
+  },
+  "meshLiar": {
+   "meshD": {
+    "weightAt145": 0.0849,
+    "weightAt200": 0.0739,
+    "weightAt399": 0.0779,
+    "demoteRound": 154,
+    "demotedSeeds": 8,
+    "liarSubscribedRoundsPost150": 83,
+    "rBefore": 0.8373,
+    "rAfter": 0.7374,
+    "freezes": 0
+   },
+   "meshE": {
+    "weightAt145": 0.0729,
+    "weightAt200": 0.0718,
+    "weightAt399": 0.0772,
+    "demoteRound": 150,
+    "demotedSeeds": 8,
+    "liarSubscribedRoundsPost150": 42.3,
+    "rBefore": 0.8549,
+    "rAfter": 0.7729,
+    "freezes": 0
+   },
+   "meshF": {
+    "weightAt145": 0.0866,
+    "weightAt200": 0.0779,
+    "weightAt399": 0.0751,
+    "demoteRound": 166.1,
+    "demotedSeeds": 8,
+    "liarSubscribedRoundsPost150": 66.1,
+    "rBefore": 0.8674,
+    "rAfter": 0.8008,
+    "freezes": 25.3
+   }
+  },
+  "arenaTrap": {
+   "ucb1": {
+    "playsPost150": 21.8,
+    "playsBySeg": [
+     0,
+     0,
+     0,
+     21,
+     0.75,
+     0,
+     0,
+     0
+    ]
+   },
+   "chord": {
+    "playsPost150": 23.4,
+    "playsBySeg": [
+     0,
+     0,
+     0,
+     19.13,
+     2.25,
+     0.63,
+     0.88,
+     0.5
+    ]
+   },
+   "epsgreedy": {
+    "playsPost150": 23.6,
+    "playsBySeg": [
+     0,
+     0,
+     0,
+     19.5,
+     1,
+     1.38,
+     1,
+     0.75
+    ]
+   }
+  },
+  "verdict": "family Δregret/round post-150: arena 0.032 vs mesh -0.001 → mesh degrades less; mesh demoted the liar below 1/12 by round 157 (of 3 arms); arena played the booby-trapped arm 23× post-150 (running-mean un-learning at rate 1/n — re-sampling is not the bottleneck, forgetting is)",
+  "row_hash": "0xcc2e4b5d1d1c15ed"
+ },
+ "c3": {
+  "seq": 12,
+  "kind": "c3.answer",
+  "claim": "C3 ration elasticity: mean total regret (clean, 12 seeds) as the ration shrinks/grows",
+  "perK": {
+   "2": {
+    "arena": 7.43,
+    "mesh": 7.96,
+    "perArm": {
+     "ucb1": 5.46,
+     "chord": 11.29,
+     "epsgreedy": 5.53,
+     "meshD": 8.3,
+     "meshE": 7.58,
+     "meshF": 8
+    },
+    "seeds": 12
+   },
+   "4": {
+    "arena": 2.48,
+    "mesh": 7.92,
+    "perArm": {
+     "ucb1": 0.21,
+     "chord": 2.84,
+     "epsgreedy": 4.39,
+     "meshD": 7.45,
+     "meshE": 7.4,
+     "meshF": 8.92
+    },
+    "seeds": 8
+   },
+   "8": {
+    "arena": 4.25,
+    "mesh": 7.44,
+    "perArm": {
+     "ucb1": 0.66,
+     "chord": 7.44,
+     "epsgreedy": 4.64,
+     "meshD": 6.84,
+     "meshE": 7.16,
+     "meshF": 8.32
+    },
+    "seeds": 12
+   }
+  },
+  "ratios": {
+   "arena": {
+    "k2_over_k4": 2.996,
+    "k8_over_k4": 1.714
+   },
+   "mesh": {
+    "k2_over_k4": 1.005,
+    "k8_over_k4": 0.939
+   }
+  },
+  "verdict": "as the ration shrinks K4→K2, arena regret ×2.996 vs mesh ×1.005 → mesh degrades more gracefully; K=8: arena saturates at M−1=5 probes (its K=8 row ≈ its K=5 row — the arm-probe currency is capped by the arm count), mesh keeps gaining (sender currency scales to N=12)",
+  "arenaSaturationNote": "arena K=8 effective probes = min(K, M-1) = 5; receipted currency saturation",
+  "k4ReuseNote": "K=4 row = C1 clean runs seeds 0-11 (same stream keys → identical runs; deterministic reuse, receipted)",
+  "row_hash": "0xf7470645da195c03"
+ },
+ "c4": {
+  "seq": 14,
+  "kind": "c4.answer",
+  "claim": "C4 coherence meter cross-fleet: corr(r_t, regret) inside the mesh arms; does gating trust on r (meshF vs meshE) help or hurt?",
+  "corrPerArm": {
+   "meshD": {
+    "corrR_nextDyn": -0.02,
+    "corrR_nextFix": -0.0249,
+    "corrR_poolErr": -0.3206
+   },
+   "meshE": {
+    "corrR_nextDyn": -0.0117,
+    "corrR_nextFix": -0.014,
+    "corrR_poolErr": -0.2738
+   },
+   "meshF": {
+    "corrR_nextDyn": -0.0126,
+    "corrR_nextFix": -0.0134,
+    "corrR_poolErr": -0.2695
+   }
+  },
+  "freezeRate": {
+   "meshF": 0.06325,
+   "meshE": 0
+  },
+  "rDropPostTurn": {
+   "meshD": {
+    "before": 0.8373,
+    "after": 0.7374
+   },
+   "meshE": {
+    "before": 0.8549,
+    "after": 0.7729
+   },
+   "meshF": {
+    "before": 0.8674,
+    "after": 0.8008
+   }
+  },
+  "gateVsNoGate": {
+   "advMeshMeanTotalFix": {
+    "meshE": 7.15,
+    "meshF": 8.17
+   },
+   "delta": 1.02,
+   "relDelta": 0.1427,
+   "verdict": "gating HURTS",
+   "demoteRound": {
+    "meshE": 150,
+    "meshF": 166.1
+   },
+   "cleanMeanTotalFix": {
+    "meshE": 7.4,
+    "meshF": 8.92
+   }
+  },
+  "verdict": "corr(r_t, next-round dyn-regret): meshD=-0.02, meshE=-0.0117, meshF=-0.0126; corr(r_t, pool error): meshD=-0.3206, meshE=-0.2738, meshF=-0.2695 — r reads disagreement, not accuracy (E16 doctrine), and F-vs-E here: gating HURTS (Δ 1.02 total regret in the adversary leg; demotion E 150 vs F 166.1)",
+  "row_hash": "0x3119b4718bcf9abd"
+ },
+ "findings": [
+  "SHEET/ENGINE: mesh.pool === MurmurBus.pool reference math across 2400 every-20-round verifies in every mesh arm/seed/world — 0 mismatches (max |diff| 1.11e-16, tol 1e-9). Ration enforced by gate cells: preflight zeroInfluenceDiff=0.00e+0. Arena arms ran ZERO sheet cells — the direct-reward currency needs no pooled substrate; that asymmetry is the point.",
+  "C1: ucb1 wins the clean bracket; by family, arena buys less regret (2.5 vs 7.9)",
+  "C2: family Δregret/round post-150: arena 0.032 vs mesh -0.001 → mesh degrades less; mesh demoted the liar below 1/12 by round 157 (of 3 arms); arena played the booby-trapped arm 23× post-150 (running-mean un-learning at rate 1/n — re-sampling is not the bottleneck, forgetting is)",
+  "C3: as the ration shrinks K4→K2, arena regret ×2.996 vs mesh ×1.005 → mesh degrades more gracefully; K=8: arena saturates at M−1=5 probes (its K=8 row ≈ its K=5 row — the arm-probe currency is capped by the arm count), mesh keeps gaining (sender currency scales to N=12)",
+  "C4: corr(r_t, next-round dyn-regret): meshD=-0.02, meshE=-0.0117, meshF=-0.0126; corr(r_t, pool error): meshD=-0.3206, meshE=-0.2738, meshF=-0.2695 — r reads disagreement, not accuracy (E16 doctrine), and F-vs-E here: gating HURTS (Δ 1.02 total regret in the adversary leg; demotion E 150 vs F 166.1)",
+  "CURRENCY LESSON: the arena's probes are ground truth but perish with the round and generalize through a running mean — under an abrupt shift that estimator forgets at rate 1/n (the booby-trapped arm keeps being played because its stale mean decays glacially). The mesh's whispers are noisy but RE-USABLE through trust: one demotion (multiplicative, fixed-share) retires a liar from every future round. This is E17's window lesson restated across fleets: under nonstationarity, forgetting beats averaging."
+ ],
+ "curvesSeed0": {
+  "ucb1:clean": [
+   {
+    "t": 0,
+    "cumFix": 0.05
+   },
+   {
+    "t": 10,
+    "cumFix": 0.2
+   },
+   {
+    "t": 20,
+    "cumFix": -0.05
+   },
+   {
+    "t": 30,
+    "cumFix": -0.06
+   },
+   {
+    "t": 40,
+    "cumFix": -0.19
+   },
+   {
+    "t": 50,
+    "cumFix": -0.2
+   },
+   {
+    "t": 60,
+    "cumFix": -0.42
+   },
+   {
+    "t": 70,
+    "cumFix": -0.68
+   },
+   {
+    "t": 80,
+    "cumFix": -0.8
+   },
+   {
+    "t": 90,
+    "cumFix": -0.37
+   },
+   {
+    "t": 100,
+    "cumFix": -0.25
+   },
+   {
+    "t": 110,
+    "cumFix": -0.31
+   },
+   {
+    "t": 120,
+    "cumFix": -0.08
+   },
+   {
+    "t": 130,
+    "cumFix": -0.21
+   },
+   {
+    "t": 140,
+    "cumFix": -0.01
+   },
+   {
+    "t": 150,
+    "cumFix": 0.31
+   },
+   {
+    "t": 160,
+    "cumFix": 0.55
+   },
+   {
+    "t": 170,
+    "cumFix": 0.76
+   },
+   {
+    "t": 180,
+    "cumFix": 1.21
+   },
+   {
+    "t": 190,
+    "cumFix": 1.51
+   },
+   {
+    "t": 200,
+    "cumFix": 1.65
+   },
+   {
+    "t": 210,
+    "cumFix": 1.8
+   },
+   {
+    "t": 220,
+    "cumFix": 1.76
+   },
+   {
+    "t": 230,
+    "cumFix": 1.53
+   },
+   {
+    "t": 240,
+    "cumFix": 1.61
+   },
+   {
+    "t": 250,
+    "cumFix": 1.35
+   },
+   {
+    "t": 260,
+    "cumFix": 1.38
+   },
+   {
+    "t": 270,
+    "cumFix": 1.9
+   },
+   {
+    "t": 280,
+    "cumFix": 1.89
+   },
+   {
+    "t": 290,
+    "cumFix": 1.66
+   },
+   {
+    "t": 300,
+    "cumFix": 1.82
+   },
+   {
+    "t": 310,
+    "cumFix": 1.68
+   },
+   {
+    "t": 320,
+    "cumFix": 1.71
+   },
+   {
+    "t": 330,
+    "cumFix": 1.81
+   },
+   {
+    "t": 340,
+    "cumFix": 1.9
+   },
+   {
+    "t": 350,
+    "cumFix": 2
+   },
+   {
+    "t": 360,
+    "cumFix": 2.08
+   },
+   {
+    "t": 370,
+    "cumFix": 2.21
+   },
+   {
+    "t": 380,
+    "cumFix": 1.63
+   },
+   {
+    "t": 390,
+    "cumFix": 1.8
+   }
+  ],
+  "chord:clean": [
+   {
+    "t": 0,
+    "cumFix": 0.15
+   },
+   {
+    "t": 10,
+    "cumFix": 0.95
+   },
+   {
+    "t": 20,
+    "cumFix": 1.05
+   },
+   {
+    "t": 30,
+    "cumFix": 0.99
+   },
+   {
+    "t": 40,
+    "cumFix": 0.92
+   },
+   {
+    "t": 50,
+    "cumFix": 0.61
+   },
+   {
+    "t": 60,
+    "cumFix": 1.04
+   },
+   {
+    "t": 70,
+    "cumFix": 1.36
+   },
+   {
+    "t": 80,
+    "cumFix": 1.78
+   },
+   {
+    "t": 90,
+    "cumFix": 2.21
+   },
+   {
+    "t": 100,
+    "cumFix": 2.34
+   },
+   {
+    "t": 110,
+    "cumFix": 2.27
+   },
+   {
+    "t": 120,
+    "cumFix": 2.5
+   },
+   {
+    "t": 130,
+    "cumFix": 2.37
+   },
+   {
+    "t": 140,
+    "cumFix": 2.57
+   },
+   {
+    "t": 150,
+    "cumFix": 2.9
+   },
+   {
+    "t": 160,
+    "cumFix": 3.13
+   },
+   {
+    "t": 170,
+    "cumFix": 3.34
+   },
+   {
+    "t": 180,
+    "cumFix": 3.8
+   },
+   {
+    "t": 190,
+    "cumFix": 4.1
+   },
+   {
+    "t": 200,
+    "cumFix": 4.24
+   },
+   {
+    "t": 210,
+    "cumFix": 4.38
+   },
+   {
+    "t": 220,
+    "cumFix": 4.35
+   },
+   {
+    "t": 230,
+    "cumFix": 4.12
+   },
+   {
+    "t": 240,
+    "cumFix": 4.19
+   },
+   {
+    "t": 250,
+    "cumFix": 3.93
+   },
+   {
+    "t": 260,
+    "cumFix": 3.96
+   },
+   {
+    "t": 270,
+    "cumFix": 4.48
+   },
+   {
+    "t": 280,
+    "cumFix": 4.47
+   },
+   {
+    "t": 290,
+    "cumFix": 4.24
+   },
+   {
+    "t": 300,
+    "cumFix": 4.4
+   },
+   {
+    "t": 310,
+    "cumFix": 4.27
+   },
+   {
+    "t": 320,
+    "cumFix": 4.3
+   },
+   {
+    "t": 330,
+    "cumFix": 4.39
+   },
+   {
+    "t": 340,
+    "cumFix": 4.49
+   },
+   {
+    "t": 350,
+    "cumFix": 4.58
+   },
+   {
+    "t": 360,
+    "cumFix": 4.66
+   },
+   {
+    "t": 370,
+    "cumFix": 4.79
+   },
+   {
+    "t": 380,
+    "cumFix": 4.21
+   },
+   {
+    "t": 390,
+    "cumFix": 4.38
+   }
+  ],
+  "epsgreedy:clean": [
+   {
+    "t": 0,
+    "cumFix": 0.05
+   },
+   {
+    "t": 10,
+    "cumFix": -0.17
+   },
+   {
+    "t": 20,
+    "cumFix": -0.42
+   },
+   {
+    "t": 30,
+    "cumFix": -0.31
+   },
+   {
+    "t": 40,
+    "cumFix": -0.45
+   },
+   {
+    "t": 50,
+    "cumFix": -0.39
+   },
+   {
+    "t": 60,
+    "cumFix": -0.37
+   },
+   {
+    "t": 70,
+    "cumFix": -0.63
+   },
+   {
+    "t": 80,
+    "cumFix": -0.75
+   },
+   {
+    "t": 90,
+    "cumFix": -0.27
+   },
+   {
+    "t": 100,
+    "cumFix": -0.14
+   },
+   {
+    "t": 110,
+    "cumFix": -0.2
+   },
+   {
+    "t": 120,
+    "cumFix": 0.37
+   },
+   {
+    "t": 130,
+    "cumFix": 0.5
+   },
+   {
+    "t": 140,
+    "cumFix": 0.7
+   },
+   {
+    "t": 150,
+    "cumFix": 1.2
+   },
+   {
+    "t": 160,
+    "cumFix": 1.71
+   },
+   {
+    "t": 170,
+    "cumFix": 2.4
+   },
+   {
+    "t": 180,
+    "cumFix": 3.04
+   },
+   {
+    "t": 190,
+    "cumFix": 3.34
+   },
+   {
+    "t": 200,
+    "cumFix": 3.87
+   },
+   {
+    "t": 210,
+    "cumFix": 4.32
+   },
+   {
+    "t": 220,
+    "cumFix": 4.47
+   },
+   {
+    "t": 230,
+    "cumFix": 4.92
+   },
+   {
+    "t": 240,
+    "cumFix": 4.99
+   },
+   {
+    "t": 250,
+    "cumFix": 5.11
+   },
+   {
+    "t": 260,
+    "cumFix": 5.15
+   },
+   {
+    "t": 270,
+    "cumFix": 5.82
+   },
+   {
+    "t": 280,
+    "cumFix": 5.8
+   },
+   {
+    "t": 290,
+    "cumFix": 5.64
+   },
+   {
+    "t": 300,
+    "cumFix": 5.8
+   },
+   {
+    "t": 310,
+    "cumFix": 5.99
+   },
+   {
+    "t": 320,
+    "cumFix": 6.29
+   },
+   {
+    "t": 330,
+    "cumFix": 6.6
+   },
+   {
+    "t": 340,
+    "cumFix": 6.7
+   },
+   {
+    "t": 350,
+    "cumFix": 6.92
+   },
+   {
+    "t": 360,
+    "cumFix": 7.29
+   },
+   {
+    "t": 370,
+    "cumFix": 7.59
+   },
+   {
+    "t": 380,
+    "cumFix": 7.34
+   },
+   {
+    "t": 390,
+    "cumFix": 7.51
+   }
+  ],
+  "meshD:clean": [
+   {
+    "t": 0,
+    "cumFix": 0.05
+   },
+   {
+    "t": 10,
+    "cumFix": 1.08
+   },
+   {
+    "t": 20,
+    "cumFix": 0.96
+   },
+   {
+    "t": 30,
+    "cumFix": 0.36
+   },
+   {
+    "t": 40,
+    "cumFix": 0.36
+   },
+   {
+    "t": 50,
+    "cumFix": 0.24
+   },
+   {
+    "t": 60,
+    "cumFix": 0.61
+   },
+   {
+    "t": 70,
+    "cumFix": 0.47
+   },
+   {
+    "t": 80,
+    "cumFix": 0.26
+   },
+   {
+    "t": 90,
+    "cumFix": 1.1
+   },
+   {
+    "t": 100,
+    "cumFix": 2.44
+   },
+   {
+    "t": 110,
+    "cumFix": 2.68
+   },
+   {
+    "t": 120,
+    "cumFix": 3.13
+   },
+   {
+    "t": 130,
+    "cumFix": 3.19
+   },
+   {
+    "t": 140,
+    "cumFix": 4.26
+   },
+   {
+    "t": 150,
+    "cumFix": 4.85
+   },
+   {
+    "t": 160,
+    "cumFix": 5.31
+   },
+   {
+    "t": 170,
+    "cumFix": 5.91
+   },
+   {
+    "t": 180,
+    "cumFix": 6.36
+   },
+   {
+    "t": 190,
+    "cumFix": 6.95
+   },
+   {
+    "t": 200,
+    "cumFix": 7.48
+   },
+   {
+    "t": 210,
+    "cumFix": 7.85
+   },
+   {
+    "t": 220,
+    "cumFix": 7.82
+   },
+   {
+    "t": 230,
+    "cumFix": 8.32
+   },
+   {
+    "t": 240,
+    "cumFix": 8.21
+   },
+   {
+    "t": 250,
+    "cumFix": 8.33
+   },
+   {
+    "t": 260,
+    "cumFix": 8.68
+   },
+   {
+    "t": 270,
+    "cumFix": 8.96
+   },
+   {
+    "t": 280,
+    "cumFix": 9.71
+   },
+   {
+    "t": 290,
+    "cumFix": 9.77
+   },
+   {
+    "t": 300,
+    "cumFix": 10.59
+   },
+   {
+    "t": 310,
+    "cumFix": 10.56
+   },
+   {
+    "t": 320,
+    "cumFix": 10.1
+   },
+   {
+    "t": 330,
+    "cumFix": 10.51
+   },
+   {
+    "t": 340,
+    "cumFix": 10.9
+   },
+   {
+    "t": 350,
+    "cumFix": 11
+   },
+   {
+    "t": 360,
+    "cumFix": 11.18
+   },
+   {
+    "t": 370,
+    "cumFix": 11.54
+   },
+   {
+    "t": 380,
+    "cumFix": 11.44
+   },
+   {
+    "t": 390,
+    "cumFix": 12.35
+   }
+  ],
+  "meshD:clean:r": [
+   {
+    "t": 0,
+    "r": 0.9833
+   },
+   {
+    "t": 10,
+    "r": 0.8698
+   },
+   {
+    "t": 20,
+    "r": 0.9664
+   },
+   {
+    "t": 30,
+    "r": 0.9848
+   },
+   {
+    "t": 40,
+    "r": 0.7878
+   },
+   {
+    "t": 50,
+    "r": 0.8242
+   },
+   {
+    "t": 60,
+    "r": 0.7277
+   },
+   {
+    "t": 70,
+    "r": 0.9033
+   },
+   {
+    "t": 80,
+    "r": 0.8993
+   },
+   {
+    "t": 90,
+    "r": 0.8414
+   },
+   {
+    "t": 100,
+    "r": 0.9931
+   },
+   {
+    "t": 110,
+    "r": 0.9384
+   },
+   {
+    "t": 120,
+    "r": 0.9749
+   },
+   {
+    "t": 130,
+    "r": 0.941
+   },
+   {
+    "t": 140,
+    "r": 0.6824
+   },
+   {
+    "t": 150,
+    "r": 0.9851
+   },
+   {
+    "t": 160,
+    "r": 0.8708
+   },
+   {
+    "t": 170,
+    "r": 0.9752
+   },
+   {
+    "t": 180,
+    "r": 0.4711
+   },
+   {
+    "t": 190,
+    "r": 0.7435
+   },
+   {
+    "t": 200,
+    "r": 0.925
+   },
+   {
+    "t": 210,
+    "r": 0.8377
+   },
+   {
+    "t": 220,
+    "r": 0.8214
+   },
+   {
+    "t": 230,
+    "r": 0.9729
+   },
+   {
+    "t": 240,
+    "r": 0.9136
+   },
+   {
+    "t": 250,
+    "r": 0.483
+   },
+   {
+    "t": 260,
+    "r": 0.8369
+   },
+   {
+    "t": 270,
+    "r": 0.7819
+   },
+   {
+    "t": 280,
+    "r": 0.8594
+   },
+   {
+    "t": 290,
+    "r": 0.9807
+   },
+   {
+    "t": 300,
+    "r": 0.7837
+   },
+   {
+    "t": 310,
+    "r": 0.7966
+   },
+   {
+    "t": 320,
+    "r": 0.965
+   },
+   {
+    "t": 330,
+    "r": 0.8336
+   },
+   {
+    "t": 340,
+    "r": 0.9859
+   },
+   {
+    "t": 350,
+    "r": 0.9832
+   },
+   {
+    "t": 360,
+    "r": 0.9863
+   },
+   {
+    "t": 370,
+    "r": 0.9083
+   },
+   {
+    "t": 380,
+    "r": 0.7397
+   },
+   {
+    "t": 390,
+    "r": 0.9693
+   }
+  ],
+  "meshE:clean": [
+   {
+    "t": 0,
+    "cumFix": 0.15
+   },
+   {
+    "t": 10,
+    "cumFix": 0.53
+   },
+   {
+    "t": 20,
+    "cumFix": 0.94
+   },
+   {
+    "t": 30,
+    "cumFix": 1.45
+   },
+   {
+    "t": 40,
+    "cumFix": 1.38
+   },
+   {
+    "t": 50,
+    "cumFix": 0.93
+   },
+   {
+    "t": 60,
+    "cumFix": 0.95
+   },
+   {
+    "t": 70,
+    "cumFix": 1.49
+   },
+   {
+    "t": 80,
+    "cumFix": 1.51
+   },
+   {
+    "t": 90,
+    "cumFix": 2.2
+   },
+   {
+    "t": 100,
+    "cumFix": 2.32
+   },
+   {
+    "t": 110,
+    "cumFix": 2.43
+   },
+   {
+    "t": 120,
+    "cumFix": 2.65
+   },
+   {
+    "t": 130,
+    "cumFix": 2.52
+   },
+   {
+    "t": 140,
+    "cumFix": 3.14
+   },
+   {
+    "t": 150,
+    "cumFix": 3.71
+   },
+   {
+    "t": 160,
+    "cumFix": 4.38
+   },
+   {
+    "t": 170,
+    "cumFix": 5.07
+   },
+   {
+    "t": 180,
+    "cumFix": 5.57
+   },
+   {
+    "t": 190,
+    "cumFix": 6
+   },
+   {
+    "t": 200,
+    "cumFix": 6.38
+   },
+   {
+    "t": 210,
+    "cumFix": 6.72
+   },
+   {
+    "t": 220,
+    "cumFix": 6.68
+   },
+   {
+    "t": 230,
+    "cumFix": 6.33
+   },
+   {
+    "t": 240,
+    "cumFix": 6.95
+   },
+   {
+    "t": 250,
+    "cumFix": 6.87
+   },
+   {
+    "t": 260,
+    "cumFix": 6.9
+   },
+   {
+    "t": 270,
+    "cumFix": 7.66
+   },
+   {
+    "t": 280,
+    "cumFix": 7.65
+   },
+   {
+    "t": 290,
+    "cumFix": 7.43
+   },
+   {
+    "t": 300,
+    "cumFix": 7.64
+   },
+   {
+    "t": 310,
+    "cumFix": 7.7
+   },
+   {
+    "t": 320,
+    "cumFix": 7.55
+   },
+   {
+    "t": 330,
+    "cumFix": 7.76
+   },
+   {
+    "t": 340,
+    "cumFix": 7.85
+   },
+   {
+    "t": 350,
+    "cumFix": 8.08
+   },
+   {
+    "t": 360,
+    "cumFix": 8.37
+   },
+   {
+    "t": 370,
+    "cumFix": 8.73
+   },
+   {
+    "t": 380,
+    "cumFix": 8.48
+   },
+   {
+    "t": 390,
+    "cumFix": 9
+   }
+  ],
+  "meshE:clean:r": [
+   {
+    "t": 0,
+    "r": 0.995
+   },
+   {
+    "t": 10,
+    "r": 0.9795
+   },
+   {
+    "t": 20,
+    "r": 0.7109
+   },
+   {
+    "t": 30,
+    "r": 0.9169
+   },
+   {
+    "t": 40,
+    "r": 0.73
+   },
+   {
+    "t": 50,
+    "r": 0.7699
+   },
+   {
+    "t": 60,
+    "r": 0.2387
+   },
+   {
+    "t": 70,
+    "r": 0.7228
+   },
+   {
+    "t": 80,
+    "r": 0.1852
+   },
+   {
+    "t": 90,
+    "r": 0.8401
+   },
+   {
+    "t": 100,
+    "r": 0.5806
+   },
+   {
+    "t": 110,
+    "r": 0.9383
+   },
+   {
+    "t": 120,
+    "r": 0.4837
+   },
+   {
+    "t": 130,
+    "r": 0.8527
+   },
+   {
+    "t": 140,
+    "r": 0.8527
+   },
+   {
+    "t": 150,
+    "r": 0.8943
+   },
+   {
+    "t": 160,
+    "r": 0.9745
+   },
+   {
+    "t": 170,
+    "r": 0.6521
+   },
+   {
+    "t": 180,
+    "r": 0.4237
+   },
+   {
+    "t": 190,
+    "r": 0.9903
+   },
+   {
+    "t": 200,
+    "r": 0.717
+   },
+   {
+    "t": 210,
+    "r": 0.931
+   },
+   {
+    "t": 220,
+    "r": 0.986
+   },
+   {
+    "t": 230,
+    "r": 0.8319
+   },
+   {
+    "t": 240,
+    "r": 0.9496
+   },
+   {
+    "t": 250,
+    "r": 0.984
+   },
+   {
+    "t": 260,
+    "r": 0.9476
+   },
+   {
+    "t": 270,
+    "r": 0.9958
+   },
+   {
+    "t": 280,
+    "r": 0.705
+   },
+   {
+    "t": 290,
+    "r": 0.9242
+   },
+   {
+    "t": 300,
+    "r": 0.869
+   },
+   {
+    "t": 310,
+    "r": 0.4433
+   },
+   {
+    "t": 320,
+    "r": 0.9491
+   },
+   {
+    "t": 330,
+    "r": 0.9303
+   },
+   {
+    "t": 340,
+    "r": 0.7405
+   },
+   {
+    "t": 350,
+    "r": 0.8305
+   },
+   {
+    "t": 360,
+    "r": 0.9927
+   },
+   {
+    "t": 370,
+    "r": 0.7746
+   },
+   {
+    "t": 380,
+    "r": 0.9096
+   },
+   {
+    "t": 390,
+    "r": 0.9799
+   }
+  ],
+  "meshF:clean": [
+   {
+    "t": 0,
+    "cumFix": 0.15
+   },
+   {
+    "t": 10,
+    "cumFix": 0.74
+   },
+   {
+    "t": 20,
+    "cumFix": 0.88
+   },
+   {
+    "t": 30,
+    "cumFix": 0.83
+   },
+   {
+    "t": 40,
+    "cumFix": 0.77
+   },
+   {
+    "t": 50,
+    "cumFix": 0.55
+   },
+   {
+    "t": 60,
+    "cumFix": 0.54
+   },
+   {
+    "t": 70,
+    "cumFix": 0.61
+   },
+   {
+    "t": 80,
+    "cumFix": 0.95
+   },
+   {
+    "t": 90,
+    "cumFix": 1.51
+   },
+   {
+    "t": 100,
+    "cumFix": 1.63
+   },
+   {
+    "t": 110,
+    "cumFix": 2.36
+   },
+   {
+    "t": 120,
+    "cumFix": 3.53
+   },
+   {
+    "t": 130,
+    "cumFix": 3.48
+   },
+   {
+    "t": 140,
+    "cumFix": 4.01
+   },
+   {
+    "t": 150,
+    "cumFix": 4.34
+   },
+   {
+    "t": 160,
+    "cumFix": 4.68
+   },
+   {
+    "t": 170,
+    "cumFix": 4.92
+   },
+   {
+    "t": 180,
+    "cumFix": 5.57
+   },
+   {
+    "t": 190,
+    "cumFix": 6.07
+   },
+   {
+    "t": 200,
+    "cumFix": 6.78
+   },
+   {
+    "t": 210,
+    "cumFix": 7.3
+   },
+   {
+    "t": 220,
+    "cumFix": 7.53
+   },
+   {
+    "t": 230,
+    "cumFix": 7.39
+   },
+   {
+    "t": 240,
+    "cumFix": 7.46
+   },
+   {
+    "t": 250,
+    "cumFix": 7.55
+   },
+   {
+    "t": 260,
+    "cumFix": 7.89
+   },
+   {
+    "t": 270,
+    "cumFix": 8.8
+   },
+   {
+    "t": 280,
+    "cumFix": 9.17
+   },
+   {
+    "t": 290,
+    "cumFix": 8.95
+   },
+   {
+    "t": 300,
+    "cumFix": 9.04
+   },
+   {
+    "t": 310,
+    "cumFix": 8.49
+   },
+   {
+    "t": 320,
+    "cumFix": 8.38
+   },
+   {
+    "t": 330,
+    "cumFix": 8.81
+   },
+   {
+    "t": 340,
+    "cumFix": 9
+   },
+   {
+    "t": 350,
+    "cumFix": 9.1
+   },
+   {
+    "t": 360,
+    "cumFix": 9.36
+   },
+   {
+    "t": 370,
+    "cumFix": 9.69
+   },
+   {
+    "t": 380,
+    "cumFix": 9.11
+   },
+   {
+    "t": 390,
+    "cumFix": 9.68
+   }
+  ],
+  "meshF:clean:r": [
+   {
+    "t": 0,
+    "r": 0.9833
+   },
+   {
+    "t": 10,
+    "r": 0.9518
+   },
+   {
+    "t": 20,
+    "r": 0.939
+   },
+   {
+    "t": 30,
+    "r": 0.8753
+   },
+   {
+    "t": 40,
+    "r": 0.902
+   },
+   {
+    "t": 50,
+    "r": 0.5074
+   },
+   {
+    "t": 60,
+    "r": 0.8978
+   },
+   {
+    "t": 70,
+    "r": 0.9574
+   },
+   {
+    "t": 80,
+    "r": 0.8386
+   },
+   {
+    "t": 90,
+    "r": 0.8602
+   },
+   {
+    "t": 100,
+    "r": 0.6024
+   },
+   {
+    "t": 110,
+    "r": 0.8231
+   },
+   {
+    "t": 120,
+    "r": 0.7201
+   },
+   {
+    "t": 130,
+    "r": 0.9722
+   },
+   {
+    "t": 140,
+    "r": 0.7791
+   },
+   {
+    "t": 150,
+    "r": 0.9649
+   },
+   {
+    "t": 160,
+    "r": 0.5223
+   },
+   {
+    "t": 170,
+    "r": 0.9299
+   },
+   {
+    "t": 180,
+    "r": 0.5029
+   },
+   {
+    "t": 190,
+    "r": 0.9716
+   },
+   {
+    "t": 200,
+    "r": 0.883
+   },
+   {
+    "t": 210,
+    "r": 0.8351
+   },
+   {
+    "t": 220,
+    "r": 0.7599
+   },
+   {
+    "t": 230,
+    "r": 0.7811
+   },
+   {
+    "t": 240,
+    "r": 0.8867
+   },
+   {
+    "t": 250,
+    "r": 0.6457
+   },
+   {
+    "t": 260,
+    "r": 0.8557
+   },
+   {
+    "t": 270,
+    "r": 0.8833
+   },
+   {
+    "t": 280,
+    "r": 0.6991
+   },
+   {
+    "t": 290,
+    "r": 0.8985
+   },
+   {
+    "t": 300,
+    "r": 0.8013
+   },
+   {
+    "t": 310,
+    "r": 0.9816
+   },
+   {
+    "t": 320,
+    "r": 0.9364
+   },
+   {
+    "t": 330,
+    "r": 0.8471
+   },
+   {
+    "t": 340,
+    "r": 0.9309
+   },
+   {
+    "t": 350,
+    "r": 0.5952
+   },
+   {
+    "t": 360,
+    "r": 0.9728
+   },
+   {
+    "t": 370,
+    "r": 0.9399
+   },
+   {
+    "t": 380,
+    "r": 0.955
+   },
+   {
+    "t": 390,
+    "r": 0.837
+   }
+  ],
+  "ucb1:advArena": [
+   {
+    "t": 0,
+    "cumFix": 0.04
+   },
+   {
+    "t": 10,
+    "cumFix": -1.07
+   },
+   {
+    "t": 20,
+    "cumFix": -2.3
+   },
+   {
+    "t": 30,
+    "cumFix": -2.05
+   },
+   {
+    "t": 40,
+    "cumFix": -1.9
+   },
+   {
+    "t": 50,
+    "cumFix": -1.91
+   },
+   {
+    "t": 60,
+    "cumFix": -3.25
+   },
+   {
+    "t": 70,
+    "cumFix": -4.64
+   },
+   {
+    "t": 80,
+    "cumFix": -5.88
+   },
+   {
+    "t": 90,
+    "cumFix": -6.58
+   },
+   {
+    "t": 100,
+    "cumFix": -7.58
+   },
+   {
+    "t": 110,
+    "cumFix": -8.76
+   },
+   {
+    "t": 120,
+    "cumFix": -9.66
+   },
+   {
+    "t": 130,
+    "cumFix": -10.91
+   },
+   {
+    "t": 140,
+    "cumFix": -11.84
+   },
+   {
+    "t": 150,
+    "cumFix": -12.23
+   },
+   {
+    "t": 160,
+    "cumFix": -9.12
+   },
+   {
+    "t": 170,
+    "cumFix": -6.03
+   },
+   {
+    "t": 180,
+    "cumFix": -2.7
+   },
+   {
+    "t": 190,
+    "cumFix": -1.18
+   },
+   {
+    "t": 200,
+    "cumFix": -1.17
+   },
+   {
+    "t": 210,
+    "cumFix": -1.59
+   },
+   {
+    "t": 220,
+    "cumFix": -1.48
+   },
+   {
+    "t": 230,
+    "cumFix": -1.63
+   },
+   {
+    "t": 240,
+    "cumFix": -1.49
+   },
+   {
+    "t": 250,
+    "cumFix": -1.81
+   },
+   {
+    "t": 260,
+    "cumFix": -1.64
+   },
+   {
+    "t": 270,
+    "cumFix": -1.29
+   },
+   {
+    "t": 280,
+    "cumFix": -1.05
+   },
+   {
+    "t": 290,
+    "cumFix": -1
+   },
+   {
+    "t": 300,
+    "cumFix": -0.74
+   },
+   {
+    "t": 310,
+    "cumFix": -1.34
+   },
+   {
+    "t": 320,
+    "cumFix": -1.33
+   },
+   {
+    "t": 330,
+    "cumFix": -1.42
+   },
+   {
+    "t": 340,
+    "cumFix": -1.7
+   },
+   {
+    "t": 350,
+    "cumFix": -1.85
+   },
+   {
+    "t": 360,
+    "cumFix": -2.06
+   },
+   {
+    "t": 370,
+    "cumFix": -1.69
+   },
+   {
+    "t": 380,
+    "cumFix": -2.22
+   },
+   {
+    "t": 390,
+    "cumFix": -2.48
+   }
+  ],
+  "chord:advArena": [
+   {
+    "t": 0,
+    "cumFix": -0.07
+   },
+   {
+    "t": 10,
+    "cumFix": -1.46
+   },
+   {
+    "t": 20,
+    "cumFix": -2.69
+   },
+   {
+    "t": 30,
+    "cumFix": -2.43
+   },
+   {
+    "t": 40,
+    "cumFix": -1.95
+   },
+   {
+    "t": 50,
+    "cumFix": -1.95
+   },
+   {
+    "t": 60,
+    "cumFix": -2.37
+   },
+   {
+    "t": 70,
+    "cumFix": -2.31
+   },
+   {
+    "t": 80,
+    "cumFix": -3.48
+   },
+   {
+    "t": 90,
+    "cumFix": -4.18
+   },
+   {
+    "t": 100,
+    "cumFix": -5.18
+   },
+   {
+    "t": 110,
+    "cumFix": -6.36
+   },
+   {
+    "t": 120,
+    "cumFix": -7.26
+   },
+   {
+    "t": 130,
+    "cumFix": -8.51
+   },
+   {
+    "t": 140,
+    "cumFix": -9.44
+   },
+   {
+    "t": 150,
+    "cumFix": -9.83
+   },
+   {
+    "t": 160,
+    "cumFix": -6.72
+   },
+   {
+    "t": 170,
+    "cumFix": -4.64
+   },
+   {
+    "t": 180,
+    "cumFix": -2.45
+   },
+   {
+    "t": 190,
+    "cumFix": -1.12
+   },
+   {
+    "t": 200,
+    "cumFix": -0.89
+   },
+   {
+    "t": 210,
+    "cumFix": -1.32
+   },
+   {
+    "t": 220,
+    "cumFix": -0.74
+   },
+   {
+    "t": 230,
+    "cumFix": -0.79
+   },
+   {
+    "t": 240,
+    "cumFix": -0.65
+   },
+   {
+    "t": 250,
+    "cumFix": -0.8
+   },
+   {
+    "t": 260,
+    "cumFix": -0.38
+   },
+   {
+    "t": 270,
+    "cumFix": 0.2
+   },
+   {
+    "t": 280,
+    "cumFix": 0.26
+   },
+   {
+    "t": 290,
+    "cumFix": 0.09
+   },
+   {
+    "t": 300,
+    "cumFix": 0.6
+   },
+   {
+    "t": 310,
+    "cumFix": -0.13
+   },
+   {
+    "t": 320,
+    "cumFix": 0.16
+   },
+   {
+    "t": 330,
+    "cumFix": 0.11
+   },
+   {
+    "t": 340,
+    "cumFix": 0.77
+   },
+   {
+    "t": 350,
+    "cumFix": 0.87
+   },
+   {
+    "t": 360,
+    "cumFix": 0.81
+   },
+   {
+    "t": 370,
+    "cumFix": 1
+   },
+   {
+    "t": 380,
+    "cumFix": 0.83
+   },
+   {
+    "t": 390,
+    "cumFix": 1.37
+   }
+  ],
+  "epsgreedy:advArena": [
+   {
+    "t": 0,
+    "cumFix": -0.06
+   },
+   {
+    "t": 10,
+    "cumFix": -1.09
+   },
+   {
+    "t": 20,
+    "cumFix": -2.32
+   },
+   {
+    "t": 30,
+    "cumFix": -1.98
+   },
+   {
+    "t": 40,
+    "cumFix": -1.93
+   },
+   {
+    "t": 50,
+    "cumFix": -1.94
+   },
+   {
+    "t": 60,
+    "cumFix": -2.88
+   },
+   {
+    "t": 70,
+    "cumFix": -4.02
+   },
+   {
+    "t": 80,
+    "cumFix": -5.27
+   },
+   {
+    "t": 90,
+    "cumFix": -5.97
+   },
+   {
+    "t": 100,
+    "cumFix": -6.97
+   },
+   {
+    "t": 110,
+    "cumFix": -8.15
+   },
+   {
+    "t": 120,
+    "cumFix": -9.05
+   },
+   {
+    "t": 130,
+    "cumFix": -9.73
+   },
+   {
+    "t": 140,
+    "cumFix": -10.12
+   },
+   {
+    "t": 150,
+    "cumFix": -10.2
+   },
+   {
+    "t": 160,
+    "cumFix": -7.41
+   },
+   {
+    "t": 170,
+    "cumFix": -4.32
+   },
+   {
+    "t": 180,
+    "cumFix": -1.23
+   },
+   {
+    "t": 190,
+    "cumFix": 0.3
+   },
+   {
+    "t": 200,
+    "cumFix": 0.32
+   },
+   {
+    "t": 210,
+    "cumFix": -0.1
+   },
+   {
+    "t": 220,
+    "cumFix": 0.01
+   },
+   {
+    "t": 230,
+    "cumFix": 0.26
+   },
+   {
+    "t": 240,
+    "cumFix": 0.85
+   },
+   {
+    "t": 250,
+    "cumFix": 0.54
+   },
+   {
+    "t": 260,
+    "cumFix": 0.9
+   },
+   {
+    "t": 270,
+    "cumFix": 1.25
+   },
+   {
+    "t": 280,
+    "cumFix": 1.79
+   },
+   {
+    "t": 290,
+    "cumFix": 1.81
+   },
+   {
+    "t": 300,
+    "cumFix": 2.02
+   },
+   {
+    "t": 310,
+    "cumFix": 1.42
+   },
+   {
+    "t": 320,
+    "cumFix": 1.74
+   },
+   {
+    "t": 330,
+    "cumFix": 1.91
+   },
+   {
+    "t": 340,
+    "cumFix": 1.64
+   },
+   {
+    "t": 350,
+    "cumFix": 1.49
+   },
+   {
+    "t": 360,
+    "cumFix": 1.35
+   },
+   {
+    "t": 370,
+    "cumFix": 1.83
+   },
+   {
+    "t": 380,
+    "cumFix": 1.3
+   },
+   {
+    "t": 390,
+    "cumFix": 1.04
+   }
+  ],
+  "meshD:advMesh": [
+   {
+    "t": 0,
+    "cumFix": 0.05
+   },
+   {
+    "t": 10,
+    "cumFix": 1.53
+   },
+   {
+    "t": 20,
+    "cumFix": 1.25
+   },
+   {
+    "t": 30,
+    "cumFix": 1.65
+   },
+   {
+    "t": 40,
+    "cumFix": 0.96
+   },
+   {
+    "t": 50,
+    "cumFix": 0.42
+   },
+   {
+    "t": 60,
+    "cumFix": 0.38
+   },
+   {
+    "t": 70,
+    "cumFix": 0.22
+   },
+   {
+    "t": 80,
+    "cumFix": 0.1
+   },
+   {
+    "t": 90,
+    "cumFix": 0.57
+   },
+   {
+    "t": 100,
+    "cumFix": 1.25
+   },
+   {
+    "t": 110,
+    "cumFix": 1.19
+   },
+   {
+    "t": 120,
+    "cumFix": 1.45
+   },
+   {
+    "t": 130,
+    "cumFix": 1.32
+   },
+   {
+    "t": 140,
+    "cumFix": 1.52
+   },
+   {
+    "t": 150,
+    "cumFix": 1.96
+   },
+   {
+    "t": 160,
+    "cumFix": 2.22
+   },
+   {
+    "t": 170,
+    "cumFix": 2.81
+   },
+   {
+    "t": 180,
+    "cumFix": 3.76
+   },
+   {
+    "t": 190,
+    "cumFix": 4.3
+   },
+   {
+    "t": 200,
+    "cumFix": 4.44
+   },
+   {
+    "t": 210,
+    "cumFix": 5.05
+   },
+   {
+    "t": 220,
+    "cumFix": 5.4
+   },
+   {
+    "t": 230,
+    "cumFix": 5.32
+   },
+   {
+    "t": 240,
+    "cumFix": 5.36
+   },
+   {
+    "t": 250,
+    "cumFix": 5.21
+   },
+   {
+    "t": 260,
+    "cumFix": 5.41
+   },
+   {
+    "t": 270,
+    "cumFix": 5.96
+   },
+   {
+    "t": 280,
+    "cumFix": 6.51
+   },
+   {
+    "t": 290,
+    "cumFix": 6.62
+   },
+   {
+    "t": 300,
+    "cumFix": 6.77
+   },
+   {
+    "t": 310,
+    "cumFix": 6.68
+   },
+   {
+    "t": 320,
+    "cumFix": 6.78
+   },
+   {
+    "t": 330,
+    "cumFix": 7.3
+   },
+   {
+    "t": 340,
+    "cumFix": 8.18
+   },
+   {
+    "t": 350,
+    "cumFix": 8.54
+   },
+   {
+    "t": 360,
+    "cumFix": 8.64
+   },
+   {
+    "t": 370,
+    "cumFix": 9.19
+   },
+   {
+    "t": 380,
+    "cumFix": 8.69
+   },
+   {
+    "t": 390,
+    "cumFix": 8.9
+   }
+  ],
+  "meshD:advMesh:r": [
+   {
+    "t": 0,
+    "r": 0.9833
+   },
+   {
+    "t": 10,
+    "r": 0.8698
+   },
+   {
+    "t": 20,
+    "r": 0.9664
+   },
+   {
+    "t": 30,
+    "r": 0.9848
+   },
+   {
+    "t": 40,
+    "r": 0.7878
+   },
+   {
+    "t": 50,
+    "r": 0.8242
+   },
+   {
+    "t": 60,
+    "r": 0.7277
+   },
+   {
+    "t": 70,
+    "r": 0.9033
+   },
+   {
+    "t": 80,
+    "r": 0.8993
+   },
+   {
+    "t": 90,
+    "r": 0.8414
+   },
+   {
+    "t": 100,
+    "r": 0.9931
+   },
+   {
+    "t": 110,
+    "r": 0.9384
+   },
+   {
+    "t": 120,
+    "r": 0.9749
+   },
+   {
+    "t": 130,
+    "r": 0.941
+   },
+   {
+    "t": 140,
+    "r": 0.6824
+   },
+   {
+    "t": 150,
+    "r": 0.9851
+   },
+   {
+    "t": 160,
+    "r": 0.8708
+   },
+   {
+    "t": 170,
+    "r": 0.9753
+   },
+   {
+    "t": 180,
+    "r": 0.4711
+   },
+   {
+    "t": 190,
+    "r": 0.7435
+   },
+   {
+    "t": 200,
+    "r": 0.925
+   },
+   {
+    "t": 210,
+    "r": 0.8377
+   },
+   {
+    "t": 220,
+    "r": 0.8214
+   },
+   {
+    "t": 230,
+    "r": 0.9729
+   },
+   {
+    "t": 240,
+    "r": 0.9136
+   },
+   {
+    "t": 250,
+    "r": 0.483
+   },
+   {
+    "t": 260,
+    "r": 0.6076
+   },
+   {
+    "t": 270,
+    "r": 0.7819
+   },
+   {
+    "t": 280,
+    "r": 0.8594
+   },
+   {
+    "t": 290,
+    "r": 0.7072
+   },
+   {
+    "t": 300,
+    "r": 0.7837
+   },
+   {
+    "t": 310,
+    "r": 0.7966
+   },
+   {
+    "t": 320,
+    "r": 0.965
+   },
+   {
+    "t": 330,
+    "r": 0.8336
+   },
+   {
+    "t": 340,
+    "r": 0.9859
+   },
+   {
+    "t": 350,
+    "r": 0.8913
+   },
+   {
+    "t": 360,
+    "r": 0.9863
+   },
+   {
+    "t": 370,
+    "r": 0.9083
+   },
+   {
+    "t": 380,
+    "r": 0.5498
+   },
+   {
+    "t": 390,
+    "r": 0.9693
+   }
+  ],
+  "meshE:advMesh": [
+   {
+    "t": 0,
+    "cumFix": 0.15
+   },
+   {
+    "t": 10,
+    "cumFix": 0.38
+   },
+   {
+    "t": 20,
+    "cumFix": 0.8
+   },
+   {
+    "t": 30,
+    "cumFix": 0.95
+   },
+   {
+    "t": 40,
+    "cumFix": 0.24
+   },
+   {
+    "t": 50,
+    "cumFix": -0.22
+   },
+   {
+    "t": 60,
+    "cumFix": -0.1
+   },
+   {
+    "t": 70,
+    "cumFix": -0.36
+   },
+   {
+    "t": 80,
+    "cumFix": -0.14
+   },
+   {
+    "t": 90,
+    "cumFix": 0.34
+   },
+   {
+    "t": 100,
+    "cumFix": 0.67
+   },
+   {
+    "t": 110,
+    "cumFix": 0.67
+   },
+   {
+    "t": 120,
+    "cumFix": 0.9
+   },
+   {
+    "t": 130,
+    "cumFix": 1.03
+   },
+   {
+    "t": 140,
+    "cumFix": 1.34
+   },
+   {
+    "t": 150,
+    "cumFix": 1.84
+   },
+   {
+    "t": 160,
+    "cumFix": 2.48
+   },
+   {
+    "t": 170,
+    "cumFix": 2.83
+   },
+   {
+    "t": 180,
+    "cumFix": 3.28
+   },
+   {
+    "t": 190,
+    "cumFix": 3.59
+   },
+   {
+    "t": 200,
+    "cumFix": 3.81
+   },
+   {
+    "t": 210,
+    "cumFix": 3.95
+   },
+   {
+    "t": 220,
+    "cumFix": 4.66
+   },
+   {
+    "t": 230,
+    "cumFix": 4.43
+   },
+   {
+    "t": 240,
+    "cumFix": 4.65
+   },
+   {
+    "t": 250,
+    "cumFix": 4.92
+   },
+   {
+    "t": 260,
+    "cumFix": 4.98
+   },
+   {
+    "t": 270,
+    "cumFix": 5.23
+   },
+   {
+    "t": 280,
+    "cumFix": 5.41
+   },
+   {
+    "t": 290,
+    "cumFix": 5.2
+   },
+   {
+    "t": 300,
+    "cumFix": 5.63
+   },
+   {
+    "t": 310,
+    "cumFix": 4.91
+   },
+   {
+    "t": 320,
+    "cumFix": 4.2
+   },
+   {
+    "t": 330,
+    "cumFix": 4.3
+   },
+   {
+    "t": 340,
+    "cumFix": 4.79
+   },
+   {
+    "t": 350,
+    "cumFix": 5.09
+   },
+   {
+    "t": 360,
+    "cumFix": 5.13
+   },
+   {
+    "t": 370,
+    "cumFix": 5.6
+   },
+   {
+    "t": 380,
+    "cumFix": 5.33
+   },
+   {
+    "t": 390,
+    "cumFix": 5.82
+   }
+  ],
+  "meshE:advMesh:r": [
+   {
+    "t": 0,
+    "r": 0.9833
+   },
+   {
+    "t": 10,
+    "r": 0.9847
+   },
+   {
+    "t": 20,
+    "r": 0.9503
+   },
+   {
+    "t": 30,
+    "r": 0.9891
+   },
+   {
+    "t": 40,
+    "r": 0.8932
+   },
+   {
+    "t": 50,
+    "r": 0.6654
+   },
+   {
+    "t": 60,
+    "r": 0.5979
+   },
+   {
+    "t": 70,
+    "r": 0.9575
+   },
+   {
+    "t": 80,
+    "r": 0.6915
+   },
+   {
+    "t": 90,
+    "r": 0.8565
+   },
+   {
+    "t": 100,
+    "r": 0.7481
+   },
+   {
+    "t": 110,
+    "r": 0.9423
+   },
+   {
+    "t": 120,
+    "r": 0.7073
+   },
+   {
+    "t": 130,
+    "r": 0.9082
+   },
+   {
+    "t": 140,
+    "r": 0.9136
+   },
+   {
+    "t": 150,
+    "r": 0.9983
+   },
+   {
+    "t": 160,
+    "r": 0.5167
+   },
+   {
+    "t": 170,
+    "r": 0.9371
+   },
+   {
+    "t": 180,
+    "r": 0.8997
+   },
+   {
+    "t": 190,
+    "r": 0.979
+   },
+   {
+    "t": 200,
+    "r": 0.956
+   },
+   {
+    "t": 210,
+    "r": 0.6998
+   },
+   {
+    "t": 220,
+    "r": 0.8207
+   },
+   {
+    "t": 230,
+    "r": 0.8686
+   },
+   {
+    "t": 240,
+    "r": 0.9847
+   },
+   {
+    "t": 250,
+    "r": 0.7104
+   },
+   {
+    "t": 260,
+    "r": 0.8496
+   },
+   {
+    "t": 270,
+    "r": 0.8873
+   },
+   {
+    "t": 280,
+    "r": 0.7184
+   },
+   {
+    "t": 290,
+    "r": 0.6675
+   },
+   {
+    "t": 300,
+    "r": 0.6855
+   },
+   {
+    "t": 310,
+    "r": 0.9779
+   },
+   {
+    "t": 320,
+    "r": 0.8941
+   },
+   {
+    "t": 330,
+    "r": 0.7634
+   },
+   {
+    "t": 340,
+    "r": 0.8896
+   },
+   {
+    "t": 350,
+    "r": 0.3797
+   },
+   {
+    "t": 360,
+    "r": 0.9868
+   },
+   {
+    "t": 370,
+    "r": 0.7744
+   },
+   {
+    "t": 380,
+    "r": 0.9133
+   },
+   {
+    "t": 390,
+    "r": 0.8848
+   }
+  ],
+  "meshF:advMesh": [
+   {
+    "t": 0,
+    "cumFix": 0.05
+   },
+   {
+    "t": 10,
+    "cumFix": 1.4
+   },
+   {
+    "t": 20,
+    "cumFix": 2.24
+   },
+   {
+    "t": 30,
+    "cumFix": 2.02
+   },
+   {
+    "t": 40,
+    "cumFix": 1.75
+   },
+   {
+    "t": 50,
+    "cumFix": 1.76
+   },
+   {
+    "t": 60,
+    "cumFix": 1.99
+   },
+   {
+    "t": 70,
+    "cumFix": 1.73
+   },
+   {
+    "t": 80,
+    "cumFix": 1.61
+   },
+   {
+    "t": 90,
+    "cumFix": 2.26
+   },
+   {
+    "t": 100,
+    "cumFix": 2.38
+   },
+   {
+    "t": 110,
+    "cumFix": 2.54
+   },
+   {
+    "t": 120,
+    "cumFix": 2.85
+   },
+   {
+    "t": 130,
+    "cumFix": 3.43
+   },
+   {
+    "t": 140,
+    "cumFix": 3.63
+   },
+   {
+    "t": 150,
+    "cumFix": 4.36
+   },
+   {
+    "t": 160,
+    "cumFix": 4.6
+   },
+   {
+    "t": 170,
+    "cumFix": 4.87
+   },
+   {
+    "t": 180,
+    "cumFix": 5.33
+   },
+   {
+    "t": 190,
+    "cumFix": 5.89
+   },
+   {
+    "t": 200,
+    "cumFix": 6.8
+   },
+   {
+    "t": 210,
+    "cumFix": 7.52
+   },
+   {
+    "t": 220,
+    "cumFix": 7.48
+   },
+   {
+    "t": 230,
+    "cumFix": 8.06
+   },
+   {
+    "t": 240,
+    "cumFix": 8.75
+   },
+   {
+    "t": 250,
+    "cumFix": 8.91
+   },
+   {
+    "t": 260,
+    "cumFix": 8.97
+   },
+   {
+    "t": 270,
+    "cumFix": 9.03
+   },
+   {
+    "t": 280,
+    "cumFix": 9.1
+   },
+   {
+    "t": 290,
+    "cumFix": 9.21
+   },
+   {
+    "t": 300,
+    "cumFix": 9.68
+   },
+   {
+    "t": 310,
+    "cumFix": 9.42
+   },
+   {
+    "t": 320,
+    "cumFix": 9.26
+   },
+   {
+    "t": 330,
+    "cumFix": 9.35
+   },
+   {
+    "t": 340,
+    "cumFix": 9.64
+   },
+   {
+    "t": 350,
+    "cumFix": 9.73
+   },
+   {
+    "t": 360,
+    "cumFix": 10.11
+   },
+   {
+    "t": 370,
+    "cumFix": 10.67
+   },
+   {
+    "t": 380,
+    "cumFix": 10.5
+   },
+   {
+    "t": 390,
+    "cumFix": 10.95
+   }
+  ],
+  "meshF:advMesh:r": [
+   {
+    "t": 0,
+    "r": 0.9833
+   },
+   {
+    "t": 10,
+    "r": 0.9793
+   },
+   {
+    "t": 20,
+    "r": 0.929
+   },
+   {
+    "t": 30,
+    "r": 0.9665
+   },
+   {
+    "t": 40,
+    "r": 0.9884
+   },
+   {
+    "t": 50,
+    "r": 0.6973
+   },
+   {
+    "t": 60,
+    "r": 0.9916
+   },
+   {
+    "t": 70,
+    "r": 0.9782
+   },
+   {
+    "t": 80,
+    "r": 0.8016
+   },
+   {
+    "t": 90,
+    "r": 0.9291
+   },
+   {
+    "t": 100,
+    "r": 0.9647
+   },
+   {
+    "t": 110,
+    "r": 0.9216
+   },
+   {
+    "t": 120,
+    "r": 0.857
+   },
+   {
+    "t": 130,
+    "r": 0.9591
+   },
+   {
+    "t": 140,
+    "r": 0.9683
+   },
+   {
+    "t": 150,
+    "r": 0.8835
+   },
+   {
+    "t": 160,
+    "r": 0.6753
+   },
+   {
+    "t": 170,
+    "r": 0.8736
+   },
+   {
+    "t": 180,
+    "r": 0.7247
+   },
+   {
+    "t": 190,
+    "r": 0.9827
+   },
+   {
+    "t": 200,
+    "r": 0.9241
+   },
+   {
+    "t": 210,
+    "r": 0.9732
+   },
+   {
+    "t": 220,
+    "r": 0.9711
+   },
+   {
+    "t": 230,
+    "r": 0.8446
+   },
+   {
+    "t": 240,
+    "r": 0.9266
+   },
+   {
+    "t": 250,
+    "r": 0.964
+   },
+   {
+    "t": 260,
+    "r": 0.8817
+   },
+   {
+    "t": 270,
+    "r": 0.9794
+   },
+   {
+    "t": 280,
+    "r": 0.8819
+   },
+   {
+    "t": 290,
+    "r": 0.9199
+   },
+   {
+    "t": 300,
+    "r": 0.8816
+   },
+   {
+    "t": 310,
+    "r": 0.963
+   },
+   {
+    "t": 320,
+    "r": 0.9926
+   },
+   {
+    "t": 330,
+    "r": 0.931
+   },
+   {
+    "t": 340,
+    "r": 0.9732
+   },
+   {
+    "t": 350,
+    "r": 0.8798
+   },
+   {
+    "t": 360,
+    "r": 0.9889
+   },
+   {
+    "t": 370,
+    "r": 0.7383
+   },
+   {
+    "t": 380,
+    "r": 0.9005
+   },
+   {
+    "t": 390,
+    "r": 0.9672
+   }
+  ]
+ },
+ "chain": {
+  "rows": 16,
+  "verified": true,
+  "links": 16,
+  "tip": "0x15aa95006425ae06",
+  "reverifiedFromFile": true,
+  "reverifiedLinks": 16
+ },
+ "runtimeMs": 29411
+}

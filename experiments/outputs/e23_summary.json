@@ -1,0 +1,442 @@
+{
+  "exp": "E23 whole-tree gardener",
+  "elapsedMs": 49795,
+  "perArm": {
+    "NOGARD": {
+      "finalQuality": {
+        "mean": 0.903,
+        "sd": 0.0667
+      },
+      "lineageDiv": {
+        "mean": 1,
+        "sd": 0
+      },
+      "storyDiv": 32.5,
+      "depthMaxMax": 0,
+      "spawns": 0,
+      "prunesNode": 0,
+      "prunesSub": 0,
+      "graftsCoh": 0,
+      "graftsQ": 0,
+      "graftsSub": 0,
+      "meanTreeGain": 0,
+      "meanNodeGain": 0,
+      "completed": 33,
+      "verifyChecks": 800,
+      "verifyBad": 0
+    },
+    "NODE20": {
+      "finalQuality": {
+        "mean": 0.9256,
+        "sd": 0.0372
+      },
+      "lineageDiv": {
+        "mean": 11.1,
+        "sd": 1.37
+      },
+      "storyDiv": 26.1,
+      "depthMaxMax": 0,
+      "spawns": 129,
+      "prunesNode": 138,
+      "prunesSub": 0,
+      "graftsCoh": 1,
+      "graftsQ": 17,
+      "graftsSub": 0,
+      "meanTreeGain": 0,
+      "meanNodeGain": 0,
+      "completed": 25.1,
+      "verifyChecks": 2812,
+      "verifyBad": 0
+    },
+    "TREE": {
+      "finalQuality": {
+        "mean": 0.9537,
+        "sd": 0.0389
+      },
+      "lineageDiv": {
+        "mean": 3.6,
+        "sd": 2.24
+      },
+      "storyDiv": 31.4,
+      "depthMaxMax": 3,
+      "spawns": 96,
+      "prunesNode": 0,
+      "prunesSub": 141,
+      "graftsCoh": 0,
+      "graftsQ": 0,
+      "graftsSub": 31,
+      "meanTreeGain": 0.03,
+      "meanNodeGain": 0.0025,
+      "completed": 30.8,
+      "verifyChecks": 1592,
+      "verifyBad": 0
+    },
+    "TREEG": {
+      "finalQuality": {
+        "mean": 0.9413,
+        "sd": 0.052
+      },
+      "lineageDiv": {
+        "mean": 3.4,
+        "sd": 1.85
+      },
+      "storyDiv": 30.4,
+      "depthMaxMax": 3,
+      "spawns": 112,
+      "prunesNode": 0,
+      "prunesSub": 165,
+      "graftsCoh": 0,
+      "graftsQ": 0,
+      "graftsSub": 11,
+      "meanTreeGain": 0.0595,
+      "meanNodeGain": 0.0243,
+      "completed": 30.2,
+      "verifyChecks": 1606,
+      "verifyBad": 0
+    }
+  },
+  "claims": {
+    "C1": {
+      "verdict": "PARTIAL",
+      "paired": {
+        "meanDiff": 0.0281,
+        "twoSEpaired": 0.035,
+        "wins": "7/10"
+      }
+    },
+    "C2": {
+      "verdict": "CONFIRMED",
+      "node20": {
+        "cohGrafts": 1,
+        "meanCohGain": 0.2,
+        "qGrafts": 17,
+        "meanQGain": 0.048999999999999995
+      },
+      "tree": {
+        "subGrafts": 31,
+        "perRun": 3.1,
+        "meanTreeGain": 0.0316,
+        "meanNodeGain": 0.0039
+      }
+    },
+    "C3": {
+      "verdict": "PARTIAL",
+      "paired": {
+        "meanDiff": 0.0124,
+        "twoSEpaired": 0.0452,
+        "wins": "5/10"
+      }
+    },
+    "C4": {
+      "verdict": "CONFIRMED",
+      "bestSeed": 5,
+      "divOverTime": [
+        6,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3
+      ]
+    }
+  },
+  "curve": {
+    "NOGARD": {
+      "budget": [
+        120,
+        240,
+        360,
+        480,
+        600,
+        720,
+        840,
+        960,
+        1080,
+        1200
+      ],
+      "quality": [
+        0.9648,
+        0.9648,
+        0.9648,
+        0.9648,
+        0.9648,
+        0.9648,
+        0.9648,
+        0.9648,
+        0.9648,
+        0.9648
+      ],
+      "lineageDiv": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "NODE20": {
+      "budget": [
+        120,
+        240,
+        360,
+        480,
+        600,
+        720,
+        840,
+        960,
+        1080,
+        1200
+      ],
+      "quality": [
+        0.8587,
+        0.9006,
+        0.8587,
+        0.8587,
+        0.8587,
+        0.8802,
+        0.8802,
+        0.8802,
+        0.8828,
+        0.8828
+      ],
+      "lineageDiv": [
+        12,
+        11,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ]
+    },
+    "TREE": {
+      "budget": [
+        120,
+        240,
+        360,
+        480,
+        600,
+        720,
+        840,
+        960,
+        1080,
+        1200
+      ],
+      "quality": [
+        0.9172,
+        0.9006,
+        0.9519,
+        0.9519,
+        0.9519,
+        0.9519,
+        0.9519,
+        0.9519,
+        0.9695,
+        0.9695
+      ],
+      "lineageDiv": [
+        6,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3
+      ]
+    },
+    "TREEG": {
+      "budget": [
+        120,
+        240,
+        360,
+        480,
+        600,
+        720,
+        840,
+        960,
+        1080,
+        1200
+      ],
+      "quality": [
+        0.847,
+        0.8278,
+        0.861,
+        0.861,
+        0.861,
+        0.861,
+        0.861,
+        0.861,
+        0.861,
+        0.861
+      ],
+      "lineageDiv": [
+        6,
+        4,
+        3,
+        2,
+        2,
+        3,
+        4,
+        2,
+        2,
+        2
+      ]
+    }
+  },
+  "bestSeedTree": {
+    "arm": "TREE",
+    "seed": 5,
+    "T": 1.2175,
+    "tree": {
+      "diversity": 3,
+      "nodes": [
+        {
+          "id": "f7g0",
+          "parent": null,
+          "depth": 0,
+          "traits": [
+            0.496,
+            0.464,
+            0.221
+          ],
+          "world": 0,
+          "e1": 0.62,
+          "e2": 0.86,
+          "histLen": 12,
+          "q": 0.804,
+          "discQ": 0.804,
+          "rootPath": "f7g0",
+          "leaf": false
+        },
+        {
+          "id": "f9g0",
+          "parent": null,
+          "depth": 0,
+          "traits": [
+            0.454,
+            0.495,
+            0.7
+          ],
+          "world": 1,
+          "e1": 0.5,
+          "e2": 0.86,
+          "histLen": 12,
+          "q": 0.784,
+          "discQ": 0.784,
+          "rootPath": "f9g0",
+          "leaf": true
+        },
+        {
+          "id": "f10g0",
+          "parent": null,
+          "depth": 0,
+          "traits": [
+            0.807,
+            0.844,
+            0.283
+          ],
+          "world": 1,
+          "e1": 0.66,
+          "e2": 0.86,
+          "histLen": 12,
+          "q": 0.772,
+          "discQ": 0.772,
+          "rootPath": "f10g0",
+          "leaf": true
+        },
+        {
+          "id": "f0g2",
+          "parent": "f7g0",
+          "depth": 1,
+          "traits": [
+            0.463,
+            0.46,
+            0.215
+          ],
+          "world": 0,
+          "e1": 0.95,
+          "e2": 1.2,
+          "histLen": 12,
+          "q": 0.81,
+          "discQ": 0.786,
+          "rootPath": "f7g0>f0g2",
+          "leaf": false
+        },
+        {
+          "id": "f1g1",
+          "parent": "f0g2",
+          "depth": 2,
+          "traits": [
+            0.465,
+            0.498,
+            0.209
+          ],
+          "world": 0,
+          "e1": 0.95,
+          "e2": 1.2,
+          "histLen": 12,
+          "q": 0.858,
+          "discQ": 0.807,
+          "rootPath": "f7g0>f0g2>f1g1",
+          "leaf": false
+        },
+        {
+          "id": "f2g2",
+          "parent": "f1g1",
+          "depth": 3,
+          "traits": [
+            0.44,
+            0.511,
+            0.195
+          ],
+          "world": 0,
+          "e1": 0.95,
+          "e2": 1.2,
+          "histLen": 1,
+          "q": 1,
+          "discQ": 0.913,
+          "rootPath": "f7g0>f0g2>f1g1>f2g2",
+          "leaf": true
+        }
+      ]
+    }
+  },
+  "verify": {
+    "checks": 6810,
+    "mismatches": 0,
+    "everyNSteps": 20,
+    "tol": 1e-9
+  },
+  "chain": {
+    "receipts": {
+      "ok": true,
+      "links": 49,
+      "tip": "0x4d71b72460e81c01"
+    },
+    "fileRecheck": {
+      "ok": true,
+      "links": 49
+    }
+  },
+  "verdicts": "C1=PARTIAL C2=CONFIRMED C3=PARTIAL C4=CONFIRMED",
+  "hypothesis": "Mechanism: lifting the operators to SUBTREE level opens the headroom node metrics lack — a transplant changes no node's own history, only root-path diversity, depth (γ^depth discount) and structure-aware lineage coupling, so TREE-positive moves exist on a canopy whose node coherence is saturated; the high-order acceptance goal converts them into quality.",
+  "vaultJobs": {
+    "live": 0,
+    "mock": true
+  }
+}

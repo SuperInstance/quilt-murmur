@@ -36,6 +36,9 @@ npm run e17     # gossip trust dynamics + the echo vulnerability
 npm run e18     # LLM authors the sheet at setup; the mesh runs LLM-free
 node experiments/e19_provenance_protocol.mjs   # murmur-protocol-v3 under fire
 node experiments/e20_long_seasons.mjs          # the gardener given time to garden
+node experiments/e21_coldstart_admission.mjs   # protocol v3.1: admission + fractional influence
+node experiments/e22_crossfleet_bracket.mjs    # arena minds vs mesh minds under one ration
+node experiments/e23_tree_gardener.mjs         # subtree operators under a high-order goal
 ```
 
 Outputs land in `experiments/outputs/` (receipt chains + summaries).
@@ -71,6 +74,24 @@ a mock never pretends to be quantum.
   starve at any season length; re-specifying the graft bar to QUALITY blooms
   the operator (17 vs 4 transplants in ×10 seasons) — when a signal
   saturates, change the signal, not the season.
+
+- **Cold-start admission closes the spin-up window** (E21, protocol v3.1): history-less
+  copiers held 6.9% of the vote under v3; v3.1's admission + aggregate cap holds them at
+  1.0% (8x suppression during the attack; a 30-joiner flood with 71% raw trust stays
+  under the 10% cap), honest joiners are admitted in admitWindow+1 rounds and sybils are
+  never admitted (0/30) — plus a receipted metric bug: a denominator error MANUFACTURED
+  a copy-source conviction that the forensics probe dissolved (0.0208 = 0.25/13).
+- **The mesh loses the clean bracket and wins every hard column** (E22): UCB1 beats all
+  mesh arms when nothing lies (2.5 vs 7.9 regret), but under adversary the mesh's
+  per-round degradation is ~0 vs the arena's 0.032 (its running mean forgets at rate 1/n
+  and keeps playing the trapped arm), and as the ration shrinks the mesh is the graceful
+  one (K4→K2: ×1.0 vs ×3.0) — arena probes perish with the round; mesh whispers
+  accumulate in trust. Corollary receipted: gating trust on resonance HURTS (r reads
+  disagreement, not accuracy — E16's null, re-confirmed cross-fleet).
+- **Subtree operators open the headroom node metrics lack** (E23): accepted subtree
+  transplants 31 vs node-coherence grafts' 1 — E20's structural starvation is an artifact
+  of the operator level, not the world; TREE gardener 0.954 vs node-level 0.926 vs
+  NOGARD 0.903, and lineage diversity is retained (3.6 structural root-paths).
 
 ## Provenance
 
