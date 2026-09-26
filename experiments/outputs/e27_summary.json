@@ -1,0 +1,1539 @@
+{
+ "task": "E27",
+ "name": "the founder turn (temporal toxicity and the demotion half-life)",
+ "seeds": 8,
+ "T": 400,
+ "voices": 15,
+ "arms": {
+  "v3": {
+   "errPre": {
+    "mean": 0.231951,
+    "sd": 0.039177,
+    "n": 8
+   },
+   "spike": {
+    "mean": -0.012263,
+    "sd": 0.048543,
+    "n": 8
+   },
+   "errPost": {
+    "mean": 0.225406,
+    "sd": 0.021445,
+    "n": 8
+   },
+   "poolAccPre": {
+    "mean": 0.236165,
+    "sd": 0.033158,
+    "n": 8
+   },
+   "poolAccPost": {
+    "mean": 0.225406,
+    "sd": 0.021445,
+    "n": 8
+   },
+   "damageEarly": {
+    "mean": 0.006268,
+    "sd": 0.00443,
+    "n": 8
+   },
+   "damageMid": {
+    "mean": 0.003149,
+    "sd": 0.000976,
+    "n": 8
+   },
+   "damageLate": {
+    "mean": 0.002659,
+    "sd": 0.000587,
+    "n": 8
+   },
+   "damageFull": {
+    "mean": 0.003104,
+    "sd": 0.000475,
+    "n": 8
+   },
+   "damageMax": {
+    "mean": 0.033159,
+    "sd": 0.016179,
+    "n": 8
+   },
+   "carriedAbsMean": {
+    "mean": 0.012159,
+    "sd": 0.002331,
+    "n": 8
+   },
+   "carriedShareMean": {
+    "mean": 0.012539,
+    "sd": 0.002398,
+    "n": 8
+   },
+   "x1SharePost": {
+    "mean": 0.033361,
+    "sd": 0.006775,
+    "n": 8
+   },
+   "x1ShareAtTurn": {
+    "mean": 0.075896,
+    "sd": 0.040642,
+    "n": 8
+   },
+   "preRatio149": {
+    "mean": 1.91075,
+    "sd": 0.947447,
+    "n": 8
+   },
+   "convR50": {
+    "median": 252,
+    "mean": 238.5,
+    "min": 101,
+    "max": 349,
+    "neverCount": 4,
+    "n": 8,
+    "lagMedian": 102
+   },
+   "convR25": {
+    "median": null,
+    "mean": null,
+    "min": null,
+    "max": null,
+    "neverCount": 8,
+    "n": 8,
+    "lagMedian": null
+   },
+   "minRatioPost": {
+    "mean": 0.575456,
+    "sd": 0.2323,
+    "n": 8
+   },
+   "ratio399": {
+    "mean": 1.18323,
+    "sd": 0.254442,
+    "n": 8
+   },
+   "wRatioCurveMean": {
+    "0": 1,
+    "50": 3.507428,
+    "100": 3.457761,
+    "149": 1.91075,
+    "155": 1.785859,
+    "170": 1.328817,
+    "200": 0.969281,
+    "250": 0.866301,
+    "300": 0.941216,
+    "399": 1.18323
+   },
+   "recovery": {
+    "mean": 29.875,
+    "sd": 39.520367,
+    "n": 8
+   },
+   "verify": {
+    "checks": 160,
+    "pass": 160,
+    "mismatches": 0,
+    "maxDiff": "0.00e+0"
+   },
+   "soft": null
+  },
+  "v3.1": {
+   "errPre": {
+    "mean": 0.230971,
+    "sd": 0.028912,
+    "n": 8
+   },
+   "spike": {
+    "mean": -0.007433,
+    "sd": 0.053542,
+    "n": 8
+   },
+   "errPost": {
+    "mean": 0.22592,
+    "sd": 0.020844,
+    "n": 8
+   },
+   "poolAccPre": {
+    "mean": 0.239605,
+    "sd": 0.031223,
+    "n": 8
+   },
+   "poolAccPost": {
+    "mean": 0.22592,
+    "sd": 0.020844,
+    "n": 8
+   },
+   "damageEarly": {
+    "mean": 0.006207,
+    "sd": 0.004151,
+    "n": 8
+   },
+   "damageMid": {
+    "mean": 0.003269,
+    "sd": 0.001219,
+    "n": 8
+   },
+   "damageLate": {
+    "mean": 0.002584,
+    "sd": 0.00052,
+    "n": 8
+   },
+   "damageFull": {
+    "mean": 0.003093,
+    "sd": 0.000506,
+    "n": 8
+   },
+   "damageMax": {
+    "mean": 0.032689,
+    "sd": 0.015946,
+    "n": 8
+   },
+   "carriedAbsMean": {
+    "mean": 0.003166,
+    "sd": 0.000666,
+    "n": 8
+   },
+   "carriedShareMean": {
+    "mean": 0.012441,
+    "sd": 0.002491,
+    "n": 8
+   },
+   "x1SharePost": {
+    "mean": 0.033112,
+    "sd": 0.007066,
+    "n": 8
+   },
+   "x1ShareAtTurn": {
+    "mean": 0.071221,
+    "sd": 0.039047,
+    "n": 8
+   },
+   "preRatio149": {
+    "mean": 1.91075,
+    "sd": 0.947447,
+    "n": 8
+   },
+   "convR50": {
+    "median": 252,
+    "mean": 238.5,
+    "min": 101,
+    "max": 349,
+    "neverCount": 4,
+    "n": 8,
+    "lagMedian": 102
+   },
+   "convR25": {
+    "median": null,
+    "mean": null,
+    "min": null,
+    "max": null,
+    "neverCount": 8,
+    "n": 8,
+    "lagMedian": null
+   },
+   "minRatioPost": {
+    "mean": 0.575456,
+    "sd": 0.2323,
+    "n": 8
+   },
+   "ratio399": {
+    "mean": 1.18323,
+    "sd": 0.254442,
+    "n": 8
+   },
+   "wRatioCurveMean": {
+    "0": 1,
+    "50": 3.507428,
+    "100": 3.457761,
+    "149": 1.91075,
+    "155": 1.785859,
+    "170": 1.328817,
+    "200": 0.969281,
+    "250": 0.866301,
+    "300": 0.941216,
+    "399": 1.18323
+   },
+   "recovery": {
+    "mean": 31.125,
+    "sd": 39.662443,
+    "n": 8
+   },
+   "verify": {
+    "checks": 160,
+    "pass": 160,
+    "mismatches": 0,
+    "maxDiff": "0.00e+0"
+   },
+   "soft": {
+    "x1EchoScore": {
+     "mean": 0,
+     "sd": 0,
+     "n": 8
+    },
+    "x1TagCleanFrac": {
+     "mean": 1,
+     "sd": 0,
+     "n": 8
+    },
+    "honestFP75": {
+     "mean": 0,
+     "sd": 0,
+     "n": 8
+    }
+   },
+   "h1AdmitRound": {
+    "mean": 204.25,
+    "sd": 23.773672,
+    "n": 8
+   }
+  },
+  "v3.1-frac": {
+   "errPre": {
+    "mean": 0.230971,
+    "sd": 0.028912,
+    "n": 8
+   },
+   "spike": {
+    "mean": -0.009132,
+    "sd": 0.052544,
+    "n": 8
+   },
+   "errPost": {
+    "mean": 0.22514,
+    "sd": 0.021394,
+    "n": 8
+   },
+   "poolAccPre": {
+    "mean": 0.239605,
+    "sd": 0.031223,
+    "n": 8
+   },
+   "poolAccPost": {
+    "mean": 0.22514,
+    "sd": 0.021394,
+    "n": 8
+   },
+   "damageEarly": {
+    "mean": 0.006109,
+    "sd": 0.004126,
+    "n": 8
+   },
+   "damageMid": {
+    "mean": 0.003233,
+    "sd": 0.001213,
+    "n": 8
+   },
+   "damageLate": {
+    "mean": 0.002576,
+    "sd": 0.000525,
+    "n": 8
+   },
+   "damageFull": {
+    "mean": 0.003069,
+    "sd": 0.000517,
+    "n": 8
+   },
+   "damageMax": {
+    "mean": 0.032136,
+    "sd": 0.015577,
+    "n": 8
+   },
+   "carriedAbsMean": {
+    "mean": 0.003166,
+    "sd": 0.000666,
+    "n": 8
+   },
+   "carriedShareMean": {
+    "mean": 0.012289,
+    "sd": 0.002499,
+    "n": 8
+   },
+   "x1SharePost": {
+    "mean": 0.032706,
+    "sd": 0.007063,
+    "n": 8
+   },
+   "x1ShareAtTurn": {
+    "mean": 0.071221,
+    "sd": 0.039047,
+    "n": 8
+   },
+   "preRatio149": {
+    "mean": 1.91075,
+    "sd": 0.947447,
+    "n": 8
+   },
+   "convR50": {
+    "median": 252,
+    "mean": 238.5,
+    "min": 101,
+    "max": 349,
+    "neverCount": 4,
+    "n": 8,
+    "lagMedian": 102
+   },
+   "convR25": {
+    "median": null,
+    "mean": null,
+    "min": null,
+    "max": null,
+    "neverCount": 8,
+    "n": 8,
+    "lagMedian": null
+   },
+   "minRatioPost": {
+    "mean": 0.575456,
+    "sd": 0.2323,
+    "n": 8
+   },
+   "ratio399": {
+    "mean": 1.18323,
+    "sd": 0.254442,
+    "n": 8
+   },
+   "wRatioCurveMean": {
+    "0": 1,
+    "50": 3.507428,
+    "100": 3.457761,
+    "149": 1.91075,
+    "155": 1.785859,
+    "170": 1.328817,
+    "200": 0.969281,
+    "250": 0.866301,
+    "300": 0.941216,
+    "399": 1.18323
+   },
+   "recovery": {
+    "mean": 31.125,
+    "sd": 39.662443,
+    "n": 8
+   },
+   "verify": {
+    "checks": 160,
+    "pass": 160,
+    "mismatches": 0,
+    "maxDiff": "0.00e+0"
+   },
+   "soft": {
+    "x1EchoScore": {
+     "mean": 0,
+     "sd": 0,
+     "n": 8
+    },
+    "x1TagCleanFrac": {
+     "mean": 1,
+     "sd": 0,
+     "n": 8
+    },
+    "honestFP75": {
+     "mean": 0,
+     "sd": 0,
+     "n": 8
+    }
+   }
+  }
+ },
+ "runtime_s": 86.8,
+ "config": {
+  "world": {
+   "FLIP_P": 0.02,
+   "REROLL_P": 0.01,
+   "N": 12,
+   "TOXIC": "x1",
+   "TOX_Q": 0.25,
+   "TURN": 150,
+   "sybils": "NONE"
+  },
+  "pre": {
+   "from": 120,
+   "to": 150
+  },
+  "phases": {
+   "early": [
+    150,
+    170
+   ],
+   "mid": [
+    170,
+    250
+   ],
+   "late": [
+    250,
+    400
+   ]
+  },
+  "curveRounds": [
+   0,
+   50,
+   100,
+   149,
+   155,
+   170,
+   200,
+   250,
+   300,
+   399
+  ],
+  "hedge": {
+   "eta": 0.25,
+   "share": 0.02
+  },
+  "admission": {
+   "beta": 0.12,
+   "alpha": 0.25,
+   "novSpread": 0.15,
+   "coldStart": true,
+   "admitWindow": 40,
+   "epsNew": 0.15,
+   "minEdgesIndep": 2,
+   "admitErr": 0.5,
+   "capShare": 0.1
+  },
+  "relay": {
+   "id": "r1",
+   "source": "a2",
+   "lag": 2
+  },
+  "newcomer": "h1",
+  "generatorReceipt": {
+   "e24_formula": {
+    "truthSideFrac": 0.7538,
+    "meanReward": 0.6269
+   },
+   "e27_intent": {
+    "truthSideFrac": 0.75065,
+    "meanReward": 0.625325
+   },
+   "note": "E27 post-turn generator = intent (stably wrong ~75% at confidence 0.75-from-neutral); E24's formula measured for the C4 confound receipt"
+  },
+  "verdictRules": "fixed before the final run (file header)"
+ },
+ "claims": {
+  "C1_turn_damage": {
+   "verdict": "CONFIRMED",
+   "damage_v3": {
+    "early": {
+     "mean": 0.006268,
+     "sd": 0.00443,
+     "n": 8
+    },
+    "mid": {
+     "mean": 0.003149,
+     "sd": 0.000976,
+     "n": 8
+    },
+    "late": {
+     "mean": 0.002659,
+     "sd": 0.000587,
+     "n": 8
+    },
+    "full": {
+     "mean": 0.003104,
+     "sd": 0.000475,
+     "n": 8
+    },
+    "max": {
+     "mean": 0.033159,
+     "sd": 0.016179,
+     "n": 8
+    }
+   },
+   "earlyTstat": 4.001682,
+   "spike_v3": {
+    "mean": -0.012263,
+    "sd": 0.048543,
+    "n": 8
+   },
+   "errPre_v3": {
+    "mean": 0.231951,
+    "sd": 0.039177,
+    "n": 8
+   },
+   "errPost_v3": {
+    "mean": 0.225406,
+    "sd": 0.021445,
+    "n": 8
+   },
+   "demotionProfile_v3": {
+    "convR50": {
+     "median": 252,
+     "mean": 238.5,
+     "min": 101,
+     "max": 349,
+     "neverCount": 4,
+     "n": 8,
+     "lagMedian": 102
+    },
+    "convR25": {
+     "median": null,
+     "mean": null,
+     "min": null,
+     "max": null,
+     "neverCount": 8,
+     "n": 8,
+     "lagMedian": null
+    },
+    "preRatio149": {
+     "mean": 1.91075,
+     "sd": 0.947447,
+     "n": 8
+    },
+    "minRatioPost": {
+     "mean": 0.575456,
+     "sd": 0.2323,
+     "n": 8
+    },
+    "ratio399": {
+     "mean": 1.18323,
+     "sd": 0.254442,
+     "n": 8
+    },
+    "wRatioCurveMean": {
+     "0": 1,
+     "50": 3.507428,
+     "100": 3.457761,
+     "149": 1.91075,
+     "155": 1.785859,
+     "170": 1.328817,
+     "200": 0.969281,
+     "250": 0.866301,
+     "300": 0.941216,
+     "399": 1.18323
+    }
+   },
+   "x1ShareAtTurn_v3": {
+    "mean": 0.075896,
+    "sd": 0.040642,
+    "n": 8
+   },
+   "note": "primary metric = counterfactual pool-pull attributable to x1 ALONE (zero x1's weight, reference-side); raw spike is masked (E21/E24 doctrine) and reported secondary; bars measured on TRUST weights vs the E24 honest-median definition"
+  },
+  "C2_founder_blind": {
+   "verdict": "CONFIRMED",
+   "damage_v3": {
+    "mean": 0.003104,
+    "sd": 0.000475,
+    "n": 8
+   },
+   "damage_v31": {
+    "mean": 0.003093,
+    "sd": 0.000506,
+    "n": 8
+   },
+   "damage_fracOnly": {
+    "mean": 0.003069,
+    "sd": 0.000517,
+    "n": 8
+   },
+   "pairedDelta_v3_minus_v31": {
+    "mean": 0.000011,
+    "se": 0.000101,
+    "sd": 0.000285,
+    "n": 8
+   },
+   "pairedDelta_v3_minus_frac": {
+    "mean": 0.000035,
+    "se": 0.000095,
+    "n": 8
+   },
+   "mechanism": {
+    "x1EchoScore_v31": {
+     "mean": 0,
+     "sd": 0,
+     "n": 8
+    },
+    "x1TagCleanFrac_v31": {
+     "mean": 1,
+     "sd": 0,
+     "n": 8
+    },
+    "x1EchoScore_frac": {
+     "mean": 0,
+     "sd": 0,
+     "n": 8
+    },
+    "honestFP75_v31": {
+     "mean": 0,
+     "sd": 0,
+     "n": 8
+    },
+    "trustArmIdentMaxDiff": 0,
+    "h1AdmitRound_v31": {
+     "mean": 204.25,
+     "sd": 23.773672,
+     "n": 8
+    }
+   },
+   "note": "designed-to-expose: x1 is a FOUNDER (admission never applies — D1 acclamation), its values echo NOBODY (provenance clean, echo-score 0), and the fractional multiplier applies to every voice alike. CONFIRMED receipts the founder-turn hole in v3.1 and motivates a founder-velocity guard (reward-trajectory change-point on entrenched voices) as the next protocol seed"
+  },
+  "C3_carried_poison": {
+   "verdict": "CONFIRMED",
+   "carriedAbsMean": {
+    "v3": {
+     "mean": 0.012159,
+     "sd": 0.002331,
+     "n": 8
+    },
+    "v31": {
+     "mean": 0.003166,
+     "sd": 0.000666,
+     "n": 8
+    },
+    "frac": {
+     "mean": 0.003166,
+     "sd": 0.000666,
+     "n": 8
+    }
+   },
+   "carriedShareMean": {
+    "v3": {
+     "mean": 0.012539,
+     "sd": 0.002398,
+     "n": 8
+    },
+    "v31": {
+     "mean": 0.012441,
+     "sd": 0.002491,
+     "n": 8
+    },
+    "frac": {
+     "mean": 0.012289,
+     "sd": 0.002499,
+     "n": 8
+    }
+   },
+   "absRatio_v31_over_v3": 0.260383,
+   "x1SharePost": {
+    "v3": {
+     "mean": 0.033361,
+     "sd": 0.006775,
+     "n": 8
+    },
+    "v31": {
+     "mean": 0.033112,
+     "sd": 0.007066,
+     "n": 8
+    }
+   },
+   "denominator": "carriedAbs uses protocol-adjusted influence weights as written to the sheet; carriedShare normalizes by the round total over ALL 15 voices; window [150,400), 250 rounds — areas = mean x 250"
+  },
+  "C4_entrenched_vs_turned": {
+   "verdict": "CONFIRMED",
+   "e24_comparator": {
+    "convRound_025x_bar": 400,
+    "meaning": "NEVER reached, 8/8 seeds (receipted in worklog Task 20-a)",
+    "toxShareSpin_mean": 0.032812,
+    "generator": "E24 formula — measured truth-side 0.748, mean reward 0.624 (inverted post; see generatorReceipt)"
+   },
+   "e27_turned": {
+    "convR25_v3": {
+     "median": null,
+     "mean": null,
+     "min": null,
+     "max": null,
+     "neverCount": 8,
+     "n": 8,
+     "lagMedian": null
+    },
+    "convR50_v3": {
+     "median": 252,
+     "mean": 238.5,
+     "min": 101,
+     "max": 349,
+     "neverCount": 4,
+     "n": 8,
+     "lagMedian": 102
+    },
+    "shareAtTurn_v3": {
+     "mean": 0.075896,
+     "sd": 0.040642,
+     "n": 8
+    },
+    "preRatio149_v3": {
+     "mean": 1.91075,
+     "sd": 0.947447,
+     "n": 8
+    },
+    "postTurnRewardMean": 0.375
+   },
+   "note": "the turned founder unlearns NOTHING structurally: the fixed-share floor (share=0.02) pins its weight near the honest median's own floor — the 0.25x bar stays unreachable in 400 rounds exactly as in E24, and the 0.5x bar is the first founder-demotion the fleet has ever measured. Hypothesis \"turned demotes even SLOWER\" is confounded by the generator difference (E24's x1 earned 0.624, E27's post-turn x1 earns 0.375 — a 2.4x harsher penalty) and receipted as such"
+  }
+ },
+ "findings": [
+  "FOUNDER-TURN HOLE (C2 CONFIRMED): the turn damage is protocol-invariant — paired damage delta v3-v3.1 = 0.000011 ± 0.000101 (SE within 1 SE); x1's provenance tag stays clean (frac 1), echo-score 0 ~ 0, admission never applies to founders (D1). v3.1 has NO lever for a trusted voice that turns: NEXT PROTOCOL SEED = founder-velocity guard (change-point detection on an entrenched voice's reward trajectory, demote on sustained |E[r] drop| rather than weight ratio).",
+  "DEMOTION HALF-LIFE (C1 CONFIRMED): post-turn, trust crosses the 0.5x-median bar at round 252 (median lag 102 after the turn; 4/8 seeds never cross) and NEVER crosses the 0.25x bar (8/8) — the fixed-share floor (share=0.02) reflates x1 as fast as the reward gap erodes it. w-ratio curve (mean): {\"0\":1,\"50\":3.507428,\"100\":3.457761,\"149\":1.91075,\"155\":1.785859,\"170\":1.328817,\"200\":0.969281,\"250\":0.866301,\"300\":0.941216,\"399\":1.18323}.",
+  "CARRY (C3 CONFIRMED): the mesh carries x1's misinformed influence at 3.3361% of the vote (v3, mean over [150,400)); absolute carried poison 0.012159/round (v3) vs 0.003166/round (v3.1, ratio 0.260383). Pool-relevant share area: v3 0.012539 vs v3.1 0.012441 (uniform multipliers cancel in the normalized pool — the fractional layer's absolute reduction does NOT translate into pool protection against a founder).",
+  "E24 COMPARISON (C4 CONFIRMED): E24's from-genesis liar never reached the 0.25x bar (8/8, receipted); E27's turned founder — despite a 2.4x harsher post-turn penalty (reward 0.375 vs 0.624, generator confound receipted) — ALSO never reaches it (8/8), and enters the turn holding 7.5896% of the vote (E24's x1: 3.3%) vs median honest weight ratio 1.91075. Entrenchment at the turn is governed by acuity-drift rerolls: per-seed share at turn ranged 0.021654-0.135657.",
+  "GENERATOR RECEIPT: E24's toxV formula posts the truth-side 0.7538 of rounds (mean reward 0.6269) — its \"confidently wrong ~75%\" label mis-describes its own run; E27 implements the receipted intent (truth-side 0.75065, reward 0.625325). E24's measured numbers stand as measured; cross-experiment toxicity-depth comparisons must use this receipt."
+ ],
+ "pairedDeltas": {
+  "v3_minus_v31": {
+   "perSeed": [
+    0.000129,
+    -0.000651,
+    0.000139,
+    0.000271,
+    -0.00001,
+    0.000322,
+    0.000006,
+    -0.000118
+   ],
+   "mean": 0.000011,
+   "se": 0.000101
+  },
+  "v3_minus_frac": {
+   "perSeed": [
+    0.000142,
+    -0.000606,
+    0.000147,
+    0.000317,
+    0.000012,
+    0.000277,
+    0.000044,
+    -0.000051
+   ],
+   "mean": 0.000035,
+   "se": 0.000095
+  }
+ },
+ "trustArmIdentMaxDiff": 0,
+ "seedsAndCuts": {
+  "planned": 8,
+  "run": 8,
+  "cut": "none"
+ },
+ "sheetVerify": {
+  "tol": 1e-9,
+  "cadence": "every 20 rounds vs MurmurBus.pool reference",
+  "checks": 480,
+  "mismatches": 0,
+  "maxDiff": 0
+ },
+ "curves": {
+  "t": [
+   0,
+   4,
+   8,
+   12,
+   16,
+   20,
+   24,
+   28,
+   32,
+   36,
+   40,
+   44,
+   48,
+   52,
+   56,
+   60,
+   64,
+   68,
+   72,
+   76,
+   80,
+   84,
+   88,
+   92,
+   96,
+   100,
+   104,
+   108,
+   112,
+   116,
+   120,
+   124,
+   128,
+   132,
+   136,
+   140,
+   144,
+   148,
+   152,
+   156,
+   160,
+   164,
+   168,
+   172,
+   176,
+   180,
+   184,
+   188,
+   192,
+   196,
+   200,
+   204,
+   208,
+   212,
+   216,
+   220,
+   224,
+   228,
+   232,
+   236,
+   240,
+   244,
+   248,
+   252,
+   256,
+   260,
+   264,
+   268,
+   272,
+   276,
+   280,
+   284,
+   288,
+   292,
+   296,
+   300,
+   304,
+   308,
+   312,
+   316,
+   320,
+   324,
+   328,
+   332,
+   336,
+   340,
+   344,
+   348,
+   352,
+   356,
+   360,
+   364,
+   368,
+   372,
+   376,
+   380,
+   384,
+   388,
+   392,
+   396
+  ],
+  "err": {
+   "v3": [
+    0.309435,
+    0.286446,
+    0.33038,
+    0.26846,
+    0.228028,
+    0.245561,
+    0.328243,
+    0.241749,
+    0.381224,
+    0.356407,
+    0.205278,
+    0.171593,
+    0.166841,
+    0.184674,
+    0.238319,
+    0.159935,
+    0.358247,
+    0.144314,
+    0.454024,
+    0.172474,
+    0.161942,
+    0.555392,
+    0.152782,
+    0.35208,
+    0.222167,
+    0.23828,
+    0.196234,
+    0.221045,
+    0.167442,
+    0.162691,
+    0.16761,
+    0.141193,
+    0.184421,
+    0.154559,
+    0.174455,
+    0.597046,
+    0.26571,
+    0.146927,
+    0.137116,
+    0.188286,
+    0.793703,
+    0.156602,
+    0.140518,
+    0.149436,
+    0.409373,
+    0.250445,
+    0.216091,
+    0.23153,
+    0.221574,
+    0.298772,
+    0.29234,
+    0.239063,
+    0.443527,
+    0.403309,
+    0.343676,
+    0.314716,
+    0.245772,
+    0.272656,
+    0.210617,
+    0.35416,
+    0.319515,
+    0.194254,
+    0.209739,
+    0.206896,
+    0.210438,
+    0.255335,
+    0.558725,
+    0.35216,
+    0.188782,
+    0.284797,
+    0.284681,
+    0.456439,
+    0.179322,
+    0.21034,
+    0.15333,
+    0.176873,
+    0.229074,
+    0.192495,
+    0.460097,
+    0.152623,
+    0.417611,
+    0.14608,
+    0.14,
+    0.208069,
+    0.408118,
+    0.133321,
+    0.123755,
+    0.512577,
+    0.113401,
+    0.320602,
+    0.110875,
+    0.131025,
+    0.258589,
+    0.227258,
+    0.129485,
+    0.144544,
+    0.126114,
+    0.109015,
+    0.11485,
+    0.145307
+   ],
+   "v3.1": [
+    0.434247,
+    0.32361,
+    0.340403,
+    0.280353,
+    0.239786,
+    0.255668,
+    0.335317,
+    0.241749,
+    0.377342,
+    0.353404,
+    0.207,
+    0.17415,
+    0.169503,
+    0.186659,
+    0.237666,
+    0.162069,
+    0.351622,
+    0.146534,
+    0.455999,
+    0.198851,
+    0.163441,
+    0.549756,
+    0.159412,
+    0.359069,
+    0.222856,
+    0.237752,
+    0.197226,
+    0.221009,
+    0.169043,
+    0.164484,
+    0.17416,
+    0.142759,
+    0.185905,
+    0.156958,
+    0.176688,
+    0.589406,
+    0.265496,
+    0.154582,
+    0.138513,
+    0.187205,
+    0.787263,
+    0.15716,
+    0.140818,
+    0.152179,
+    0.415029,
+    0.257755,
+    0.217468,
+    0.233391,
+    0.222244,
+    0.304835,
+    0.292179,
+    0.242296,
+    0.440215,
+    0.400793,
+    0.3525,
+    0.323241,
+    0.250954,
+    0.273989,
+    0.213398,
+    0.346266,
+    0.311525,
+    0.195632,
+    0.208538,
+    0.202732,
+    0.207815,
+    0.24381,
+    0.591115,
+    0.335715,
+    0.190407,
+    0.276505,
+    0.2801,
+    0.495953,
+    0.180853,
+    0.210129,
+    0.16172,
+    0.181241,
+    0.230856,
+    0.196842,
+    0.458682,
+    0.154796,
+    0.416796,
+    0.150221,
+    0.142146,
+    0.216713,
+    0.410028,
+    0.141556,
+    0.131929,
+    0.513406,
+    0.121515,
+    0.325892,
+    0.11884,
+    0.14108,
+    0.265148,
+    0.234295,
+    0.13272,
+    0.147073,
+    0.128338,
+    0.111052,
+    0.116679,
+    0.119626
+   ],
+   "v3.1-frac": [
+    0.434247,
+    0.32361,
+    0.340403,
+    0.280353,
+    0.239786,
+    0.255668,
+    0.335317,
+    0.241749,
+    0.377342,
+    0.353404,
+    0.207,
+    0.17415,
+    0.169503,
+    0.186659,
+    0.237666,
+    0.162069,
+    0.351622,
+    0.146534,
+    0.455999,
+    0.198851,
+    0.163441,
+    0.549756,
+    0.159412,
+    0.359069,
+    0.222856,
+    0.237752,
+    0.197226,
+    0.221009,
+    0.169043,
+    0.164484,
+    0.17416,
+    0.142759,
+    0.185905,
+    0.156958,
+    0.176688,
+    0.589406,
+    0.265496,
+    0.154582,
+    0.139469,
+    0.195664,
+    0.787533,
+    0.158107,
+    0.142255,
+    0.153491,
+    0.406179,
+    0.255098,
+    0.216771,
+    0.23199,
+    0.222244,
+    0.304835,
+    0.292179,
+    0.242296,
+    0.440215,
+    0.400793,
+    0.3525,
+    0.323241,
+    0.250954,
+    0.273989,
+    0.213398,
+    0.346266,
+    0.311525,
+    0.195632,
+    0.208538,
+    0.202732,
+    0.207815,
+    0.24381,
+    0.591115,
+    0.335715,
+    0.190407,
+    0.276505,
+    0.2801,
+    0.495953,
+    0.180853,
+    0.210129,
+    0.16172,
+    0.181241,
+    0.230856,
+    0.196842,
+    0.458682,
+    0.154796,
+    0.416796,
+    0.150221,
+    0.142146,
+    0.216713,
+    0.410028,
+    0.141556,
+    0.131929,
+    0.513406,
+    0.121515,
+    0.325892,
+    0.11884,
+    0.14108,
+    0.265148,
+    0.234295,
+    0.13272,
+    0.147073,
+    0.128338,
+    0.111052,
+    0.116679,
+    0.119626
+   ]
+  },
+  "share": {
+   "v3": [
+    0.071429,
+    0.087503,
+    0.089021,
+    0.074946,
+    0.066702,
+    0.074289,
+    0.086516,
+    0.079889,
+    0.070333,
+    0.061582,
+    0.048797,
+    0.035941,
+    0.037649,
+    0.038118,
+    0.032338,
+    0.029414,
+    0.028836,
+    0.027646,
+    0.028542,
+    0.032531,
+    0.033102,
+    0.029949,
+    0.033809,
+    0.034047,
+    0.031326,
+    0.030441,
+    0.037989,
+    0.047188,
+    0.049934,
+    0.060659,
+    0.07206,
+    0.064586,
+    0.074965,
+    0.066443,
+    0.063619,
+    0.048041,
+    0.047534,
+    0.054888,
+    0.048854,
+    0.04713,
+    0.047042,
+    0.052658,
+    0.040481,
+    0.035705,
+    0.037826,
+    0.038041,
+    0.041188,
+    0.03711,
+    0.040076,
+    0.043628,
+    0.042721,
+    0.040933,
+    0.041878,
+    0.045418,
+    0.055574,
+    0.055937,
+    0.056298,
+    0.060842,
+    0.061636,
+    0.054564,
+    0.050899,
+    0.058234,
+    0.053033,
+    0.054065,
+    0.049743,
+    0.036504,
+    0.031483,
+    0.03416,
+    0.03236,
+    0.031702,
+    0.031763,
+    0.036532,
+    0.035891,
+    0.035678,
+    0.036366,
+    0.040733,
+    0.040059,
+    0.04236,
+    0.037106,
+    0.0352,
+    0.031159,
+    0.030427,
+    0.028937,
+    0.023394,
+    0.025811,
+    0.025699,
+    0.021866,
+    0.022185,
+    0.020902,
+    0.023811,
+    0.022727,
+    0.026084,
+    0.028734,
+    0.021392,
+    0.023574,
+    0.025411,
+    0.021752,
+    0.019159,
+    0.016651,
+    0.020519
+   ],
+   "v3.1": [
+    0.047618,
+    0.077183,
+    0.08319,
+    0.070567,
+    0.063053,
+    0.070789,
+    0.082766,
+    0.079889,
+    0.068189,
+    0.059722,
+    0.047233,
+    0.03477,
+    0.03642,
+    0.03703,
+    0.031165,
+    0.028229,
+    0.027625,
+    0.026588,
+    0.02526,
+    0.029402,
+    0.032513,
+    0.029402,
+    0.033187,
+    0.033412,
+    0.030779,
+    0.029379,
+    0.036595,
+    0.045324,
+    0.048089,
+    0.058366,
+    0.070792,
+    0.063521,
+    0.073425,
+    0.065047,
+    0.062189,
+    0.046958,
+    0.046291,
+    0.053522,
+    0.048614,
+    0.046974,
+    0.047002,
+    0.052905,
+    0.040785,
+    0.03569,
+    0.038199,
+    0.038828,
+    0.042196,
+    0.038076,
+    0.039404,
+    0.042959,
+    0.041728,
+    0.039505,
+    0.040577,
+    0.043853,
+    0.05349,
+    0.054026,
+    0.054299,
+    0.057219,
+    0.057987,
+    0.051285,
+    0.046959,
+    0.054338,
+    0.049343,
+    0.050092,
+    0.04592,
+    0.033445,
+    0.028615,
+    0.031136,
+    0.028997,
+    0.028637,
+    0.028838,
+    0.032927,
+    0.032492,
+    0.032073,
+    0.035101,
+    0.039748,
+    0.03944,
+    0.041771,
+    0.036581,
+    0.03469,
+    0.030704,
+    0.029998,
+    0.028528,
+    0.022343,
+    0.024731,
+    0.026093,
+    0.022235,
+    0.022567,
+    0.021243,
+    0.024196,
+    0.023069,
+    0.026473,
+    0.029181,
+    0.021767,
+    0.024683,
+    0.02662,
+    0.022811,
+    0.0201,
+    0.016509,
+    0.014995
+   ],
+   "v3.1-frac": [
+    0.047618,
+    0.077183,
+    0.08319,
+    0.070567,
+    0.063053,
+    0.070789,
+    0.082766,
+    0.079889,
+    0.068189,
+    0.059722,
+    0.047233,
+    0.03477,
+    0.03642,
+    0.03703,
+    0.031165,
+    0.028229,
+    0.027625,
+    0.026588,
+    0.02526,
+    0.029402,
+    0.032513,
+    0.029402,
+    0.033187,
+    0.033412,
+    0.030779,
+    0.029379,
+    0.036595,
+    0.045324,
+    0.048089,
+    0.058366,
+    0.070792,
+    0.063521,
+    0.073425,
+    0.065047,
+    0.062189,
+    0.046958,
+    0.046291,
+    0.053522,
+    0.047734,
+    0.046074,
+    0.046029,
+    0.051618,
+    0.039642,
+    0.034599,
+    0.03686,
+    0.037181,
+    0.040561,
+    0.03656,
+    0.039404,
+    0.042959,
+    0.041728,
+    0.039505,
+    0.040577,
+    0.043853,
+    0.05349,
+    0.054026,
+    0.054299,
+    0.057219,
+    0.057987,
+    0.051285,
+    0.046959,
+    0.054338,
+    0.049343,
+    0.050092,
+    0.04592,
+    0.033445,
+    0.028615,
+    0.031136,
+    0.028997,
+    0.028637,
+    0.028838,
+    0.032927,
+    0.032492,
+    0.032073,
+    0.035101,
+    0.039748,
+    0.03944,
+    0.041771,
+    0.036581,
+    0.03469,
+    0.030704,
+    0.029998,
+    0.028528,
+    0.022343,
+    0.024731,
+    0.026093,
+    0.022235,
+    0.022567,
+    0.021243,
+    0.024196,
+    0.023069,
+    0.026473,
+    0.029181,
+    0.021767,
+    0.024683,
+    0.02662,
+    0.022811,
+    0.0201,
+    0.016509,
+    0.014995
+   ]
+  }
+ },
+ "chain": {
+  "rows": 14,
+  "tip": "0xd7445dcd90b577a3",
+  "verified": true
+ },
+ "vault": {
+  "mock": true,
+  "digest": "0xc18a22c8aff04da5",
+  "liveJobs": 0
+ }
+}

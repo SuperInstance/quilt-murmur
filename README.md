@@ -114,6 +114,22 @@ a mock never pretends to be quantum.
   transplant mechanism (103 subtree transplants vs 4 node-coherence grafts, 26x) and
   structural diversity (3.7 vs 10.2 sprawling root-paths), not the acceptance signal.
   C1's fate may hinge on tree budget (LEG 2 cut by the runtime rule, receipted).
+- **The turn exploits its own good history** (E27): a founder honest to t=150 then turning
+  toxic holds 7.6% share at turn with 1.91x honest-median trust — and the 0.25x demotion
+  bar is NEVER reached within 250 post-turn rounds (8/8 seeds; 0.5x only in 4/8, median
+  ~100r). The founder-turn hole is receipted by design: damage is arm-identical across
+  v3/v3.1 (protocol layers are founder-blind — self-authored values are novel, non-copied,
+  admission-ineligible). The next protocol seed is a founder-velocity guard: reward-
+  trajectory change-point detection on entrenched voices. Metric lesson receipted: carried
+  poison SHARE is the pool-relevant quantity; absolute protocol-adjusted mass differs 3.9x
+  across arms and the pool normalization cancels it.
+- **The tree advantage does not scale with budget** (E28, the receipted E26 cut): at 2x
+  budget the TREE-NODE20 gap FLIPS (paired -0.024±0.012, 2W/8L) and at 4x it is noise
+  (+0.011, p=0.75) — the 1200/2400/4800 trend +0.010 → -0.024 → +0.011 is
+  budget-noise-dominated, not widening. The mechanism persists and intensifies (5.9
+  transplants/run vs 3.4; sprawl ratio stable at ~2.7), but TREE trades leaf quality for
+  canopy structure exactly when NODE20's node-level search still converts steps into
+  quality. The tree view is a diversity instrument, not a quality instrument.
 
 ## Provenance
 

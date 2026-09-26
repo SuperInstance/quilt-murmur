@@ -1,0 +1,830 @@
+{
+  "exp": "E28 budget leg (does the tree-level advantage scale with tree budget?)",
+  "runtimeSeconds": 135.5,
+  "config": {
+    "arms": [
+      "NODE20",
+      "TREE"
+    ],
+    "seeds": 10,
+    "budgets": [
+      2400,
+      4800
+    ],
+    "stepsPerBudget": {
+      "2400": 800,
+      "4800": 1600
+    },
+    "candidatesPerStep": 3,
+    "arcLength": 12,
+    "slots": 12,
+    "treeScore": {
+      "wq": 1,
+      "wc": 0.25,
+      "wd": 0.05,
+      "ws": 2,
+      "gamma": 0.97,
+      "rSteps": 6
+    },
+    "spawnCap": 20,
+    "spawnCooldown": 10,
+    "runtimeBudgetSeconds": 170,
+    "decisionRules": {
+      "C1_at_budget": "CONFIRMED iff paired mean delta (TREE − NODE20) > 0 AND two-sided exact sign-test p < 0.05 (zeros excluded, small-p method); REFUTED if mean < 0; else PARTIAL. Widening = delta_2400 − delta_1200 (E26 receipted +0.0100, 30 seeds; first-10-seed subset as sensitivity)",
+      "C2_mechanism": "at 2400 CONFIRMED iff TREE transplants/run >= 3.0 AND meanTreeGain > 0 AND TREE lineageDiv >= 2 AND NODE20 lineageDiv > TREE lineageDiv; PARTIAL iff transplants > 0 AND meanTreeGain > 0; else REFUTED (intensification vs E26 reported, not gated)",
+      "C3_saturation": "climb(arm) = meanFinalQ(arm @ E28 budget) − meanFinalQ(arm @ E26 1200). CONFIRMED iff climb(TREE) > climb(NODE20) AND climb(TREE) > 0; PARTIAL iff climb(TREE) > 0; else REFUTED. At 4800 (if kept): same rule on climb 2400→4800 within E28. Supporting: within-run last-half/last-quarter gains",
+      "runtimeCutRule": "probe seed 0 × both arms × both budgets; projected = elapsed + (seeds−1)×Σ(per-arm probe times) per kept budget + 2s IO; 4800 point CUT iff projected > 170s (its probe runs discarded, receipted)"
+    },
+    "vault": "offline mock harvest (MothVault offline:true, 0 live jobs)",
+    "lineage": "E26 harness verbatim; e26_gardener_scale.mjs not modified or re-run; new file experiments/e28_budget_leg.mjs only"
+  },
+  "probe": {
+    "timingsMs": {
+      "2400:NODE20": 2356,
+      "2400:TREE": 2136,
+      "4800:NODE20": 4431,
+      "4800:TREE": 4256
+    },
+    "elapsedAfterProbeMs": 13188,
+    "projectedMsBothLegs": 133799,
+    "projectedMsKept": 133799,
+    "cut4800": false
+  },
+  "e26Baseline": {
+    "delta1200_30seeds": 0.01,
+    "se1200_30seeds": 0.0109,
+    "delta1200_first10": 0.0032,
+    "finalQ1200": {
+      "TREE": 0.9421,
+      "NODE20": 0.9321
+    },
+    "lineageDiv1200": {
+      "TREE": 3.73,
+      "NODE20": 10.17
+    },
+    "treeTransplantsPerRun1200": 3.433,
+    "source": "experiments/outputs/e26_summary.json (chain tip 0x9288b3a86717170f)"
+  },
+  "perBudget": {
+    "2400": {
+      "budget": 2400,
+      "steps": 800,
+      "seeds": 10,
+      "perArm": {
+        "NODE20": {
+          "finalQuality": {
+            "mean": 0.9623,
+            "sd": 0.0218
+          },
+          "lineageDiv": {
+            "mean": 11.1,
+            "sd": 1.22
+          },
+          "storyDiv": 59.2,
+          "depthMaxMax": 0,
+          "spawns": 121,
+          "prunesNode": 130,
+          "prunesSub": 0,
+          "graftsCoh": 2,
+          "graftsQ": 13,
+          "graftsSub": 0,
+          "transplantsPerRun": 0,
+          "meanTreeGainW": 0,
+          "meanNodeGainW": 0,
+          "completed": 58.7,
+          "qAtMidMean": 0.9623,
+          "lastHalfGain": 0,
+          "lastQuarterGain": 0,
+          "verifyChecks": 5640,
+          "verifyBad": 0
+        },
+        "TREE": {
+          "finalQuality": {
+            "mean": 0.9387,
+            "sd": 0.036
+          },
+          "lineageDiv": {
+            "mean": 4.1,
+            "sd": 3.3
+          },
+          "storyDiv": 62.6,
+          "depthMaxMax": 3,
+          "spawns": 157,
+          "prunesNode": 0,
+          "prunesSub": 179,
+          "graftsCoh": 0,
+          "graftsQ": 0,
+          "graftsSub": 59,
+          "transplantsPerRun": 5.9,
+          "meanTreeGainW": 0.0224,
+          "meanNodeGainW": 0.0119,
+          "completed": 62.7,
+          "qAtMidMean": 0.937,
+          "lastHalfGain": 0.0016,
+          "lastQuarterGain": 0.0049,
+          "verifyChecks": 3337,
+          "verifyBad": 0
+        }
+      },
+      "paired": {
+        "armA": "TREE",
+        "armB": "NODE20",
+        "n": 10,
+        "mean": -0.0237,
+        "se": 0.0118,
+        "sd": 0.0372,
+        "signTest": {
+          "n": 10,
+          "k": 2,
+          "ties": 0,
+          "p": 0.10938
+        },
+        "wins": 2,
+        "losses": 8,
+        "deltas": [
+          -0.1085,
+          -0.0506,
+          0.0159,
+          -0.0463,
+          -0.0282,
+          -0.0134,
+          -0.0183,
+          -0.0164,
+          0.0332,
+          -0.0039
+        ]
+      },
+      "verdictC1": "REFUTED"
+    },
+    "4800": {
+      "budget": 4800,
+      "steps": 1600,
+      "seeds": 10,
+      "perArm": {
+        "NODE20": {
+          "finalQuality": {
+            "mean": 0.948,
+            "sd": 0.0302
+          },
+          "lineageDiv": {
+            "mean": 7.8,
+            "sd": 3.4
+          },
+          "storyDiv": 118.5,
+          "depthMaxMax": 0,
+          "spawns": 181,
+          "prunesNode": 223,
+          "prunesSub": 0,
+          "graftsCoh": 1,
+          "graftsQ": 24,
+          "graftsSub": 0,
+          "transplantsPerRun": 0,
+          "meanTreeGainW": 0,
+          "meanNodeGainW": 0,
+          "completed": 119.5,
+          "qAtMidMean": 0.9355,
+          "lastHalfGain": 0.0125,
+          "lastQuarterGain": 0.0075,
+          "verifyChecks": 10543,
+          "verifyBad": 0
+        },
+        "TREE": {
+          "finalQuality": {
+            "mean": 0.9584,
+            "sd": 0.0317
+          },
+          "lineageDiv": {
+            "mean": 2.5,
+            "sd": 2.16
+          },
+          "storyDiv": 125.3,
+          "depthMaxMax": 2,
+          "spawns": 164,
+          "prunesNode": 0,
+          "prunesSub": 209,
+          "graftsCoh": 0,
+          "graftsQ": 0,
+          "graftsSub": 50,
+          "transplantsPerRun": 5,
+          "meanTreeGainW": 0.0254,
+          "meanNodeGainW": 0.0106,
+          "completed": 127.9,
+          "qAtMidMean": 0.9492,
+          "lastHalfGain": 0.0092,
+          "lastQuarterGain": 0.0019,
+          "verifyChecks": 5995,
+          "verifyBad": 0
+        }
+      },
+      "paired": {
+        "armA": "TREE",
+        "armB": "NODE20",
+        "n": 10,
+        "mean": 0.0105,
+        "se": 0.0159,
+        "sd": 0.0503,
+        "signTest": {
+          "n": 10,
+          "k": 6,
+          "ties": 0,
+          "p": 0.75391
+        },
+        "wins": 6,
+        "losses": 4,
+        "deltas": [
+          -0.0177,
+          0.0291,
+          -0.0446,
+          0.1007,
+          0.0529,
+          -0.0069,
+          0.0072,
+          0.0188,
+          -0.0855,
+          0.0506
+        ]
+      },
+      "verdictC1": "PARTIAL"
+    }
+  },
+  "paired": {
+    "C1@2400": {
+      "armA": "TREE",
+      "armB": "NODE20",
+      "n": 10,
+      "mean": -0.0237,
+      "se": 0.0118,
+      "sd": 0.0372,
+      "signTest": {
+        "n": 10,
+        "k": 2,
+        "ties": 0,
+        "p": 0.10938
+      },
+      "wins": 2,
+      "losses": 8,
+      "deltas": [
+        -0.1085,
+        -0.0506,
+        0.0159,
+        -0.0463,
+        -0.0282,
+        -0.0134,
+        -0.0183,
+        -0.0164,
+        0.0332,
+        -0.0039
+      ]
+    },
+    "C1@4800": {
+      "armA": "TREE",
+      "armB": "NODE20",
+      "n": 10,
+      "mean": 0.0105,
+      "se": 0.0159,
+      "sd": 0.0503,
+      "signTest": {
+        "n": 10,
+        "k": 6,
+        "ties": 0,
+        "p": 0.75391
+      },
+      "wins": 6,
+      "losses": 4,
+      "deltas": [
+        -0.0177,
+        0.0291,
+        -0.0446,
+        0.1007,
+        0.0529,
+        -0.0069,
+        0.0072,
+        0.0188,
+        -0.0855,
+        0.0506
+      ]
+    }
+  },
+  "claims": {
+    "C1_at_budget": {
+      "verdict": "REFUTED",
+      "budget": 2400,
+      "paired": {
+        "armA": "TREE",
+        "armB": "NODE20",
+        "n": 10,
+        "mean": -0.0237,
+        "se": 0.0118,
+        "sd": 0.0372,
+        "signTest": {
+          "n": 10,
+          "k": 2,
+          "ties": 0,
+          "p": 0.10938
+        },
+        "wins": 2,
+        "losses": 8,
+        "deltas": [
+          -0.1085,
+          -0.0506,
+          0.0159,
+          -0.0463,
+          -0.0282,
+          -0.0134,
+          -0.0183,
+          -0.0164,
+          0.0332,
+          -0.0039
+        ]
+      },
+      "widened": false,
+      "gapDelta2400Minus1200": -0.0337,
+      "gapDelta2400Minus1200first10": -0.0269,
+      "delta1200_30seeds": 0.01,
+      "delta1200_first10": 0.0032
+    },
+    "C2_mechanism": {
+      "verdict": "CONFIRMED",
+      "tree": {
+        "transplantsPerRun": 5.9,
+        "transplantsTotal": 59,
+        "meanTreeGain": 0.0224,
+        "meanNodeGain": 0.0119,
+        "lineageDiv": 4.1
+      },
+      "node20": {
+        "lineageDiv": 11.1
+      },
+      "intensification": {
+        "transplantsPerRun": {
+          "at2400": 5.9,
+          "at1200E26": 3.433,
+          "grew": true
+        },
+        "treeLineageDiv": {
+          "at2400": 4.1,
+          "at1200E26": 3.73
+        },
+        "nodeLineageDiv": {
+          "at2400": 11.1,
+          "at1200E26": 10.17
+        },
+        "sprawlRatio": {
+          "at2400": 2.71,
+          "at1200E26": 2.73
+        }
+      }
+    },
+    "C3_saturation": {
+      "verdict": "REFUTED",
+      "q1200": {
+        "TREE": 0.9421,
+        "NODE20": 0.9321
+      },
+      "q2400": {
+        "TREE": 0.9387,
+        "NODE20": 0.9623
+      },
+      "climb1200to2400": {
+        "TREE": -0.0034,
+        "NODE20": 0.0302
+      },
+      "withinRunLastHalfGain": {
+        "TREE": 0.0016,
+        "NODE20": 0
+      },
+      "climb2400to4800": {
+        "TREE": 0.0197,
+        "NODE20": -0.0143
+      }
+    }
+  },
+  "cuts": [],
+  "sheetVerify": {
+    "checks": 25515,
+    "mismatches": 0,
+    "maxAbsDiff": 0,
+    "everyNSteps": 20,
+    "tol": 1e-9
+  },
+  "chain": {
+    "receipts": {
+      "ok": true,
+      "links": 49,
+      "tip": "0xd9ad436ea2bcc64f"
+    },
+    "fileRecheck": {
+      "ok": true,
+      "links": 49
+    }
+  },
+  "curves": {
+    "2400": {
+      "NODE20": {
+        "budget": [
+          120,
+          240,
+          360,
+          480,
+          600,
+          720,
+          840,
+          960,
+          1080,
+          1200,
+          1320,
+          1440,
+          1560,
+          1680,
+          1800,
+          1920,
+          2040,
+          2160,
+          2280,
+          2400
+        ],
+        "quality": [
+          1,
+          1,
+          1,
+          1,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713,
+          0.9713
+        ],
+        "lineageDiv": [
+          12,
+          11,
+          12,
+          12,
+          12,
+          12,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          9,
+          9,
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      "TREE": {
+        "budget": [
+          120,
+          240,
+          360,
+          480,
+          600,
+          720,
+          840,
+          960,
+          1080,
+          1200,
+          1320,
+          1440,
+          1560,
+          1680,
+          1800,
+          1920,
+          2040,
+          2160,
+          2280,
+          2400
+        ],
+        "quality": [
+          0.9403,
+          0.8497,
+          0.8497,
+          0.8674,
+          0.8544,
+          0.8628,
+          0.8628,
+          0.938,
+          0.8628,
+          0.8693,
+          0.8628,
+          0.8628,
+          0.8628,
+          0.8628,
+          0.8628,
+          0.8628,
+          0.8628,
+          0.8628,
+          0.8628,
+          0.8628
+        ],
+        "lineageDiv": [
+          4,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          2,
+          2,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    "4800": {
+      "NODE20": {
+        "budget": [
+          120,
+          240,
+          360,
+          480,
+          600,
+          720,
+          840,
+          960,
+          1080,
+          1200,
+          1320,
+          1440,
+          1560,
+          1680,
+          1800,
+          1920,
+          2040,
+          2160,
+          2280,
+          2400,
+          2520,
+          2640,
+          2760,
+          2880,
+          3000,
+          3120,
+          3240,
+          3360,
+          3480,
+          3600,
+          3720,
+          3840,
+          3960,
+          4080,
+          4200,
+          4320,
+          4440,
+          4560,
+          4680,
+          4800
+        ],
+        "quality": [
+          0.8342,
+          0.9027,
+          0.9027,
+          0.9027,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819,
+          0.9819
+        ],
+        "lineageDiv": [
+          12,
+          12,
+          12,
+          10,
+          9,
+          9,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          11,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      "TREE": {
+        "budget": [
+          120,
+          240,
+          360,
+          480,
+          600,
+          720,
+          840,
+          960,
+          1080,
+          1200,
+          1320,
+          1440,
+          1560,
+          1680,
+          1800,
+          1920,
+          2040,
+          2160,
+          2280,
+          2400,
+          2520,
+          2640,
+          2760,
+          2880,
+          3000,
+          3120,
+          3240,
+          3360,
+          3480,
+          3600,
+          3720,
+          3840,
+          3960,
+          4080,
+          4200,
+          4320,
+          4440,
+          4560,
+          4680,
+          4800
+        ],
+        "quality": [
+          0.8896,
+          0.8896,
+          0.9001,
+          0.9001,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642,
+          0.9642
+        ],
+        "lineageDiv": [
+          4,
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          4,
+          3,
+          3,
+          3,
+          4,
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          4,
+          4,
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    }
+  },
+  "verdicts": "C1@2400=REFUTED C2=CONFIRMED C3=REFUTED C1@4800=PARTIAL widened=NO",
+  "findings": [
+    "C1_at_budget (2400): TREE 0.9387 vs NODE20 0.9623 — paired Δ -0.0237 ± 0.0118 SE, sign-test p=0.10938 (2W/8L/0T at 10 seeds) → REFUTED. E26 @1200: Δ +0.01 ± 0.0109 (p=0.85554, 30 seeds); gap change -0.0337 (does not widen vs the 30-seed baseline; vs the matched first-10-seed subset 0.0032: -0.0269).",
+    "C1_at_budget (4800): paired Δ +0.0105 ± 0.0159 SE, sign-test p=0.75391 (6W/4L) → PARTIAL; trend 1200→2400→4800: 0.01 → -0.0237 → 0.0105.",
+    "C2_mechanism at 2400: 59 subtree transplants (5.9/run vs E26's 3.433 at 1200), mean TREE gain 0.0224 vs node-gain 0.0119; TREE lineageDiv 4.10 (E26 3.73) vs NODE20 11.10 (E26 10.17) → CONFIRMED.",
+    "C3_saturation: climb 1200→2400 TREE -0.0034 vs NODE20 +0.0302; within-run last-half gain TREE 0.0016 vs NODE20 0 → REFUTED."
+  ],
+  "vaultJobs": {
+    "live": 0,
+    "offline": true
+  }
+}

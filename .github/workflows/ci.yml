@@ -42,6 +42,10 @@ jobs:
         run: node experiments/e25_hybrid_currency.mjs 4
       - name: E26 gardener at scale (offline, 12 seeds)
         run: node experiments/e26_gardener_scale.mjs 12
+      - name: E27 founder turn (offline, 4 seeds)
+        run: node experiments/e27_founder_turn.mjs 4
+      - name: E28 budget leg (offline, 4 seeds)
+        run: node experiments/e28_budget_leg.mjs 4
       - name: Charts
         run: pip install matplotlib && python3 charts.py
       - name: Verify receipt chains
@@ -50,7 +54,7 @@ jobs:
           import { readFileSync } from 'node:fs';
           import { verifyChain } from './murmur/receipts.mjs';
           let bad = 0;
-          for (const f of ['receipts','receipts_e15','receipts_e16','receipts_e17','receipts_e18','receipts_e20','receipts_e21','receipts_e22','receipts_e23','receipts_e24','receipts_e25','receipts_e26']) {
+          for (const f of ['receipts','receipts_e15','receipts_e16','receipts_e17','receipts_e18','receipts_e20','receipts_e21','receipts_e22','receipts_e23','receipts_e24','receipts_e25','receipts_e26','receipts_e27','receipts_e28']) {
             try {
               const rows = readFileSync('./experiments/outputs/' + f + '.jsonl','utf8').trim().split('\n').map(JSON.parse);
               const v = verifyChain(rows);
