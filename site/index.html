@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>quilt-murmur — the murmur lineage, receipted</title>
+<style>
+  :root { --navy:#13294b; --ink:#1c2b3a; --gold:#e8a33d; --coral:#d45d5d; --teal:#3aa6a6; --paper:#f7f4ee; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:Georgia, 'Times New Roman', serif; background:var(--paper); color:var(--ink); line-height:1.65; }
+  .hero { background:var(--navy); color:#f5efe2; padding:64px 24px 48px; text-align:center; }
+  .hero h1 { font-size:2.6rem; letter-spacing:0.5px; }
+  .hero .sub { color:var(--gold); margin-top:10px; font-style:italic; font-size:1.1rem; }
+  .vessels { max-width:1080px; margin:0 auto; padding:40px 24px; }
+  .vessels p.deck { text-align:center; color:var(--ink); font-size:1.05rem; max-width:820px; margin:0 auto 8px; }
+  .crosswalk { display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:16px; margin-top:28px; }
+  .card { background:#fff; border:1px solid #e3ddcf; border-radius:10px; padding:18px 20px; box-shadow:0 1px 4px rgba(19,41,75,.07); }
+  .card h3 { color:var(--navy); font-size:1.02rem; margin-bottom:6px; }
+  .card .old { color:#8a97a8; font-size:.85rem; font-style:italic; }
+  .card p { font-size:.92rem; margin-top:8px; }
+  .receipts { background:#fff; border-top:1px solid #e3ddcf; padding:48px 24px; text-align:center; }
+  .receipts img { max-width:1080px; width:100%; border:1px solid #e3ddcf; border-radius:10px; }
+  .laws { max-width:1080px; margin:0 auto; padding:44px 24px; }
+  .laws h2 { color:var(--navy); border-bottom:2px solid var(--gold); display:inline-block; padding-bottom:4px; }
+  .lawgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin-top:22px; }
+  .law { background:var(--navy); color:#f5efe2; border-radius:10px; padding:16px 18px; font-size:.92rem; }
+  .law b { color:var(--gold); display:block; margin-bottom:6px; }
+  table { width:100%; border-collapse:collapse; margin-top:18px; background:#fff; font-size:.9rem; }
+  th { background:var(--navy); color:#f5efe2; text-align:left; padding:9px 12px; }
+  td { padding:8px 12px; border-bottom:1px solid #eee7d8; }
+  td.num { font-variant-numeric:tabular-nums; }
+  footer { text-align:center; color:#8a97a8; font-size:.85rem; padding:30px 16px 44px; }
+  a { color:var(--teal); }
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>quilt-murmur</h1>
+  <div class="sub">Twelve vessels walked. One mesh flies.</div>
+</div>
+
+<section class="vessels">
+  <p class="deck">murmur-agent · Murmur · murmur-protocol-v2 · nexus-git-agent · git-agent · git-agent-codespace ·
+  git-agent-system · lau-git-agent · decomp-agents · engine-ensign · flux-agent-runtime · cocapn —
+  twelve SuperInstance repos that walked as sequential agents, metamorphosed into a reactive mesh of
+  whispering, trusting, branching, grafting <em>cells</em>.</p>
+  <div class="crosswalk">
+    <div class="card"><h3>Murmurs → gossip cells</h3><div class="old">murmur-agent · Murmur · murmur-protocol-v2</div>
+      <p>The envelope <code>{topic, from, p, n, ttl}</code> becomes ordinary cell values; pooling is trust-weighted log-odds computed by formula cells — the wiki dissolves into the sheet.</p></div>
+    <div class="card"><h3>Trust edges → Hedge</h3><div class="old">nexus-git-agent · cocapn</div>
+      <p>nexus's 0–100 behavior scores become multiplicative weights with fixed share: regret-bounded, regime-tracking, quarantine for free at w=0.</p></div>
+    <div class="card"><h3>Thought branches → cell copies</h3><div class="old">git-agent-system · decomp-agents</div>
+      <p>Branch = copy the factor-estimate cells with a vault-seeded jitter; merge-as-decision becomes graft — transplant the fruit where trust points.</p></div>
+    <div class="card"><h3>Provenance → witness chain</h3><div class="old">lau-git-agent · git-agent</div>
+      <p>Every decision books a fnv1a64-chained receipt row; alternatives, tradeoffs and scars live in the chain, not a diary.</p></div>
+    <div class="card"><h3>Agreement → resonance</h3><div class="old">engine-ensign · MOTHquantum</div>
+      <p>Branches are Kuramoto oscillators coupled by endorsement agreement; the order parameter r is the scalar a meta-cell reads — a lie detector, not an oracle.</p></div>
+    <div class="card"><h3>The controller → a gardener</h3><div class="old">flux-agent-runtime · git-agent loop</div>
+      <p>observe→plan→execute compresses to three scalar reads (r, H, regret) and three scalar writes (temperature, prune floor, spawn budget).</p></div>
+  </div>
+</section>
+
+<section class="receipts">
+  <img src="receipts.png" alt="E14-E17 receipts: pricing mesh, adventure gardener, resonance consensus, gossip trust">
+</section>
+
+<section class="laws">
+  <h2>Headline receipts</h2>
+  <div class="lawgrid">
+    <div class="law"><b>Gardening beats single-path</b>E15: gardened arms beat NOGARD at equal budget (0.905 vs 0.847, z≈2.4) with 1.4–1.9× story diversity.</div>
+    <div class="law"><b>r is a lie detector</b>E16: order parameter drops Δ −0.065 when a murmur fights consensus — but predicts nothing about accuracy (receipted null).</div>
+    <div class="law"><b>Negative regret, earned</b>E17: window-Hedge −5.8±11.5 vs best fixed expert; re-crowns a flipped champion in ~13–19 rounds; uniform never does.</div>
+    <div class="law"><b>The echo vulnerability</b>E17: a plagiarist cell is invisible to outcome-trust while it free-rides (reward 0.64 vs 0.65) — provenance must be a first-class field.</div>
+    <div class="law"><b>LLM as author, not oracle</b>E18: z-ai authored the factor cells at setup; the mesh ran LLM-free. Authored −12% vs hand-designed — honest, receipted.</div>
+    <div class="law"><b>The sheet nominates; the vault elects</b>E14: 140 cells decide a pricing change with zero LLM in the loop; one live quantum harvest seeds every stream.</div>
+  </div>
+  <table>
+    <tr><th>experiment</th><th>question</th><th>verdict</th></tr>
+    <tr><td>E14 pricing mesh</td><td>can cells work out a pricing change, no LLM?</td><td>yes — pooling ≡ reference math (0 mismatches); adaptation beats fixed post-flip; learned trust modulation open (5 protocol iterations receipted)</td></tr>
+    <tr><td>E15 adventure gardener</td><td>branch/prune/graft vs single-path at equal budget?</td><td>gardening wins; adaptive bandit ties best fixed policy (honest null at 40-step seasons)</td></tr>
+    <tr><td>E16 resonance consensus</td><td>is the Kuramoto order parameter useful to a meta-cell?</td><td>as lie detector: yes; as accuracy meter: no (null receipted)</td></tr>
+    <tr><td>E17 gossip trust</td><td>do cells learn to trust under non-stationarity?</td><td>yes — negative regret, flip tracking; echo vulnerability receipted</td></tr>
+    <tr><td>E18 llm-setup</td><td>can the LLM be confined to setup?</td><td>yes — hook-and-drop with a whitelist inspector; authored sheet runs LLM-free</td></tr>
+  </table>
+</section>
+
+<footer>SuperInstance · quilt-murmur · receipts under experiments/outputs · MIT<br>
+<a href="https://github.com/SuperInstance/quilt">engine: SuperInstance/quilt</a> (vendored, play-test-patched)</footer>
+</body>
+</html>

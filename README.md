@@ -1,0 +1,64 @@
+# quilt-murmur
+
+**The murmur lineage reborn as quilt.** Twelve SuperInstance vessels —
+murmur-agent, Murmur, murmur-protocol-v2, nexus-git-agent, git-agent,
+git-agent-codespace, git-agent-system, lau-git-agent, decomp-agents,
+engine-ensign, flux-agent-runtime, cocapn — walked as sequential agents.
+This repo is the metamorphosis: their five shared primitives (reactive state,
+provenance-carrying decisions, learned trust, branching exploration, ambient
+gossip) as literal spreadsheet cells in a reactive mesh.
+
+Read [MESH.md](./MESH.md) first — the crosswalk, the math, the receipted
+findings.
+
+## The five mesh primitives (in `murmur/`)
+
+| module | primitive | old lineage |
+|---|---|---|
+| `bus.mjs` | murmur envelope + trust-weighted log-odds pooling | murmur-protocol-v2, Murmur |
+| `trust.mjs` | Hedge / fixed-share trust edges | nexus-git-agent, cocapn |
+| `spreader.mjs` | branch (cell copy + seed mutation) / prune / graft | git-agent-system, decomp-agents, Spreader-tool |
+| `resonance.mjs` | Kuramoto order parameter — agreement as physics | MOTHquantum × engine-ensign |
+| `gardener.mjs` | meta-bandit over bold/steady/timid gardening policies | git-agent's O-P-E-C-R loop |
+| `moth.mjs` | entropy vault (harvest once, stretch honestly, per-seed streams) | quilt-learn doctrine |
+| `receipts.mjs` | fnv1a64 witness chain | the fleet canon |
+
+## Experiments (all LLM-free unless stated; every claim receipted)
+
+```bash
+npm install
+npm run smoke   # sheet + reflex + pool-verification in one pass
+npm run e14     # the pricing mesh: 5 arms × seeds × 300 seasons
+npm run e15     # adventure gardener: branch/prune/graft story generation
+npm run e16     # resonance as lie detector (nexus's lying-node problem)
+npm run e17     # gossip trust dynamics + the echo vulnerability
+npm run e18     # LLM authors the sheet at setup; the mesh runs LLM-free
+```
+
+Outputs land in `experiments/outputs/` (receipt chains + summaries).
+`MOTH_KEY` is env-only; without it the vault degrades to a labeled mock —
+a mock never pretends to be quantum.
+
+## Headline receipts
+
+- **Gardening beats single-path** at equal generation budget (E15, z ≈ 2.4,
+  1.4–1.9× diversity).
+- **The order parameter is a lie detector, not an accuracy meter**
+  (E16: Δr = −0.141 when a murmur fights consensus; corr(r, error) ≈ 0 —
+  both receipted).
+- **Window-Hedge achieves negative regret** vs best fixed expert in
+  non-stationary pools and re-crowns a flipped champion in 16.5 rounds
+  (E17); **the echo vulnerability** — outcome-trust cannot see an active
+  free-rider — is receipted, with the protocol implication.
+- **The pricing mesh runs LLM-free**: 140 cells decide, a listener reflex
+  writes its own memory, the vault elects, the gardener prunes. Five honest
+  protocol iterations are receipted on the road to learned trust.
+
+## Provenance
+
+See [PROVENANCE.md](./PROVENANCE.md). Engine vendored from
+SuperInstance/quilt (play-test-patched core, 8 receipted patches).
+
+## License
+
+MIT — the fleet's canon.

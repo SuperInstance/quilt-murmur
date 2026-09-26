@@ -1,0 +1,47 @@
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
+  workflow_dispatch:
+jobs:
+  smoke-and-experiments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: Install
+        run: npm install --no-audit --no-fund
+      - name: Smoke (engine + five mesh primitives + receipts)
+        run: node experiments/smoke.mjs
+      - name: E16 resonance consensus (offline)
+        run: node experiments/e16_resonance_consensus.mjs
+      - name: E17 gossip trust (offline)
+        run: node experiments/e17_gossip_trust.mjs
+      - name: E15 adventure gardener (offline)
+        run: node experiments/e15_adventure_gardener.mjs
+      - name: E14 pricing mesh (offline vault, 3 seeds)
+        run: node experiments/e14_pricing_mesh.mjs 3
+      - name: E18 llm-setup (mock author, 2 seeds)
+        run: node experiments/e18_llm_setup.mjs 2
+      - name: Charts
+        run: python3 charts.py
+      - name: Verify receipt chains
+        run: |
+          node --input-type=module -e "
+          import { readFileSync } from 'node:fs';
+          import { verifyChain } from './murmur/receipts.mjs';
+          let bad = 0;
+          for (const f of ['receipts','receipts_e15','receipts_e16','receipts_e17','receipts_e18']) {
+            try {
+              const rows = readFileSync('./experiments/outputs/' + f + '.jsonl','utf8').trim().split('\n').map(JSON.parse);
+              const v = verifyChain(rows);
+              console.log(f, v.ok ? 'VERIFIED' : 'BROKEN', v.links ?? v.why);
+              if (!v.ok) bad++;
+            } catch (e) { console.log(f, 'SKIP', e.message.slice(0,40)); }
+          }
+          process.exit(bad ? 1 : 0);
+          "
+        env: {}

@@ -1,0 +1,1828 @@
+{
+ "experiment": "E16 — resonance as a lie detector",
+ "config": {
+  "seq": 3,
+  "kind": "run.config",
+  "seeds": 20,
+  "rounds": 200,
+  "walkSd": 0.06,
+  "mu0": 0.5,
+  "clamp": [
+   0.01,
+   0.99
+  ],
+  "senders": 12,
+  "classes": {
+   "sharp": 4,
+   "mid": 4,
+   "dull": 3,
+   "adversary": 1
+  },
+  "sigma": {
+   "n1": 0.06,
+   "n2": 0.06,
+   "n3": 0.06,
+   "n4": 0.06,
+   "n5": 0.15,
+   "n6": 0.15,
+   "n7": 0.15,
+   "n8": 0.15,
+   "n9": 0.3,
+   "n10": 0.3,
+   "n11": 0.3,
+   "n12": 0.1
+  },
+  "adversary": "n12",
+  "turnRound": 60,
+  "adversaryReport": "p = 1 − truthful posterior (anti-correlated) for t >= 60",
+  "revealEvery": 8,
+  "revealReward": "1 − |p_reported − μ| on true μ",
+  "hedge": {
+   "eta": 0.3,
+   "share": 0.02,
+   "ids": 12
+  },
+  "resonance": {
+   "theta": "π·p_i",
+   "omega": "π·(p_i(t) − p_i(t−1))",
+   "coupling": "agreementMatrix, a_ij = 1 − 2|p_i − p_j|",
+   "dt": 0.1,
+   "K": 1.2,
+   "steps": 10
+  },
+  "arms": {
+   "majority": "vote sign(p−0.5); posterior = mean p over majority side (agreeing fraction)",
+   "uniform": "MurmurBus whisper{topic:mu,n:1,ttl:2} → pulse, trust=null (w=1/N)",
+   "trueSigma": "MurmurBus.pool reference math, ws ∝ 1/σ_i² (oracle: knows σ, not lies — NOT a post-turn upper bound)",
+   "hedge": "MurmurBus trust=HedgeTrust; pooled belief computed IN-SHEET (hedge.pool) with t.n1..t.n12 written back; bus pulse is verification twin"
+  },
+  "murmurMass": "n_i = 1 every murmur; ttl=2 → each murmur pooled exactly once",
+  "error": "|posterior − μ_t|",
+  "row_hash": "0x2047e1994e09a64c"
+ },
+ "preflight": {
+  "cells": 38,
+  "maxDiff": 0,
+  "envTruthReaders": 0,
+  "diffs": [
+   "0.00e+0",
+   "0.00e+0",
+   "0.00e+0"
+  ]
+ },
+ "perArm": {
+  "majority": {
+   "arm": "majority",
+   "meanErr": 0.0525,
+   "sdErr": 0.0061,
+   "postTurnErr": 0.0509,
+   "err60_90": 0.0506,
+   "err120_200": 0.0502,
+   "deltaErr60to120": -0.0004,
+   "corrRErr": 0.0072,
+   "corrRErrSd": 0.0863,
+   "corrRSameRound": -0.1974,
+   "hedgeAdvWeight": null,
+   "lieDetectorDelta": null
+  },
+  "uniform": {
+   "arm": "uniform",
+   "meanErr": 0.0497,
+   "sdErr": 0.0036,
+   "postTurnErr": 0.0503,
+   "err60_90": 0.0511,
+   "err120_200": 0.0496,
+   "deltaErr60to120": -0.0015,
+   "corrRErr": -0.0374,
+   "corrRErrSd": 0.0691,
+   "corrRSameRound": -0.1962,
+   "hedgeAdvWeight": null,
+   "lieDetectorDelta": null
+  },
+  "trueSigma": {
+   "arm": "trueSigma",
+   "meanErr": 0.0272,
+   "sdErr": 0.0021,
+   "postTurnErr": 0.0293,
+   "err60_90": 0.0295,
+   "err120_200": 0.0295,
+   "deltaErr60to120": 0,
+   "corrRErr": -0.0288,
+   "corrRErrSd": 0.0535,
+   "corrRSameRound": -0.051,
+   "hedgeAdvWeight": null,
+   "lieDetectorDelta": null
+  },
+  "hedge": {
+   "arm": "hedge",
+   "meanErr": 0.0404,
+   "sdErr": 0.0027,
+   "postTurnErr": 0.0383,
+   "err60_90": 0.044,
+   "err120_200": 0.0356,
+   "deltaErr60to120": -0.0084,
+   "corrRErr": -0.0125,
+   "corrRErrSd": 0.0771,
+   "corrRSameRound": -0.1393,
+   "hedgeAdvWeight": 0.022,
+   "lieDetectorDelta": -0.0646,
+   "hedgeAdvWeightSd": 0.0086,
+   "advWeightAtTurn": 0.0904,
+   "sharpWeightFinal": 0.1224,
+   "trustEntropyFinal": 0.9639,
+   "lieDetectorHi": 0.6996,
+   "lieDetectorLo": 0.7643,
+   "lieDetectorSeeds": 20,
+   "lieDetectorNhi": 94.5,
+   "lieDetectorNlo": 57.3,
+   "lieDetectorHiPost": 0.7001,
+   "lieDetectorLoPost": 0.7226,
+   "lieDetectorPostSeeds": 20,
+   "lieDetectorPostNhi": 94.2,
+   "lieDetectorPostNlo": 15.5,
+   "poolMismatches": 0,
+   "maxSheetVsBusDiff": 0
+  }
+ },
+ "questions": {
+  "q1": {
+   "seq": 8,
+   "kind": "q1.answer",
+   "question": "mean error per arm — does σ-weighting beat uniform beat majority?",
+   "ranking": [
+    "trueSigma",
+    "hedge",
+    "uniform",
+    "majority"
+   ],
+   "meanErr": {
+    "trueSigma": 0.0272,
+    "hedge": 0.0404,
+    "uniform": 0.0497,
+    "majority": 0.0525
+   },
+   "sdErr": {
+    "majority": 0.0061,
+    "uniform": 0.0036,
+    "trueSigma": 0.0021,
+    "hedge": 0.0027
+   },
+   "verdict": "trueSigma beats uniform; uniform beats majority",
+   "row_hash": "0x0bf754a17d049f18"
+  },
+  "q2": {
+   "seq": 9,
+   "kind": "q2.answer",
+   "question": "does HEDGE adapt to the liar?",
+   "hedgeErr60_90": 0.044,
+   "hedgeErr120_200": 0.0356,
+   "hedgeDeltaErr": -0.0084,
+   "uniformDeltaErrControl": -0.0015,
+   "advWeightAtTurn": 0.0904,
+   "advWeightFinal": 0.022,
+   "advWeightSd": 0.0086,
+   "baselineWeight": 0.0833,
+   "sharpWeightFinal": 0.1224,
+   "trustEntropyFinal": 0.9639,
+   "adapted": true,
+   "row_hash": "0x1d9b49785ad9701a"
+  },
+  "q3": {
+   "seq": 10,
+   "kind": "q3.answer",
+   "question": "corr(r_t, next-round error |posterior−μ|) per arm — is the order parameter a useful error predictor?",
+   "corrRErr": {
+    "majority": 0.0072,
+    "uniform": -0.0374,
+    "trueSigma": -0.0288,
+    "hedge": -0.0125
+   },
+   "corrRErrSd": {
+    "majority": 0.0863,
+    "uniform": 0.0691,
+    "trueSigma": 0.0535,
+    "hedge": 0.0771
+   },
+   "corrRSameRound": {
+    "majority": -0.1974,
+    "uniform": -0.1962,
+    "trueSigma": -0.051,
+    "hedge": -0.1393
+   },
+   "threshold": "|corr|>0.2 useful, 0.1–0.2 weak, else honest null",
+   "verdict": {
+    "majority": "null",
+    "uniform": "null",
+    "trueSigma": "null",
+    "hedge": "null"
+   },
+   "meanR": 0.7239,
+   "row_hash": "0x2a4e40793d0d2513"
+  },
+  "q4": {
+   "seq": 11,
+   "kind": "q4.answer",
+   "question": "LIE DETECTOR: does r drop when the adversary murmur dominates the HEDGE arm?",
+   "meanR_devGt03": 0.6996,
+   "meanR_devLt01": 0.7643,
+   "delta": -0.0646,
+   "seeds": 20,
+   "nHi": 94.5,
+   "nLo": 57.3,
+   "postTurnHi": 0.7001,
+   "postTurnLo": 0.7226,
+   "postTurnSeeds": 20,
+   "postTurnNhi": 94.2,
+   "postTurnNlo": 15.5,
+   "detects": true,
+   "row_hash": "0x4ff9c9380cc920f3"
+  }
+ },
+ "findings": [
+  "Q1 ranking by mean error: trueSigma=0.0272 < hedge=0.0404 < uniform=0.0497 < majority=0.0525 (sd 0.0021/0.0027/0.0036/0.0061). σ-weighting beats uniform; uniform beats majority — majority is robust to the single liar (minority exclusion) but wastes the minority's information.",
+  "Q2 hedge adaptation: err 60–90 = 0.044 → 120–200 = 0.0356 (Δ -0.0084; uniform no-learning control Δ -0.0015). Adversary final weight 0.022 ±0.0086 vs 1/12 = 0.0833 baseline (was 0.0904 at turn): Hedge DEMOTED the liar below baseline; sharp honest cells now hold 0.1224.",
+  "Q3 r as error predictor: corr(r_t, err_{t+1}) per arm majority=0.0072, uniform=-0.0374, trueSigma=-0.0288, hedge=-0.0125 → majority:null, uniform:null, trueSigma:null, hedge:null. Same-round corr(r_t, err_t) majority=-0.1974, uniform=-0.1962, trueSigma=-0.051, hedge=-0.1393 — the order parameter reads THIS mesh's coherence, not tomorrow's noise.",
+  "Q4 lie detector: mean r when |p_adv − posterior| > 0.3 = 0.6996 vs < 0.1 = 0.7643 (Δ = -0.0646, n=94.5/57.3 rounds/seed) — r DROPS when the liar dominates: the order parameter is a usable lie detector. Post-turn-only variant (n=94.2/15.5 rounds/seed, both buckets in 20/20 seeds): hi 0.7001 vs lo 0.7226.",
+  "Sheet/engine: hedge.pool === MurmurBus reference math across 4000 rounds (max |diff| 0.00e+0, mismatches 0); env.truth read by 0 decision formulas (score-only, asserted in preflight)."
+ ],
+ "curvesSeed0": {
+  "majority": [
+   {
+    "t": 0,
+    "err": 0.1693,
+    "r": 0.9302
+   },
+   {
+    "t": 4,
+    "err": 0.0158,
+    "r": 0.5554
+   },
+   {
+    "t": 8,
+    "err": 0.0146,
+    "r": 0.7384
+   },
+   {
+    "t": 12,
+    "err": 0.1007,
+    "r": 0.8897
+   },
+   {
+    "t": 16,
+    "err": 0.1355,
+    "r": 0.696
+   },
+   {
+    "t": 20,
+    "err": 0.0284,
+    "r": 0.9127
+   },
+   {
+    "t": 24,
+    "err": 0.0434,
+    "r": 0.7163
+   },
+   {
+    "t": 28,
+    "err": 0.0144,
+    "r": 0.8442
+   },
+   {
+    "t": 32,
+    "err": 0.0621,
+    "r": 0.9107
+   },
+   {
+    "t": 36,
+    "err": 0.0419,
+    "r": 0.7899
+   },
+   {
+    "t": 40,
+    "err": 0.0219,
+    "r": 0.7346
+   },
+   {
+    "t": 44,
+    "err": 0.0041,
+    "r": 0.582
+   },
+   {
+    "t": 48,
+    "err": 0.0329,
+    "r": 0.616
+   },
+   {
+    "t": 52,
+    "err": 0.0261,
+    "r": 0.7926
+   },
+   {
+    "t": 56,
+    "err": 0.0659,
+    "r": 0.8553
+   },
+   {
+    "t": 60,
+    "err": 0.0828,
+    "r": 0.5717
+   },
+   {
+    "t": 64,
+    "err": 0.0477,
+    "r": 0.7206
+   },
+   {
+    "t": 68,
+    "err": 0.0594,
+    "r": 0.7913
+   },
+   {
+    "t": 72,
+    "err": 0.018,
+    "r": 0.611
+   },
+   {
+    "t": 76,
+    "err": 0.1148,
+    "r": 0.7224
+   },
+   {
+    "t": 80,
+    "err": 0.0538,
+    "r": 0.6946
+   },
+   {
+    "t": 84,
+    "err": 0.0204,
+    "r": 0.6804
+   },
+   {
+    "t": 88,
+    "err": 0.0912,
+    "r": 0.678
+   },
+   {
+    "t": 92,
+    "err": 0.0031,
+    "r": 0.8289
+   },
+   {
+    "t": 96,
+    "err": 0.0556,
+    "r": 0.8456
+   },
+   {
+    "t": 100,
+    "err": 0,
+    "r": 0.8052
+   },
+   {
+    "t": 104,
+    "err": 0.0176,
+    "r": 0.597
+   },
+   {
+    "t": 108,
+    "err": 0.0227,
+    "r": 0.7659
+   },
+   {
+    "t": 112,
+    "err": 0.059,
+    "r": 0.7423
+   },
+   {
+    "t": 116,
+    "err": 0.041,
+    "r": 0.7982
+   },
+   {
+    "t": 120,
+    "err": 0.043,
+    "r": 0.8395
+   },
+   {
+    "t": 124,
+    "err": 0.0016,
+    "r": 0.7531
+   },
+   {
+    "t": 128,
+    "err": 0.0693,
+    "r": 0.7479
+   },
+   {
+    "t": 132,
+    "err": 0.0075,
+    "r": 0.6896
+   },
+   {
+    "t": 136,
+    "err": 0.029,
+    "r": 0.6659
+   },
+   {
+    "t": 140,
+    "err": 0.0102,
+    "r": 0.9111
+   },
+   {
+    "t": 144,
+    "err": 0.0128,
+    "r": 0.8213
+   },
+   {
+    "t": 148,
+    "err": 0.07,
+    "r": 0.6946
+   },
+   {
+    "t": 152,
+    "err": 0.0147,
+    "r": 0.7281
+   },
+   {
+    "t": 156,
+    "err": 0.039,
+    "r": 0.7976
+   },
+   {
+    "t": 160,
+    "err": 0.0378,
+    "r": 0.6064
+   },
+   {
+    "t": 164,
+    "err": 0.0559,
+    "r": 0.8059
+   },
+   {
+    "t": 168,
+    "err": 0.0496,
+    "r": 0.7177
+   },
+   {
+    "t": 172,
+    "err": 0.052,
+    "r": 0.7583
+   },
+   {
+    "t": 176,
+    "err": 0.0063,
+    "r": 0.6275
+   },
+   {
+    "t": 180,
+    "err": 0.0393,
+    "r": 0.7059
+   },
+   {
+    "t": 184,
+    "err": 0.0294,
+    "r": 0.6747
+   },
+   {
+    "t": 188,
+    "err": 0.0238,
+    "r": 0.4826
+   },
+   {
+    "t": 192,
+    "err": 0.0136,
+    "r": 0.7284
+   },
+   {
+    "t": 196,
+    "err": 0.0059,
+    "r": 0.8978
+   }
+  ],
+  "uniform": [
+   {
+    "t": 0,
+    "err": 0.1287,
+    "r": 0.9302
+   },
+   {
+    "t": 4,
+    "err": 0.0716,
+    "r": 0.5554
+   },
+   {
+    "t": 8,
+    "err": 0.0809,
+    "r": 0.7384
+   },
+   {
+    "t": 12,
+    "err": 0.0979,
+    "r": 0.8897
+   },
+   {
+    "t": 16,
+    "err": 0.0353,
+    "r": 0.696
+   },
+   {
+    "t": 20,
+    "err": 0.0203,
+    "r": 0.9127
+   },
+   {
+    "t": 24,
+    "err": 0.0096,
+    "r": 0.7163
+   },
+   {
+    "t": 28,
+    "err": 0.0607,
+    "r": 0.8442
+   },
+   {
+    "t": 32,
+    "err": 0.0036,
+    "r": 0.9107
+   },
+   {
+    "t": 36,
+    "err": 0.0009,
+    "r": 0.7899
+   },
+   {
+    "t": 40,
+    "err": 0.0182,
+    "r": 0.7346
+   },
+   {
+    "t": 44,
+    "err": 0.0639,
+    "r": 0.582
+   },
+   {
+    "t": 48,
+    "err": 0.0176,
+    "r": 0.616
+   },
+   {
+    "t": 52,
+    "err": 0.0467,
+    "r": 0.7926
+   },
+   {
+    "t": 56,
+    "err": 0.0723,
+    "r": 0.8553
+   },
+   {
+    "t": 60,
+    "err": 0.0565,
+    "r": 0.5717
+   },
+   {
+    "t": 64,
+    "err": 0.0128,
+    "r": 0.7206
+   },
+   {
+    "t": 68,
+    "err": 0.0445,
+    "r": 0.7913
+   },
+   {
+    "t": 72,
+    "err": 0.1198,
+    "r": 0.611
+   },
+   {
+    "t": 76,
+    "err": 0.1655,
+    "r": 0.7224
+   },
+   {
+    "t": 80,
+    "err": 0.0287,
+    "r": 0.6946
+   },
+   {
+    "t": 84,
+    "err": 0.0315,
+    "r": 0.6804
+   },
+   {
+    "t": 88,
+    "err": 0.0175,
+    "r": 0.678
+   },
+   {
+    "t": 92,
+    "err": 0.0639,
+    "r": 0.8289
+   },
+   {
+    "t": 96,
+    "err": 0.0284,
+    "r": 0.8456
+   },
+   {
+    "t": 100,
+    "err": 0.0787,
+    "r": 0.8052
+   },
+   {
+    "t": 104,
+    "err": 0.0745,
+    "r": 0.597
+   },
+   {
+    "t": 108,
+    "err": 0.0223,
+    "r": 0.7659
+   },
+   {
+    "t": 112,
+    "err": 0.002,
+    "r": 0.7423
+   },
+   {
+    "t": 116,
+    "err": 0.0483,
+    "r": 0.7982
+   },
+   {
+    "t": 120,
+    "err": 0.0664,
+    "r": 0.8395
+   },
+   {
+    "t": 124,
+    "err": 0.1083,
+    "r": 0.7531
+   },
+   {
+    "t": 128,
+    "err": 0.0165,
+    "r": 0.7479
+   },
+   {
+    "t": 132,
+    "err": 0.0902,
+    "r": 0.6896
+   },
+   {
+    "t": 136,
+    "err": 0.0991,
+    "r": 0.6659
+   },
+   {
+    "t": 140,
+    "err": 0.0146,
+    "r": 0.9111
+   },
+   {
+    "t": 144,
+    "err": 0.0012,
+    "r": 0.8213
+   },
+   {
+    "t": 148,
+    "err": 0.0472,
+    "r": 0.6946
+   },
+   {
+    "t": 152,
+    "err": 0.0232,
+    "r": 0.7281
+   },
+   {
+    "t": 156,
+    "err": 0.0583,
+    "r": 0.7976
+   },
+   {
+    "t": 160,
+    "err": 0.0721,
+    "r": 0.6064
+   },
+   {
+    "t": 164,
+    "err": 0.0704,
+    "r": 0.8059
+   },
+   {
+    "t": 168,
+    "err": 0.0544,
+    "r": 0.7177
+   },
+   {
+    "t": 172,
+    "err": 0.0674,
+    "r": 0.7583
+   },
+   {
+    "t": 176,
+    "err": 0.0754,
+    "r": 0.6275
+   },
+   {
+    "t": 180,
+    "err": 0.0251,
+    "r": 0.7059
+   },
+   {
+    "t": 184,
+    "err": 0.0484,
+    "r": 0.6747
+   },
+   {
+    "t": 188,
+    "err": 0.0639,
+    "r": 0.4826
+   },
+   {
+    "t": 192,
+    "err": 0.1063,
+    "r": 0.7284
+   },
+   {
+    "t": 196,
+    "err": 0.0112,
+    "r": 0.8978
+   }
+  ],
+  "trueSigma": [
+   {
+    "t": 0,
+    "err": 0.0377,
+    "r": 0.9302
+   },
+   {
+    "t": 4,
+    "err": 0.0122,
+    "r": 0.5554
+   },
+   {
+    "t": 8,
+    "err": 0.0071,
+    "r": 0.7384
+   },
+   {
+    "t": 12,
+    "err": 0.0472,
+    "r": 0.8897
+   },
+   {
+    "t": 16,
+    "err": 0.0197,
+    "r": 0.696
+   },
+   {
+    "t": 20,
+    "err": 0.0051,
+    "r": 0.9127
+   },
+   {
+    "t": 24,
+    "err": 0.012,
+    "r": 0.7163
+   },
+   {
+    "t": 28,
+    "err": 0.0349,
+    "r": 0.8442
+   },
+   {
+    "t": 32,
+    "err": 0.033,
+    "r": 0.9107
+   },
+   {
+    "t": 36,
+    "err": 0.0003,
+    "r": 0.7899
+   },
+   {
+    "t": 40,
+    "err": 0.0049,
+    "r": 0.7346
+   },
+   {
+    "t": 44,
+    "err": 0.02,
+    "r": 0.582
+   },
+   {
+    "t": 48,
+    "err": 0.0031,
+    "r": 0.616
+   },
+   {
+    "t": 52,
+    "err": 0.0266,
+    "r": 0.7926
+   },
+   {
+    "t": 56,
+    "err": 0.006,
+    "r": 0.8553
+   },
+   {
+    "t": 60,
+    "err": 0.0014,
+    "r": 0.5717
+   },
+   {
+    "t": 64,
+    "err": 0.0034,
+    "r": 0.7206
+   },
+   {
+    "t": 68,
+    "err": 0.0126,
+    "r": 0.7913
+   },
+   {
+    "t": 72,
+    "err": 0.0226,
+    "r": 0.611
+   },
+   {
+    "t": 76,
+    "err": 0.0557,
+    "r": 0.7224
+   },
+   {
+    "t": 80,
+    "err": 0.0036,
+    "r": 0.6946
+   },
+   {
+    "t": 84,
+    "err": 0.0812,
+    "r": 0.6804
+   },
+   {
+    "t": 88,
+    "err": 0.0295,
+    "r": 0.678
+   },
+   {
+    "t": 92,
+    "err": 0.0443,
+    "r": 0.8289
+   },
+   {
+    "t": 96,
+    "err": 0.0031,
+    "r": 0.8456
+   },
+   {
+    "t": 100,
+    "err": 0.0148,
+    "r": 0.8052
+   },
+   {
+    "t": 104,
+    "err": 0.0495,
+    "r": 0.597
+   },
+   {
+    "t": 108,
+    "err": 0.0063,
+    "r": 0.7659
+   },
+   {
+    "t": 112,
+    "err": 0.0113,
+    "r": 0.7423
+   },
+   {
+    "t": 116,
+    "err": 0.0174,
+    "r": 0.7982
+   },
+   {
+    "t": 120,
+    "err": 0.0036,
+    "r": 0.8395
+   },
+   {
+    "t": 124,
+    "err": 0.0484,
+    "r": 0.7531
+   },
+   {
+    "t": 128,
+    "err": 0.0128,
+    "r": 0.7479
+   },
+   {
+    "t": 132,
+    "err": 0.0561,
+    "r": 0.6896
+   },
+   {
+    "t": 136,
+    "err": 0.0254,
+    "r": 0.6659
+   },
+   {
+    "t": 140,
+    "err": 0.0191,
+    "r": 0.9111
+   },
+   {
+    "t": 144,
+    "err": 0.0198,
+    "r": 0.8213
+   },
+   {
+    "t": 148,
+    "err": 0.0293,
+    "r": 0.6946
+   },
+   {
+    "t": 152,
+    "err": 0.0007,
+    "r": 0.7281
+   },
+   {
+    "t": 156,
+    "err": 0.0334,
+    "r": 0.7976
+   },
+   {
+    "t": 160,
+    "err": 0.0329,
+    "r": 0.6064
+   },
+   {
+    "t": 164,
+    "err": 0.0445,
+    "r": 0.8059
+   },
+   {
+    "t": 168,
+    "err": 0.0128,
+    "r": 0.7177
+   },
+   {
+    "t": 172,
+    "err": 0.0076,
+    "r": 0.7583
+   },
+   {
+    "t": 176,
+    "err": 0.0569,
+    "r": 0.6275
+   },
+   {
+    "t": 180,
+    "err": 0.0418,
+    "r": 0.7059
+   },
+   {
+    "t": 184,
+    "err": 0.0134,
+    "r": 0.6747
+   },
+   {
+    "t": 188,
+    "err": 0.046,
+    "r": 0.4826
+   },
+   {
+    "t": 192,
+    "err": 0.0564,
+    "r": 0.7284
+   },
+   {
+    "t": 196,
+    "err": 0.0334,
+    "r": 0.8978
+   }
+  ],
+  "hedge": [
+   {
+    "t": 0,
+    "err": 0.1287,
+    "r": 0.9302
+   },
+   {
+    "t": 4,
+    "err": 0.0677,
+    "r": 0.5554
+   },
+   {
+    "t": 8,
+    "err": 0.0836,
+    "r": 0.7384
+   },
+   {
+    "t": 12,
+    "err": 0.0943,
+    "r": 0.8897
+   },
+   {
+    "t": 16,
+    "err": 0.0346,
+    "r": 0.696
+   },
+   {
+    "t": 20,
+    "err": 0.0196,
+    "r": 0.9127
+   },
+   {
+    "t": 24,
+    "err": 0.0084,
+    "r": 0.7163
+   },
+   {
+    "t": 28,
+    "err": 0.0559,
+    "r": 0.8442
+   },
+   {
+    "t": 32,
+    "err": 0.0052,
+    "r": 0.9107
+   },
+   {
+    "t": 36,
+    "err": 0.0016,
+    "r": 0.7899
+   },
+   {
+    "t": 40,
+    "err": 0.0165,
+    "r": 0.7346
+   },
+   {
+    "t": 44,
+    "err": 0.0569,
+    "r": 0.582
+   },
+   {
+    "t": 48,
+    "err": 0.0201,
+    "r": 0.616
+   },
+   {
+    "t": 52,
+    "err": 0.045,
+    "r": 0.7926
+   },
+   {
+    "t": 56,
+    "err": 0.0611,
+    "r": 0.8553
+   },
+   {
+    "t": 60,
+    "err": 0.0474,
+    "r": 0.5717
+   },
+   {
+    "t": 64,
+    "err": 0.0044,
+    "r": 0.7206
+   },
+   {
+    "t": 68,
+    "err": 0.0264,
+    "r": 0.7913
+   },
+   {
+    "t": 72,
+    "err": 0.0846,
+    "r": 0.611
+   },
+   {
+    "t": 76,
+    "err": 0.131,
+    "r": 0.7224
+   },
+   {
+    "t": 80,
+    "err": 0.0044,
+    "r": 0.6946
+   },
+   {
+    "t": 84,
+    "err": 0.0043,
+    "r": 0.6804
+   },
+   {
+    "t": 88,
+    "err": 0.0271,
+    "r": 0.678
+   },
+   {
+    "t": 92,
+    "err": 0.0587,
+    "r": 0.8289
+   },
+   {
+    "t": 96,
+    "err": 0.0224,
+    "r": 0.8456
+   },
+   {
+    "t": 100,
+    "err": 0.0539,
+    "r": 0.8052
+   },
+   {
+    "t": 104,
+    "err": 0.0434,
+    "r": 0.597
+   },
+   {
+    "t": 108,
+    "err": 0.0046,
+    "r": 0.7659
+   },
+   {
+    "t": 112,
+    "err": 0.0035,
+    "r": 0.7423
+   },
+   {
+    "t": 116,
+    "err": 0.0138,
+    "r": 0.7982
+   },
+   {
+    "t": 120,
+    "err": 0.0429,
+    "r": 0.8395
+   },
+   {
+    "t": 124,
+    "err": 0.0755,
+    "r": 0.7531
+   },
+   {
+    "t": 128,
+    "err": 0.0118,
+    "r": 0.7479
+   },
+   {
+    "t": 132,
+    "err": 0.083,
+    "r": 0.6896
+   },
+   {
+    "t": 136,
+    "err": 0.0666,
+    "r": 0.6659
+   },
+   {
+    "t": 140,
+    "err": 0.0079,
+    "r": 0.9111
+   },
+   {
+    "t": 144,
+    "err": 0.0102,
+    "r": 0.8213
+   },
+   {
+    "t": 148,
+    "err": 0.0396,
+    "r": 0.6946
+   },
+   {
+    "t": 152,
+    "err": 0.0085,
+    "r": 0.7281
+   },
+   {
+    "t": 156,
+    "err": 0.0342,
+    "r": 0.7976
+   },
+   {
+    "t": 160,
+    "err": 0.0459,
+    "r": 0.6064
+   },
+   {
+    "t": 164,
+    "err": 0.0452,
+    "r": 0.8059
+   },
+   {
+    "t": 168,
+    "err": 0.0678,
+    "r": 0.7177
+   },
+   {
+    "t": 172,
+    "err": 0.0532,
+    "r": 0.7583
+   },
+   {
+    "t": 176,
+    "err": 0.0528,
+    "r": 0.6275
+   },
+   {
+    "t": 180,
+    "err": 0.02,
+    "r": 0.7059
+   },
+   {
+    "t": 184,
+    "err": 0.0042,
+    "r": 0.6747
+   },
+   {
+    "t": 188,
+    "err": 0.048,
+    "r": 0.4826
+   },
+   {
+    "t": 192,
+    "err": 0.0698,
+    "r": 0.7284
+   },
+   {
+    "t": 196,
+    "err": 0.0088,
+    "r": 0.8978
+   }
+  ]
+ },
+ "perSeedHedge": [
+  {
+   "seed": 0,
+   "advWeightFinal": 0.0251,
+   "advWeightAtTurn": 0.08972,
+   "sharpFinal": 0.12596,
+   "entropyFinal": 0.9619,
+   "lieHiMean": 0.7062,
+   "lieLoMean": 0.7332,
+   "lieHiN": 91,
+   "lieLoN": 56,
+   "lieHiPostN": 90,
+   "lieLoPostN": 14,
+   "trustFinal": {
+    "n1": 0.12495,
+    "n2": 0.1215,
+    "n3": 0.12896,
+    "n4": 0.12843,
+    "n5": 0.08183,
+    "n6": 0.08524,
+    "n7": 0.08181,
+    "n8": 0.08034,
+    "n9": 0.0542,
+    "n10": 0.04225,
+    "n11": 0.0454,
+    "n12": 0.0251
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 1,
+   "advWeightFinal": 0.02183,
+   "advWeightAtTurn": 0.09838,
+   "sharpFinal": 0.12653,
+   "entropyFinal": 0.9629,
+   "lieHiMean": 0.697,
+   "lieLoMean": 0.7667,
+   "lieHiN": 90,
+   "lieLoN": 56,
+   "lieHiPostN": 90,
+   "lieLoPostN": 12,
+   "trustFinal": {
+    "n1": 0.13103,
+    "n2": 0.12916,
+    "n3": 0.12487,
+    "n4": 0.12108,
+    "n5": 0.07104,
+    "n6": 0.09426,
+    "n7": 0.06465,
+    "n8": 0.07789,
+    "n9": 0.05171,
+    "n10": 0.05366,
+    "n11": 0.05882,
+    "n12": 0.02183
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 2,
+   "advWeightFinal": 0.01412,
+   "advWeightAtTurn": 0.09519,
+   "sharpFinal": 0.12196,
+   "entropyFinal": 0.9592,
+   "lieHiMean": 0.7116,
+   "lieLoMean": 0.7603,
+   "lieHiN": 105,
+   "lieLoN": 54,
+   "lieHiPostN": 105,
+   "lieLoPostN": 15,
+   "trustFinal": {
+    "n1": 0.12843,
+    "n2": 0.11822,
+    "n3": 0.123,
+    "n4": 0.11819,
+    "n5": 0.07672,
+    "n6": 0.06581,
+    "n7": 0.08628,
+    "n8": 0.11021,
+    "n9": 0.04975,
+    "n10": 0.05089,
+    "n11": 0.05839,
+    "n12": 0.01412
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 3,
+   "advWeightFinal": 0.01596,
+   "advWeightAtTurn": 0.08785,
+   "sharpFinal": 0.11818,
+   "entropyFinal": 0.9667,
+   "lieHiMean": 0.6966,
+   "lieLoMean": 0.8386,
+   "lieHiN": 107,
+   "lieLoN": 61,
+   "lieHiPostN": 106,
+   "lieLoPostN": 16,
+   "trustFinal": {
+    "n1": 0.11521,
+    "n2": 0.10928,
+    "n3": 0.12078,
+    "n4": 0.12745,
+    "n5": 0.08334,
+    "n6": 0.08125,
+    "n7": 0.07412,
+    "n8": 0.09644,
+    "n9": 0.06569,
+    "n10": 0.04852,
+    "n11": 0.06195,
+    "n12": 0.01596
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 4,
+   "advWeightFinal": 0.01657,
+   "advWeightAtTurn": 0.08983,
+   "sharpFinal": 0.12325,
+   "entropyFinal": 0.963,
+   "lieHiMean": 0.7144,
+   "lieLoMean": 0.7406,
+   "lieHiN": 81,
+   "lieLoN": 59,
+   "lieHiPostN": 80,
+   "lieLoPostN": 22,
+   "trustFinal": {
+    "n1": 0.12545,
+    "n2": 0.1193,
+    "n3": 0.12316,
+    "n4": 0.12509,
+    "n5": 0.08724,
+    "n6": 0.07297,
+    "n7": 0.07469,
+    "n8": 0.07866,
+    "n9": 0.04006,
+    "n10": 0.07385,
+    "n11": 0.06298,
+    "n12": 0.01657
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 5,
+   "advWeightFinal": 0.01828,
+   "advWeightAtTurn": 0.08372,
+   "sharpFinal": 0.1166,
+   "entropyFinal": 0.9663,
+   "lieHiMean": 0.6732,
+   "lieLoMean": 0.757,
+   "lieHiN": 104,
+   "lieLoN": 50,
+   "lieHiPostN": 104,
+   "lieLoPostN": 11,
+   "trustFinal": {
+    "n1": 0.11648,
+    "n2": 0.11667,
+    "n3": 0.11484,
+    "n4": 0.1184,
+    "n5": 0.09362,
+    "n6": 0.09389,
+    "n7": 0.0926,
+    "n8": 0.07813,
+    "n9": 0.06048,
+    "n10": 0.04719,
+    "n11": 0.04942,
+    "n12": 0.01828
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 6,
+   "advWeightFinal": 0.02258,
+   "advWeightAtTurn": 0.09133,
+   "sharpFinal": 0.12595,
+   "entropyFinal": 0.9588,
+   "lieHiMean": 0.6815,
+   "lieLoMean": 0.7683,
+   "lieHiN": 90,
+   "lieLoN": 57,
+   "lieHiPostN": 89,
+   "lieLoPostN": 18,
+   "trustFinal": {
+    "n1": 0.11955,
+    "n2": 0.12314,
+    "n3": 0.13066,
+    "n4": 0.13044,
+    "n5": 0.09374,
+    "n6": 0.08788,
+    "n7": 0.07477,
+    "n8": 0.08022,
+    "n9": 0.03807,
+    "n10": 0.05305,
+    "n11": 0.0459,
+    "n12": 0.02258
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 7,
+   "advWeightFinal": 0.03852,
+   "advWeightAtTurn": 0.08545,
+   "sharpFinal": 0.11851,
+   "entropyFinal": 0.9761,
+   "lieHiMean": 0.6775,
+   "lieLoMean": 0.7629,
+   "lieHiN": 61,
+   "lieLoN": 65,
+   "lieHiPostN": 61,
+   "lieLoPostN": 22,
+   "trustFinal": {
+    "n1": 0.1214,
+    "n2": 0.12128,
+    "n3": 0.11006,
+    "n4": 0.1213,
+    "n5": 0.08182,
+    "n6": 0.08837,
+    "n7": 0.0749,
+    "n8": 0.07633,
+    "n9": 0.06104,
+    "n10": 0.0483,
+    "n11": 0.05668,
+    "n12": 0.03852
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 8,
+   "advWeightFinal": 0.01383,
+   "advWeightAtTurn": 0.09068,
+   "sharpFinal": 0.12493,
+   "entropyFinal": 0.9581,
+   "lieHiMean": 0.6986,
+   "lieLoMean": 0.7519,
+   "lieHiN": 126,
+   "lieLoN": 43,
+   "lieHiPostN": 126,
+   "lieLoPostN": 3,
+   "trustFinal": {
+    "n1": 0.12826,
+    "n2": 0.1249,
+    "n3": 0.12364,
+    "n4": 0.12293,
+    "n5": 0.09195,
+    "n6": 0.07947,
+    "n7": 0.08033,
+    "n8": 0.08328,
+    "n9": 0.05446,
+    "n10": 0.04731,
+    "n11": 0.04964,
+    "n12": 0.01383
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 9,
+   "advWeightFinal": 0.01325,
+   "advWeightAtTurn": 0.09403,
+   "sharpFinal": 0.12169,
+   "entropyFinal": 0.9579,
+   "lieHiMean": 0.7035,
+   "lieLoMean": 0.7341,
+   "lieHiN": 123,
+   "lieLoN": 53,
+   "lieHiPostN": 121,
+   "lieLoPostN": 10,
+   "trustFinal": {
+    "n1": 0.12629,
+    "n2": 0.11476,
+    "n3": 0.12231,
+    "n4": 0.1234,
+    "n5": 0.09306,
+    "n6": 0.0966,
+    "n7": 0.08161,
+    "n8": 0.08248,
+    "n9": 0.04174,
+    "n10": 0.05041,
+    "n11": 0.0541,
+    "n12": 0.01325
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 10,
+   "advWeightFinal": 0.03448,
+   "advWeightAtTurn": 0.09572,
+   "sharpFinal": 0.12349,
+   "entropyFinal": 0.9651,
+   "lieHiMean": 0.6955,
+   "lieLoMean": 0.7721,
+   "lieHiN": 72,
+   "lieLoN": 66,
+   "lieHiPostN": 72,
+   "lieLoPostN": 24,
+   "trustFinal": {
+    "n1": 0.12521,
+    "n2": 0.12798,
+    "n3": 0.11064,
+    "n4": 0.13013,
+    "n5": 0.07947,
+    "n6": 0.08881,
+    "n7": 0.0925,
+    "n8": 0.07428,
+    "n9": 0.05458,
+    "n10": 0.04441,
+    "n11": 0.03751,
+    "n12": 0.03448
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 11,
+   "advWeightFinal": 0.0206,
+   "advWeightAtTurn": 0.08913,
+   "sharpFinal": 0.11653,
+   "entropyFinal": 0.9699,
+   "lieHiMean": 0.7112,
+   "lieLoMean": 0.757,
+   "lieHiN": 90,
+   "lieLoN": 64,
+   "lieHiPostN": 90,
+   "lieLoPostN": 14,
+   "trustFinal": {
+    "n1": 0.10982,
+    "n2": 0.12003,
+    "n3": 0.11981,
+    "n4": 0.11644,
+    "n5": 0.08112,
+    "n6": 0.08302,
+    "n7": 0.09619,
+    "n8": 0.08673,
+    "n9": 0.05811,
+    "n10": 0.05514,
+    "n11": 0.05299,
+    "n12": 0.0206
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 12,
+   "advWeightFinal": 0.03763,
+   "advWeightAtTurn": 0.09166,
+   "sharpFinal": 0.12133,
+   "entropyFinal": 0.9701,
+   "lieHiMean": 0.7005,
+   "lieLoMean": 0.7927,
+   "lieHiN": 57,
+   "lieLoN": 86,
+   "lieHiPostN": 57,
+   "lieLoPostN": 34,
+   "trustFinal": {
+    "n1": 0.11577,
+    "n2": 0.12464,
+    "n3": 0.12589,
+    "n4": 0.11902,
+    "n5": 0.0813,
+    "n6": 0.07804,
+    "n7": 0.07726,
+    "n8": 0.09433,
+    "n9": 0.04073,
+    "n10": 0.04775,
+    "n11": 0.05764,
+    "n12": 0.03763
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 13,
+   "advWeightFinal": 0.01352,
+   "advWeightAtTurn": 0.08763,
+   "sharpFinal": 0.12262,
+   "entropyFinal": 0.9576,
+   "lieHiMean": 0.7113,
+   "lieLoMean": 0.7804,
+   "lieHiN": 112,
+   "lieLoN": 56,
+   "lieHiPostN": 111,
+   "lieLoPostN": 12,
+   "trustFinal": {
+    "n1": 0.11719,
+    "n2": 0.12584,
+    "n3": 0.12419,
+    "n4": 0.12324,
+    "n5": 0.08512,
+    "n6": 0.09302,
+    "n7": 0.09107,
+    "n8": 0.08125,
+    "n9": 0.04492,
+    "n10": 0.0571,
+    "n11": 0.04354,
+    "n12": 0.01352
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 14,
+   "advWeightFinal": 0.01746,
+   "advWeightAtTurn": 0.09286,
+   "sharpFinal": 0.11938,
+   "entropyFinal": 0.9651,
+   "lieHiMean": 0.7137,
+   "lieLoMean": 0.7596,
+   "lieHiN": 95,
+   "lieLoN": 44,
+   "lieHiPostN": 95,
+   "lieLoPostN": 11,
+   "trustFinal": {
+    "n1": 0.11553,
+    "n2": 0.12865,
+    "n3": 0.11787,
+    "n4": 0.11549,
+    "n5": 0.08873,
+    "n6": 0.08588,
+    "n7": 0.08841,
+    "n8": 0.08111,
+    "n9": 0.06434,
+    "n10": 0.04836,
+    "n11": 0.04817,
+    "n12": 0.01746
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 15,
+   "advWeightFinal": 0.04086,
+   "advWeightAtTurn": 0.09057,
+   "sharpFinal": 0.12255,
+   "entropyFinal": 0.9721,
+   "lieHiMean": 0.6678,
+   "lieLoMean": 0.7431,
+   "lieHiN": 68,
+   "lieLoN": 65,
+   "lieHiPostN": 68,
+   "lieLoPostN": 26,
+   "trustFinal": {
+    "n1": 0.1182,
+    "n2": 0.12429,
+    "n3": 0.12658,
+    "n4": 0.12116,
+    "n5": 0.08953,
+    "n6": 0.0722,
+    "n7": 0.07365,
+    "n8": 0.07999,
+    "n9": 0.05187,
+    "n10": 0.04654,
+    "n11": 0.05514,
+    "n12": 0.04086
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 16,
+   "advWeightFinal": 0.02083,
+   "advWeightAtTurn": 0.09224,
+   "sharpFinal": 0.12849,
+   "entropyFinal": 0.9565,
+   "lieHiMean": 0.6991,
+   "lieLoMean": 0.7283,
+   "lieHiN": 97,
+   "lieLoN": 55,
+   "lieHiPostN": 97,
+   "lieLoPostN": 17,
+   "trustFinal": {
+    "n1": 0.11945,
+    "n2": 0.1438,
+    "n3": 0.12392,
+    "n4": 0.1268,
+    "n5": 0.09096,
+    "n6": 0.07424,
+    "n7": 0.08709,
+    "n8": 0.07224,
+    "n9": 0.04215,
+    "n10": 0.05527,
+    "n11": 0.04324,
+    "n12": 0.02083
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 17,
+   "advWeightFinal": 0.01728,
+   "advWeightAtTurn": 0.09368,
+   "sharpFinal": 0.12134,
+   "entropyFinal": 0.9633,
+   "lieHiMean": 0.7026,
+   "lieLoMean": 0.7606,
+   "lieHiN": 116,
+   "lieLoN": 51,
+   "lieHiPostN": 116,
+   "lieLoPostN": 10,
+   "trustFinal": {
+    "n1": 0.11573,
+    "n2": 0.12718,
+    "n3": 0.12366,
+    "n4": 0.11879,
+    "n5": 0.08102,
+    "n6": 0.09057,
+    "n7": 0.086,
+    "n8": 0.08289,
+    "n9": 0.05978,
+    "n10": 0.05286,
+    "n11": 0.04424,
+    "n12": 0.01728
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 18,
+   "advWeightFinal": 0.02127,
+   "advWeightAtTurn": 0.08503,
+   "sharpFinal": 0.12517,
+   "entropyFinal": 0.9641,
+   "lieHiMean": 0.7057,
+   "lieLoMean": 0.766,
+   "lieHiN": 94,
+   "lieLoN": 53,
+   "lieHiPostN": 94,
+   "lieLoPostN": 9,
+   "trustFinal": {
+    "n1": 0.12184,
+    "n2": 0.12906,
+    "n3": 0.12366,
+    "n4": 0.12614,
+    "n5": 0.08884,
+    "n6": 0.07305,
+    "n7": 0.05876,
+    "n8": 0.0852,
+    "n9": 0.06251,
+    "n10": 0.06135,
+    "n11": 0.04832,
+    "n12": 0.02127
+   },
+   "maxSheetVsBusDiff": 0
+  },
+  {
+   "seed": 19,
+   "advWeightFinal": 0.01553,
+   "advWeightAtTurn": 0.08293,
+   "sharpFinal": 0.12399,
+   "entropyFinal": 0.9635,
+   "lieHiMean": 0.7252,
+   "lieLoMean": 0.8121,
+   "lieHiN": 112,
+   "lieLoN": 52,
+   "lieHiPostN": 112,
+   "lieLoPostN": 10,
+   "trustFinal": {
+    "n1": 0.12063,
+    "n2": 0.12702,
+    "n3": 0.12274,
+    "n4": 0.12558,
+    "n5": 0.08606,
+    "n6": 0.07909,
+    "n7": 0.06912,
+    "n8": 0.07337,
+    "n9": 0.06353,
+    "n10": 0.04848,
+    "n11": 0.06886,
+    "n12": 0.01553
+   },
+   "maxSheetVsBusDiff": 0
+  }
+ ],
+ "meanR": 0.7239,
+ "chain": {
+  "rows": 13,
+  "verified": true,
+  "links": 13,
+  "tip": "0xc715da19582be6c2"
+ },
+ "runtimeMs": 2595
+}

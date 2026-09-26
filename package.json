@@ -1,0 +1,16 @@
+{
+  "name": "quilt-murmur",
+  "version": "0.1.0",
+  "description": "The murmur lineage reborn as quilt: gossip cells, learned trust, graph-of-thought by cell copying, resonance consensus, and a gardener for the greater tree",
+  "type": "module",
+  "scripts": {
+    "e14": "node experiments/e14_pricing_mesh.mjs",
+    "e15": "node experiments/e15_adventure_gardener.mjs",
+    "e16": "node experiments/e16_resonance_consensus.mjs",
+    "e17": "node experiments/e17_gossip_trust.mjs",
+    "e18": "node experiments/e18_llm_setup.mjs",
+    "smoke": "node experiments/smoke.mjs"
+  },
+  "license": "MIT",
+  "dependencies": { "yaml": "^2.4.0" }
+}

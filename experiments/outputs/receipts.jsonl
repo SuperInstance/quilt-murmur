@@ -1,0 +1,8 @@
+{"seq":1,"kind":"run.config","T":300,"FLIP":150,"MAXB":10,"seeds":20,"arms":["fixed","scoreonly","ensemble","meshnt","mesh"],"vault":"live:a318202a-561c-4a73-b30b-8f7ffd2ad956","poolDigest":"0x1597d15409bbdb03","row_hash":"0xdf96858684f3d686"}
+{"seq":2,"kind":"arm.summary","arm":"fixed","totalRev":317607.9,"totalSd":34769.2,"postRev":158254.1,"postSd":6533.3,"postFirst50":49612,"postLast100":108642.1,"scars":0,"resCorr":0,"poolMismatches":0,"row_hash":"0x0f383190b2c33d1b"}
+{"seq":3,"kind":"arm.summary","arm":"scoreonly","totalRev":300956,"totalSd":29841.9,"postRev":168513.4,"postSd":6898.8,"postFirst50":56500.6,"postLast100":112012.8,"scars":51.5,"resCorr":0,"poolMismatches":0,"row_hash":"0xf8e229b5b1655384"}
+{"seq":4,"kind":"arm.summary","arm":"ensemble","totalRev":300441.8,"totalSd":35676.4,"postRev":166224.6,"postSd":14649.4,"postFirst50":57523.6,"postLast100":108700.9,"scars":38,"resCorr":0,"poolMismatches":0,"row_hash":"0xf76205d442e1ef64"}
+{"seq":5,"kind":"arm.summary","arm":"meshnt","totalRev":303279,"totalSd":57213,"postRev":168392.8,"postSd":40574.9,"postFirst50":55773.6,"postLast100":112619.2,"scars":38,"resCorr":0.005,"poolMismatches":0,"row_hash":"0x35226aec60b09338"}
+{"seq":6,"kind":"arm.summary","arm":"mesh","totalRev":293158.3,"totalSd":26589.7,"postRev":161820.5,"postSd":6857.3,"postFirst50":51154,"postLast100":110666.5,"scars":48.3,"resCorr":0,"poolMismatches":0,"row_hash":"0x9eeb77bec97aeb1b"}
+{"seq":7,"kind":"e14.findings","note":"see site/charts + MESH.md; trust trajectories in meshTraceSeed0","row_hash":"0x3ee05de6098d94c8"}
+{"seq":8,"kind":"chain.seal","rows":7,"digest":"0xecee72a15d0e7a77","row_hash":"0xe667f6826b5d8463"}

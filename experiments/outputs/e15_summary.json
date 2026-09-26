@@ -1,0 +1,223 @@
+{
+  "perArm": {
+    "NOGARD": {
+      "finalQuality": {
+        "mean": 0.8466,
+        "sd": 0.0395
+      },
+      "diversity": 4,
+      "spawns": 0,
+      "prunes": 0,
+      "grafts": 0,
+      "graftYield": 0,
+      "completed": 3
+    },
+    "BOLD": {
+      "finalQuality": {
+        "mean": 0.9025,
+        "sd": 0.0565
+      },
+      "diversity": 6,
+      "spawns": 11,
+      "prunes": 13,
+      "grafts": 0,
+      "graftYield": 0,
+      "completed": 1.4
+    },
+    "STEADY": {
+      "finalQuality": {
+        "mean": 0.875,
+        "sd": 0.0654
+      },
+      "diversity": 5.6,
+      "spawns": 0,
+      "prunes": 11,
+      "grafts": 0,
+      "graftYield": 0,
+      "completed": 1.2
+    },
+    "TIMID": {
+      "finalQuality": {
+        "mean": 0.8821,
+        "sd": 0.0679
+      },
+      "diversity": 7.4,
+      "spawns": 0,
+      "prunes": 0,
+      "grafts": 0,
+      "graftYield": 0,
+      "completed": 0.7
+    },
+    "ADAPT": {
+      "finalQuality": {
+        "mean": 0.9054,
+        "sd": 0.0643
+      },
+      "diversity": 6.6,
+      "spawns": 2,
+      "prunes": 8,
+      "grafts": 1,
+      "graftYield": 0.0333,
+      "completed": 0.9
+    }
+  },
+  "curve": {
+    "NOGARD": {
+      "budget": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100,
+        110,
+        120
+      ],
+      "quality": [
+        0.739,
+        0.7496,
+        0.7502,
+        0.7596,
+        0.7798,
+        0.792,
+        0.7968,
+        0.7968,
+        0.7968,
+        0.7968,
+        0.7968,
+        0.7968
+      ]
+    },
+    "BOLD": {
+      "budget": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100,
+        110,
+        120
+      ],
+      "quality": [
+        0.8667,
+        0.8419,
+        0.8419,
+        0.8597,
+        0.8597,
+        0.8597,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "STEADY": {
+      "budget": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100,
+        110,
+        120
+      ],
+      "quality": [
+        0.7004,
+        0.75,
+        1,
+        0.892,
+        0.8337,
+        0.8337,
+        0.8002,
+        0.8046,
+        0.8128,
+        0.8259,
+        0.8259,
+        0.8259
+      ]
+    },
+    "TIMID": {
+      "budget": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100,
+        110,
+        120
+      ],
+      "quality": [
+        0.9006,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0.8873,
+        0.8686,
+        0.8587,
+        0.8587
+      ]
+    },
+    "ADAPT": {
+      "budget": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100,
+        110,
+        120
+      ],
+      "quality": [
+        0.7775,
+        0.8795,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0.9817,
+        0.9817,
+        0.9817
+      ]
+    }
+  },
+  "verdict": "ADAPT (0.905) TIES fixed BOLD (0.902) at 2 SE (Δ0.003); gardened arms beat single-path NOGARD (0.847)",
+  "hypothesis": "Mechanism: ADAPT buys no measurable edge over the best fixed policy in a 40-step season (its q-values converge too late); the gardening win comes from branch diversity + budget reallocation (every gardened arm > NOGARD), not from the meta-bandit. Grafts are structurally starved: the strict transition grammar keeps survivor coherence at 1.0, so transplants rarely have coherence to raise.",
+  "verify": {
+    "ok": true,
+    "links": 52
+  },
+  "elapsedMs": 3117
+}
