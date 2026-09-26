@@ -39,6 +39,10 @@ node experiments/e20_long_seasons.mjs          # the gardener given time to gard
 node experiments/e21_coldstart_admission.mjs   # protocol v3.1: admission + fractional influence
 node experiments/e22_crossfleet_bracket.mjs    # arena minds vs mesh minds under one ration
 node experiments/e23_tree_gardener.mjs         # subtree operators under a high-order goal
+node experiments/e31_founder_guard.mjs         # the founder-velocity guard (v3.2 candidate)
+node experiments/e33_flood_poison.mjs          # sybil flood copying a toxic founder, at cap scale
+node experiments/e34_tool_productivity.mjs     # the tool productivity audit (paired ON/OFF)
+node experiments/tools_gauntlet.mjs            # the tool gauntlet: 42 adversarial probes, 9 tools
 ```
 
 Outputs land in `experiments/outputs/` (receipt chains + summaries).
@@ -130,6 +134,36 @@ a mock never pretends to be quantum.
   transplants/run vs 3.4; sprawl ratio stable at ~2.7), but TREE trades leaf quality for
   canopy structure exactly when NODE20's node-level search still converts steps into
   quality. The tree view is a diversity instrument, not a quality instrument.
+- **The founder-velocity guard closes the founder-turn hole** (E31): a guard watching
+  each entrenched voice's reward trajectory (EWMA gap > 0.15 for 8 rounds + a WRONG-SIDE
+  band test: recent reward < 0.45, between the toxic asymptote 0.375 and the honest
+  asymptote ≥ 0.5) trips on the turned founder 8/8 seeds (median 25 rounds after the
+  turn) with ZERO false trips, cuts late-window x1 damage (paired +0.0003 ± 0.00007,
+  8W/0L, p=0.004) and reaches the 0.25x demotion bar at median 185 vs 273.5 — 88.5
+  rounds faster. The first protocol lever that acts on WHAT A VOICE SAYS (reward
+  trajectory) rather than where it came from (identity economics) — v3.2 candidate.
+  Generator receipt: E27's code inverted w.p. 0.25 (reward 0.627, barely toxic) while
+  its note claimed 0.375; E31 implements the intent — harder toxicity, conservative wins.
+- **The flood-breaker holds the combined attack — until the sybils are admitted** (E33):
+  with a flood COPYING the toxic founder, v3.1 cuts damage 2.5x (paired 8W/0L, p=0.004)
+  and the probationary cap keeps newcomer share ≤ 0.097 (bar 0.12) — but in the
+  flood-only arm 48 sybils get ADMITTED (independence + usefulness bars met: copying a
+  founder whose values nobody else corroborates makes the copies 'independent'), after
+  which the cap no longer applies and share hits 0.136. RECEIPTED: capShare is a
+  probation-only economics; admitted copiers are trust's problem. The combined attack is
+  additive, not super-additive (interaction ≈ 0 ± 1 SE).
+- **The tools do work — and the audit says which** (E34 + the gauntlet): 42 adversarial
+  probes across 9 tools, 0 fails, with 5 receipted fail-safe fixes (bus NaN envelopes
+  poisoning whole topics + live/log alias aging; gardener credit floors leaking negative
+  under fractional refills; graft cycles silently corrupting topology / hanging
+  rootPath forever; moth weightedPick returning zero-weight branches at u=0). The paired
+  ON/OFF audit: trust learning is the backbone (removal = 6.2x damage), admission is
+  the sybil lever (removal = 117x sybil damage, share 5.4% vs 0.8%), and provenance is
+  DEAD WEIGHT against a clique that copies a GOOD voice (~0 pool damage either way —
+  its product is anti-legitimacy-theft, priced in influence share not damage; against
+  copying a LIAR it is E21's 6.5x). Determinism is productivity itself: FULL reruns are
+  bit-exact 4/4; a Math.random-fed vault diverges at round 0 — the pool digest is the
+  reproducible universe handle.
 
 ## Provenance
 

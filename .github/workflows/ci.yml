@@ -46,6 +46,14 @@ jobs:
         run: node experiments/e27_founder_turn.mjs 4
       - name: E28 budget leg (offline, 4 seeds)
         run: node experiments/e28_budget_leg.mjs 4
+      - name: Tool gauntlet (offline, 42 probes)
+        run: node experiments/tools_gauntlet.mjs
+      - name: E31 founder-velocity guard (offline, 4 seeds)
+        run: node experiments/e31_founder_guard.mjs 4
+      - name: E33 flood copying a toxic founder (offline, 4 seeds)
+        run: node experiments/e33_flood_poison.mjs 4
+      - name: E34 tool productivity audit (offline, 2 seeds)
+        run: node experiments/e34_tool_productivity.mjs 2
       - name: Charts
         run: pip install matplotlib && python3 charts.py
       - name: Verify receipt chains
@@ -54,7 +62,7 @@ jobs:
           import { readFileSync } from 'node:fs';
           import { verifyChain } from './murmur/receipts.mjs';
           let bad = 0;
-          for (const f of ['receipts','receipts_e15','receipts_e16','receipts_e17','receipts_e18','receipts_e20','receipts_e21','receipts_e22','receipts_e23','receipts_e24','receipts_e25','receipts_e26','receipts_e27','receipts_e28']) {
+          for (const f of ['receipts','receipts_e15','receipts_e16','receipts_e17','receipts_e18','receipts_e20','receipts_e21','receipts_e22','receipts_e23','receipts_e24','receipts_e25','receipts_e26','receipts_e27','receipts_e28','receipts_tools','receipts_e31','receipts_e33','receipts_e34']) {
             try {
               const rows = readFileSync('./experiments/outputs/' + f + '.jsonl','utf8').trim().split('\n').map(JSON.parse);
               const v = verifyChain(rows);

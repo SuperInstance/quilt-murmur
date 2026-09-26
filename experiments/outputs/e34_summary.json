@@ -1,0 +1,392 @@
+{
+ "task": "E34",
+ "name": "the tool productivity audit",
+ "seeds": 4,
+ "T": 400,
+ "voices": 17,
+ "arms": [
+  "FULL",
+  "NO-PROV",
+  "NO-ADM",
+  "NO-TRUST",
+  "RAND"
+ ],
+ "runtime_s": 216.7,
+ "config": {
+  "scenario": "18 voices: 11 honest + toxic founder (genesis) + clique founders (copy a1 from t=100) + 3 sybils (t=150, copy x1)",
+  "window": [
+   190,
+   400
+  ],
+  "hedge": {
+   "eta": 0.25,
+   "share": 0.02
+  },
+  "admission": {
+   "epsNew": 0.15,
+   "admitWindow": 40,
+   "minEdgesIndep": 2,
+   "admitErr": 0.5,
+   "capShare": 0.1
+  },
+  "verdictRules": "file header (receipted before the final run)",
+  "infraNote": "receipts/bus -> 22-c gauntlet; gardener/resonance -> E16/E20/E23/E26/E28"
+ },
+ "payTable": {
+  "NO-PROV": {
+   "verdict": "DEAD-WEIGHT CANDIDATE",
+   "poolErr": {
+    "full": {
+     "mean": 0.268575,
+     "sd": 0.019123,
+     "n": 4
+    },
+    "removed": {
+     "mean": 0.26988,
+     "sd": 0.017113,
+     "n": 4
+    }
+   },
+   "pairedDelta_err": {
+    "mean": 0.001305,
+    "se": 0.001051,
+    "sign": {
+     "p": 0.6875,
+     "W": 2,
+     "L": 2,
+     "n": 4
+    }
+   },
+   "damageRatio_total": 1.001433
+  },
+  "NO-ADM": {
+   "verdict": "PAYS",
+   "poolErr": {
+    "full": {
+     "mean": 0.268575,
+     "sd": 0.019123,
+     "n": 4
+    },
+    "removed": {
+     "mean": 0.271667,
+     "sd": 0.018965,
+     "n": 4
+    }
+   },
+   "pairedDelta_err": {
+    "mean": 0.003091,
+    "se": 0.000703,
+    "sign": {
+     "p": 0.0625,
+     "W": 4,
+     "L": 0,
+     "n": 4
+    }
+   },
+   "damageRatio_total": 1.785464
+  },
+  "NO-TRUST": {
+   "verdict": "PAYS",
+   "poolErr": {
+    "full": {
+     "mean": 0.268575,
+     "sd": 0.019123,
+     "n": 4
+    },
+    "removed": {
+     "mean": 0.350074,
+     "sd": 0.004783,
+     "n": 4
+    }
+   },
+   "pairedDelta_err": {
+    "mean": 0.081499,
+    "se": 0.010992,
+    "sign": {
+     "p": 0.0625,
+     "W": 4,
+     "L": 0,
+     "n": 4
+    }
+   },
+   "damageRatio_total": 6.201272
+  }
+ },
+ "claims": {
+  "C1_payTable": {
+   "verdict": "CONFIRMED (see per-tool verdicts)",
+   "tools": {
+    "NO-PROV": {
+     "verdict": "DEAD-WEIGHT CANDIDATE",
+     "poolErr": {
+      "full": {
+       "mean": 0.268575,
+       "sd": 0.019123,
+       "n": 4
+      },
+      "removed": {
+       "mean": 0.26988,
+       "sd": 0.017113,
+       "n": 4
+      }
+     },
+     "pairedDelta_err": {
+      "mean": 0.001305,
+      "se": 0.001051,
+      "sign": {
+       "p": 0.6875,
+       "W": 2,
+       "L": 2,
+       "n": 4
+      }
+     },
+     "damageRatio_total": 1.001433
+    },
+    "NO-ADM": {
+     "verdict": "PAYS",
+     "poolErr": {
+      "full": {
+       "mean": 0.268575,
+       "sd": 0.019123,
+       "n": 4
+      },
+      "removed": {
+       "mean": 0.271667,
+       "sd": 0.018965,
+       "n": 4
+      }
+     },
+     "pairedDelta_err": {
+      "mean": 0.003091,
+      "se": 0.000703,
+      "sign": {
+       "p": 0.0625,
+       "W": 4,
+       "L": 0,
+       "n": 4
+      }
+     },
+     "damageRatio_total": 1.785464
+    },
+    "NO-TRUST": {
+     "verdict": "PAYS",
+     "poolErr": {
+      "full": {
+       "mean": 0.268575,
+       "sd": 0.019123,
+       "n": 4
+      },
+      "removed": {
+       "mean": 0.350074,
+       "sd": 0.004783,
+       "n": 4
+      }
+     },
+     "pairedDelta_err": {
+      "mean": 0.081499,
+      "se": 0.010992,
+      "sign": {
+       "p": 0.0625,
+       "W": 4,
+       "L": 0,
+       "n": 4
+      }
+     },
+     "damageRatio_total": 6.201272
+    }
+   },
+   "expectedDivisionOfLabor": "NO-ADM -> sybils; NO-PROV -> clique; NO-TRUST -> founder (glacial) + everything via unlearned weights"
+  },
+  "C2_noActiveHarm": {
+   "verdict": "CONFIRMED",
+   "lowerTails": {
+    "NO-PROV": {
+     "p": 0.6875,
+     "W": 2,
+     "L": 2,
+     "n": 4
+    },
+    "NO-ADM": {
+     "p": 1,
+     "W": 4,
+     "L": 0,
+     "n": 4
+    },
+    "NO-TRUST": {
+     "p": 1,
+     "W": 4,
+     "L": 0,
+     "n": 4
+    }
+   }
+  },
+  "C3_determinism": {
+   "verdict": "CONFIRMED",
+   "fullRerunBitExact": "4/4 seeds bit-exact (max |pool diff| = 0)",
+   "randFirstDivergence": {
+    "mean": 0,
+    "sd": 0,
+    "n": 4
+   },
+   "note": "the vault pool digest IS the reproducible universe handle: same digest => bit-identical rerun; Math.random-fed digest => \"seed k\" names nothing, divergence from round 0. Determinism's product is REVISITABILITY, not accuracy"
+  },
+  "C4_decomposition": {
+   "verdict": "MAP (see numbers)",
+   "damageByGroup": {
+    "FULL": {
+     "founder": {
+      "mean": 0.003532,
+      "sd": 0.000166,
+      "n": 4
+     },
+     "clique": {
+      "mean": -0.000113,
+      "sd": 0.000201,
+      "n": 4
+     },
+     "sybils": {
+      "mean": 0.000022,
+      "sd": 0.000005,
+      "n": 4
+     },
+     "total": {
+      "mean": 0.003442,
+      "sd": 0.000147,
+      "n": 4
+     }
+    },
+    "NO_PROV": {
+     "founder": {
+      "mean": 0.003819,
+      "sd": 0.000263,
+      "n": 4
+     },
+     "clique": {
+      "mean": -0.000385,
+      "sd": 0.00063,
+      "n": 4
+     },
+     "sybils": {
+      "mean": 0.000013,
+      "sd": 0.000003,
+      "n": 4
+     },
+     "total": {
+      "mean": 0.003447,
+      "sd": 0.0004,
+      "n": 4
+     }
+    },
+    "NO_ADM": {
+     "founder": {
+      "mean": 0.003513,
+      "sd": 0.000161,
+      "n": 4
+     },
+     "clique": {
+      "mean": 0.000064,
+      "sd": 0.000445,
+      "n": 4
+     },
+     "sybils": {
+      "mean": 0.002568,
+      "sd": 0.000197,
+      "n": 4
+     },
+     "total": {
+      "mean": 0.006145,
+      "sd": 0.000638,
+      "n": 4
+     }
+    },
+    "NO_TRUST": {
+     "founder": {
+      "mean": 0.021948,
+      "sd": 0.001567,
+      "n": 4
+     },
+     "clique": {
+      "mean": -0.000664,
+      "sd": 0.000474,
+      "n": 4
+     },
+     "sybils": {
+      "mean": 0.000059,
+      "sd": 0.000016,
+      "n": 4
+     },
+     "total": {
+      "mean": 0.021343,
+      "sd": 0.00121,
+      "n": 4
+     }
+    }
+   },
+   "neutralizationRound": {
+    "FULL": {
+     "mean": 93.5,
+     "sd": 4.387482,
+     "n": 4
+    },
+    "NO_ADM": {
+     "mean": 89,
+     "sd": 2.12132,
+     "n": 4
+    },
+    "NO_TRUST": {
+     "mean": 94,
+     "sd": 2.12132,
+     "n": 4
+    },
+    "note": "NO-PROV excluded: without provenance the clique is often never neutralized (null)"
+   },
+   "sybShareMax": {
+    "FULL": {
+     "mean": 0.007803,
+     "sd": 0.001392,
+     "n": 4
+    },
+    "NO_ADM": {
+     "mean": 0.05361,
+     "sd": 0.006566,
+     "n": 4
+    },
+    "NO_TRUST": {
+     "mean": 0.031142,
+     "sd": 0,
+     "n": 4
+    }
+   }
+  }
+ },
+ "sheetVerify": {
+  "tol": 1e-9,
+  "cadence": "every 20 rounds vs MurmurBus.pool reference",
+  "checks": 320,
+  "mismatches": 0
+ },
+ "determinism": {
+  "fullBitExact": [
+   true,
+   true,
+   true,
+   true
+  ],
+  "randFirstDivergence": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "chain": {
+  "rows": 10,
+  "tip": "0x5e8830ae132a0a66",
+  "verified": true
+ },
+ "vault": {
+  "mock": true,
+  "digest": "0xc18a22c8aff04da5",
+  "liveJobs": 0
+ }
+}
