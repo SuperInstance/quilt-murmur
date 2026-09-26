@@ -92,6 +92,28 @@ a mock never pretends to be quantum.
   transplants 31 vs node-coherence grafts' 1 — E20's structural starvation is an artifact
   of the operator level, not the world; TREE gardener 0.954 vs node-level 0.926 vs
   NOGARD 0.903, and lineage diversity is retained (3.6 structural root-paths).
+- **The spin-up ride converts to error exactly when the source lies** (E24): with sybils
+  copying a toxic founder (acuity 0.25) instead of the honest expert, v3's clean-tag window
+  carries copiers' marginal pool-damage 0.0055/round — and v3.1 cuts it 6.5x (paired
+  +0.0046±0.0023, 8/8 seeds). The wave's structural finding: FRACTIONAL ATTRIBUTION ALONE
+  FAILS here (damage 0.0082 ≈ v3's) — corroboration starvation: a liar's values match
+  nobody's history, so soft echo-scores never rise; ADMISSION CAPS are the load-bearing
+  wall. The two halves of v3.1 cover disjoint attacks. Receipted division of labor: the
+  soft layer never flags the independent liar (echo-score exactly 0) and trust demotes
+  him only glacially (not within 400 rounds at share 0.02) — the protocol's job is to
+  not AMPLIFY entrenched liars while trust grinds.
+- **The hybrid currency is bounded** (E25): feeding the arena's perishable probe rewards
+  into the mesh's durable trust whispers did NOT pay at ration K=4 — hybrids land ~19x
+  arena's clean regret (21.3 vs 1.1, meshE 7.4), probing bad arms is paid regret, and
+  ttl=1 probe-witnesses DILUTE the pool rather than enrich it. Behaviorally the demotion
+  channel still works (hybrids play the trap least: 5.1 vs arena's 37.6). Next seed:
+  persistent probe-witness identity, or probes replacing (not adding to) the blind share.
+- **Seeds firm the tree verdicts — downward** (E26): at 30 seeds, TREE vs NODE20 is
+  directionally real but ~1 SE (paired +0.010±0.011, sign p=0.86) and the TREE>TREEG
+  premium FLIPS (TREEG 0.953 ≥ TREE 0.942) — the tree-level view's edge is the
+  transplant mechanism (103 subtree transplants vs 4 node-coherence grafts, 26x) and
+  structural diversity (3.7 vs 10.2 sprawling root-paths), not the acceptance signal.
+  C1's fate may hinge on tree budget (LEG 2 cut by the runtime rule, receipted).
 
 ## Provenance
 
