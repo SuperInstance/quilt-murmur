@@ -1,0 +1,3363 @@
+{
+ "task": "E36",
+ "name": "the counter-move (pricing flip-detector / sunsetting / velocity-bar defenses against the E35 sleeper)",
+ "seeds": 6,
+ "T": 400,
+ "voices": 15,
+ "kStarCarried": 25,
+ "arms": {
+  "A1-v3.1-sleeper": {
+   "poolAcc": {
+    "mean": 0.781214,
+    "sd": 0.031712
+   },
+   "errPre": {
+    "mean": 0.256739,
+    "sd": 0.059595
+   },
+   "damageW1": {
+    "mean": 0.003284,
+    "sd": 0.000466
+   },
+   "damageG1": {
+    "mean": 0.001931,
+    "sd": 0.000318
+   },
+   "shareW1": {
+    "mean": 0.02808,
+    "sd": 0.005598
+   },
+   "shareG1": {
+    "mean": 0.015909,
+    "sd": 0.003003
+   },
+   "honQFinal": {
+    "mean": 0.071522,
+    "sd": 0.006783
+   },
+   "attTrustAtFlip": {
+    "mean": 0.068184,
+    "sd": 0.034439
+   },
+   "attConvRoundByTrust": {
+    "mean": 308.666667,
+    "sd": 137.969401
+   },
+   "w1Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 192,
+     "sd": 5.131601
+    },
+    "devMeanAtAdmission": {
+     "mean": 0.184222,
+     "sd": 0.028122
+    },
+    "indepAtAdmission": {
+     "mean": 3.666667,
+     "sd": 2.426703
+    },
+    "probationTraceMax": {
+     "mean": 0.67118,
+     "sd": 0.077649
+    }
+   },
+   "h2Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 193.5,
+     "sd": 6.677075
+    },
+    "falseNegativeRate": 0
+   },
+   "g1Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 201.5,
+     "sd": 18.264264
+    }
+   },
+   "defenseTelemetry": {
+    "w1": {},
+    "h2": {},
+    "founderThrows": []
+   },
+   "verify": {
+    "checks": 120,
+    "pass": 120,
+    "maxDiff": "0.00e+0"
+   }
+  },
+  "B1-flipguard": {
+   "poolAcc": {
+    "mean": 0.782953,
+    "sd": 0.032703
+   },
+   "errPre": {
+    "mean": 0.254329,
+    "sd": 0.062079
+   },
+   "damageW1": {
+    "mean": 0.003258,
+    "sd": 0.00035
+   },
+   "damageG1": {
+    "mean": 0.001956,
+    "sd": 0.000326
+   },
+   "shareW1": {
+    "mean": 0.027821,
+    "sd": 0.005276
+   },
+   "shareG1": {
+    "mean": 0.016138,
+    "sd": 0.002971
+   },
+   "honQFinal": {
+    "mean": 0.071522,
+    "sd": 0.006783
+   },
+   "attTrustAtFlip": {
+    "mean": 0.068184,
+    "sd": 0.034439
+   },
+   "attConvRoundByTrust": {
+    "mean": 308.666667,
+    "sd": 137.969401
+   },
+   "w1Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 192,
+     "sd": 5.131601
+    },
+    "devMeanAtAdmission": {
+     "mean": 0.184892,
+     "sd": 0.028991
+    },
+    "indepAtAdmission": {
+     "mean": 3.666667,
+     "sd": 2.426703
+    },
+    "probationTraceMax": {
+     "mean": 0.672786,
+     "sd": 0.079195
+    }
+   },
+   "h2Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 193.5,
+     "sd": 6.677075
+    },
+    "falseNegativeRate": 0
+   },
+   "g1Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 201.5,
+     "sd": 18.264264
+    }
+   },
+   "defenseTelemetry": {
+    "w1": {
+     "0": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.166196,
+      "refSrc": "probation"
+     },
+     "1": {
+      "throws": 1,
+      "rethrows": 0,
+      "guardRounds": 40,
+      "refMean": 0.145239,
+      "refSrc": "probation"
+     },
+     "2": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.215731,
+      "refSrc": "probation"
+     },
+     "3": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.185954,
+      "refSrc": "probation"
+     },
+     "4": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.228272,
+      "refSrc": "probation"
+     },
+     "5": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.167956,
+      "refSrc": "probation"
+     }
+    },
+    "h2": {
+     "0": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.168723,
+      "refSrc": "probation"
+     },
+     "1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.227757,
+      "refSrc": "probation"
+     },
+     "2": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.147231,
+      "refSrc": "probation"
+     },
+     "3": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.238922,
+      "refSrc": "probation"
+     },
+     "4": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.145501,
+      "refSrc": "probation"
+     },
+     "5": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.218001,
+      "refSrc": "probation"
+     }
+    },
+    "founderThrows": [
+     {
+      "seed": 1,
+      "id": "a1",
+      "throws": 1,
+      "rethrows": 1,
+      "guardRounds": 80,
+      "refMean": 0.144501,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 1,
+      "id": "a2",
+      "throws": 1,
+      "rethrows": 6,
+      "guardRounds": 263,
+      "refMean": 0.140628,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 1,
+      "id": "a3",
+      "throws": 1,
+      "rethrows": 0,
+      "guardRounds": 40,
+      "refMean": 0.156139,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 1,
+      "id": "a4",
+      "throws": 1,
+      "rethrows": 0,
+      "guardRounds": 36,
+      "refMean": 0.161255,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 1,
+      "id": "a5",
+      "throws": 1,
+      "rethrows": 1,
+      "guardRounds": 49,
+      "refMean": 0.16698,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 2,
+      "id": "a3",
+      "throws": 1,
+      "rethrows": 0,
+      "guardRounds": 40,
+      "refMean": 0.14989,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 2,
+      "id": "a6",
+      "throws": 1,
+      "rethrows": 4,
+      "guardRounds": 172,
+      "refMean": 0.108371,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 2,
+      "id": "a7",
+      "throws": 1,
+      "rethrows": 1,
+      "guardRounds": 57,
+      "refMean": 0.123049,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 2,
+      "id": "a10",
+      "throws": 1,
+      "rethrows": 2,
+      "guardRounds": 108,
+      "refMean": 0.162464,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 2,
+      "id": "a12",
+      "throws": 1,
+      "rethrows": 1,
+      "guardRounds": 67,
+      "refMean": 0.145891,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 3,
+      "id": "a5",
+      "throws": 1,
+      "rethrows": 0,
+      "guardRounds": 40,
+      "refMean": 0.142055,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 4,
+      "id": "a7",
+      "throws": 1,
+      "rethrows": 1,
+      "guardRounds": 80,
+      "refMean": 0.146986,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 4,
+      "id": "a9",
+      "throws": 1,
+      "rethrows": 1,
+      "guardRounds": 80,
+      "refMean": 0.130975,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 5,
+      "id": "a1",
+      "throws": 1,
+      "rethrows": 0,
+      "guardRounds": 40,
+      "refMean": 0.18757,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 5,
+      "id": "a3",
+      "throws": 1,
+      "rethrows": 6,
+      "guardRounds": 275,
+      "refMean": 0.138897,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 5,
+      "id": "a4",
+      "throws": 1,
+      "rethrows": 0,
+      "guardRounds": 40,
+      "refMean": 0.145147,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 5,
+      "id": "a6",
+      "throws": 1,
+      "rethrows": 1,
+      "guardRounds": 80,
+      "refMean": 0.179527,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 5,
+      "id": "a7",
+      "throws": 1,
+      "rethrows": 5,
+      "guardRounds": 240,
+      "refMean": 0.159896,
+      "refSrc": "first40"
+     },
+     {
+      "seed": 5,
+      "id": "a11",
+      "throws": 1,
+      "rethrows": 3,
+      "guardRounds": 146,
+      "refMean": 0.121553,
+      "refSrc": "first40"
+     }
+    ]
+   },
+   "verify": {
+    "checks": 120,
+    "pass": 120,
+    "maxDiff": "0.00e+0"
+   }
+  },
+  "B2-sunset": {
+   "poolAcc": {
+    "mean": 0.781762,
+    "sd": 0.031716
+   },
+   "errPre": {
+    "mean": 0.256739,
+    "sd": 0.059595
+   },
+   "damageW1": {
+    "mean": 0.00288,
+    "sd": 0.00098
+   },
+   "damageG1": {
+    "mean": 0.001847,
+    "sd": 0.000262
+   },
+   "shareW1": {
+    "mean": 0.024499,
+    "sd": 0.009514
+   },
+   "shareG1": {
+    "mean": 0.015253,
+    "sd": 0.002877
+   },
+   "honQFinal": {
+    "mean": 0.071522,
+    "sd": 0.006783
+   },
+   "attTrustAtFlip": {
+    "mean": 0.068184,
+    "sd": 0.034439
+   },
+   "attConvRoundByTrust": {
+    "mean": 308.666667,
+    "sd": 137.969401
+   },
+   "w1Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 192,
+     "sd": 5.131601
+    },
+    "devMeanAtAdmission": {
+     "mean": 0.184222,
+     "sd": 0.028122
+    },
+    "indepAtAdmission": {
+     "mean": 3.666667,
+     "sd": 2.426703
+    },
+    "probationTraceMax": {
+     "mean": 0.67118,
+     "sd": 0.077649
+    }
+   },
+   "h2Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 193.5,
+     "sd": 6.677075
+    },
+    "falseNegativeRate": 0
+   },
+   "g1Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 201.5,
+     "sd": 18.264264
+    }
+   },
+   "defenseTelemetry": {
+    "w1": {
+     "0": {
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 1,
+      "probRounds": 80,
+      "exemptAge": true
+     },
+     "1": {
+      "sunsetPass": 1,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "2": {
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 2,
+      "probRounds": 120,
+      "exemptAge": true
+     },
+     "3": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "4": {
+      "sunsetPass": 1,
+      "sunsetFail": 1,
+      "readmitPass": 0,
+      "readmitFail": 1,
+      "probRounds": 51
+     },
+     "5": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     }
+    },
+    "h2": {
+     "0": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "1": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "2": {
+      "sunsetPass": 1,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "3": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "4": {
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 0,
+      "probRounds": 40,
+      "exemptAge": true
+     },
+     "5": {
+      "sunsetPass": 1,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 0,
+      "probRounds": 40,
+      "exemptAge": true
+     }
+    },
+    "founderThrows": []
+   },
+   "verify": {
+    "checks": 120,
+    "pass": 120,
+    "maxDiff": "0.00e+0"
+   }
+  },
+  "B3-velocity": {
+   "poolAcc": {
+    "mean": 0.779754,
+    "sd": 0.029384
+   },
+   "errPre": {
+    "mean": 0.256739,
+    "sd": 0.059595
+   },
+   "damageW1": {
+    "mean": 0.002952,
+    "sd": 0.001159
+   },
+   "damageG1": {
+    "mean": 0.001984,
+    "sd": 0.000308
+   },
+   "shareW1": {
+    "mean": 0.025191,
+    "sd": 0.010331
+   },
+   "shareG1": {
+    "mean": 0.016259,
+    "sd": 0.002559
+   },
+   "honQFinal": {
+    "mean": 0.071522,
+    "sd": 0.006783
+   },
+   "attTrustAtFlip": {
+    "mean": 0.068184,
+    "sd": 0.034439
+   },
+   "attConvRoundByTrust": {
+    "mean": 308.666667,
+    "sd": 137.969401
+   },
+   "w1Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 192,
+     "sd": 5.131601
+    },
+    "devMeanAtAdmission": {
+     "mean": 0.184222,
+     "sd": 0.028122
+    },
+    "indepAtAdmission": {
+     "mean": 3.666667,
+     "sd": 2.426703
+    },
+    "probationTraceMax": {
+     "mean": 0.67118,
+     "sd": 0.077649
+    }
+   },
+   "h2Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 193.5,
+     "sd": 6.677075
+    },
+    "falseNegativeRate": 0
+   },
+   "g1Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 201.5,
+     "sd": 18.264264
+    }
+   },
+   "defenseTelemetry": {
+    "w1": {
+     "0": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.166196,
+      "cumMax": 0.56597,
+      "bar": 0.75,
+      "decidedT": 203,
+      "probationRounds": 53
+     },
+     "1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.145146,
+      "cumMax": 0.725782,
+      "bar": 0.75,
+      "decidedT": 193,
+      "probationRounds": 43
+     },
+     "2": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.210928,
+      "cumMax": 0.635405,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "3": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.185954,
+      "cumMax": 0.656759,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "4": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.228272,
+      "cumMax": 0.633385,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "5": {
+      "state": "blocked",
+      "blockRounds": 211,
+      "cumMean": 0.168835,
+      "cumMax": 0.809777,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     }
+    },
+    "h2": {
+     "0": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.168723,
+      "cumMax": 0.633864,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.226409,
+      "cumMax": 0.69314,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "2": {
+      "state": "blocked",
+      "blockRounds": 201,
+      "cumMean": 0.148074,
+      "cumMax": 0.824087,
+      "bar": 0.75,
+      "decidedT": 199,
+      "probationRounds": 49
+     },
+     "3": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.238922,
+      "cumMax": 0.543443,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "4": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.145501,
+      "cumMax": 0.647247,
+      "bar": 0.75,
+      "decidedT": 206,
+      "probationRounds": 56
+     },
+     "5": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.214218,
+      "cumMax": 0.708974,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     }
+    },
+    "founderThrows": []
+   },
+   "verify": {
+    "checks": 120,
+    "pass": 120,
+    "maxDiff": "0.00e+0"
+   }
+  },
+  "A4-v3.1-clean": {
+   "poolAcc": {
+    "mean": 0.784125,
+    "sd": 0.031729
+   },
+   "errPre": {
+    "mean": 0.256739,
+    "sd": 0.059595
+   },
+   "damageW1": null,
+   "damageG1": null,
+   "shareW1": null,
+   "shareG1": null,
+   "honQFinal": {
+    "mean": 0.072782,
+    "sd": 0.006878
+   },
+   "attTrustAtFlip": null,
+   "attConvRoundByTrust": null,
+   "w1Admission": null,
+   "h2Admission": {
+    "admAdmitted_n": 6,
+    "of": 6,
+    "tAdmExp": {
+     "mean": 193.5,
+     "sd": 6.677075
+    },
+    "falseNegativeRate": 0
+   },
+   "g1Admission": null,
+   "defenseTelemetry": {
+    "w1": {},
+    "h2": {},
+    "founderThrows": []
+   },
+   "verify": {
+    "checks": 120,
+    "pass": 120,
+    "maxDiff": "0.00e+0"
+   }
+  }
+ },
+ "runtime_s": {
+  "probeSeed0": 26.9,
+  "matrix": 130.1,
+  "total": 130.1
+ },
+ "config": {
+  "world": {
+   "FLIP_P": 0.02,
+   "REROLL_P": 0.01,
+   "N": 12,
+   "TOX_Q": 0.25,
+   "JOIN": 150
+  },
+  "damageWindow": 150,
+  "pre": {
+   "from": 120,
+   "to": 150
+  },
+  "g1Window": {
+   "from": 150,
+   "to": 300
+  },
+  "hedge": {
+   "eta": 0.25,
+   "share": 0.02
+  },
+  "admission": {
+   "beta": 0.12,
+   "alpha": 0.25,
+   "novSpread": 0.15,
+   "coldStart": true,
+   "admitWindow": 40,
+   "epsNew": 0.15,
+   "minEdgesIndep": 2,
+   "admitErr": 0.5,
+   "capShare": 0.1
+  },
+  "defenses": {
+   "b1": {
+    "lambda": 0.05,
+    "trail": 30,
+    "ratio": 2,
+    "floor": 0.15,
+    "guardRounds": 40
+   },
+   "b2": {
+    "every": 80,
+    "window": 40,
+    "exemptAge": 200
+   },
+   "b3": {
+    "mult": 1.5
+   }
+  },
+  "roster": [
+   "a1",
+   "a2",
+   "a3",
+   "a4",
+   "a5",
+   "a6",
+   "a7",
+   "a8",
+   "a9",
+   "a10",
+   "a11",
+   "a12",
+   "w1",
+   "g1",
+   "h2"
+  ],
+  "deviations": [
+   "g1 ACTIVE in all attack arms (same-arm regression-canary baseline)",
+   "k* = 25 carried from E35 (no re-search)",
+   "probe doubles as matrix seed 0"
+  ]
+ },
+ "claims": {
+  "R1": {
+   "B1-flipguard": {
+    "damage_A1": {
+     "mean": 0.003284,
+     "sd": 0.000466
+    },
+    "damage_B": {
+     "mean": 0.003258,
+     "sd": 0.00035
+    },
+    "pairedDelta_A1_minus_B": {
+     "mean": 0.000027,
+     "se": 0.000078,
+     "sd": 0.000191,
+     "n": 6,
+     "perSeed": [
+      0,
+      0.000438,
+      -0.00005,
+      -0.000015,
+      -0.000047,
+      -0.000166
+     ]
+    },
+    "signTest_oneSided": {
+     "W": 1,
+     "L": 4,
+     "n": 5,
+     "p": 0.96875
+    },
+    "damageRatio_B_over_A1": 0.99185,
+    "verdict": "FAIL"
+   },
+   "B2-sunset": {
+    "damage_A1": {
+     "mean": 0.003284,
+     "sd": 0.000466
+    },
+    "damage_B": {
+     "mean": 0.00288,
+     "sd": 0.00098
+    },
+    "pairedDelta_A1_minus_B": {
+     "mean": 0.000404,
+     "se": 0.000232,
+     "sd": 0.000569,
+     "n": 6,
+     "perSeed": [
+      0.001002,
+      0,
+      0.001385,
+      0,
+      0.000042,
+      -0.000004
+     ]
+    },
+    "signTest_oneSided": {
+     "W": 3,
+     "L": 1,
+     "n": 4,
+     "p": 0.3125
+    },
+    "damageRatio_B_over_A1": 0.876916,
+    "verdict": "FAIL"
+   },
+   "B3-velocity": {
+    "damage_A1": {
+     "mean": 0.003284,
+     "sd": 0.000466
+    },
+    "damage_B": {
+     "mean": 0.002952,
+     "sd": 0.001159
+    },
+    "pairedDelta_A1_minus_B": {
+     "mean": 0.000333,
+     "se": 0.000436,
+     "sd": 0.001068,
+     "n": 6,
+     "perSeed": [
+      0,
+      0,
+      -0.000664,
+      0,
+      0,
+      0.002659
+     ]
+    },
+    "signTest_oneSided": {
+     "W": 1,
+     "L": 1,
+     "n": 2,
+     "p": 0.75
+    },
+    "damageRatio_B_over_A1": 0.898742,
+    "verdict": "FAIL"
+   }
+  },
+  "R2": {
+   "perDefense": {
+    "B1-flipguard": {
+     "defense": "B1-flipguard",
+     "R1": {
+      "pass": false,
+      "delta": {
+       "mean": 0.000027,
+       "se": 0.000078,
+       "sd": 0.000191,
+       "n": 6,
+       "perSeed": [
+        0,
+        0.000438,
+        -0.00005,
+        -0.000015,
+        -0.000047,
+        -0.000166
+       ]
+      },
+      "p": 0.96875,
+      "damageRatio_B_over_A1": 0.99185,
+      "containmentRatio_A1_over_B": 1.008217
+     },
+     "honQ": {
+      "mean_B": {
+       "mean": 0.071522,
+       "sd": 0.006783
+      },
+      "mean_A4": {
+       "mean": 0.072782,
+       "sd": 0.006878
+      },
+      "mean_A1": {
+       "mean": 0.071522,
+       "sd": 0.006783
+      },
+      "loss_vs_A4": {
+       "mean": 0.00126,
+       "se": 0.000286,
+       "asWritten_pass": false
+      },
+      "incremental_vs_A1": {
+       "mean": 0,
+       "se": 0,
+       "maxAbsPerSeed": 0
+      },
+      "fpTaxAsWritten": 1,
+      "fpTaxIncremental": 0
+     },
+     "h2": {
+      "admRate": 1,
+      "admRoundMean": 193.5,
+      "admRate_A1": 1,
+      "admRoundMean_A1": 193.5,
+      "defenseRecord": [
+       {
+        "seed": 0,
+        "throws": 0,
+        "rethrows": 0,
+        "guardRounds": 0,
+        "refMean": 0.168723,
+        "refSrc": "probation"
+       },
+       {
+        "seed": 1,
+        "throws": 0,
+        "rethrows": 0,
+        "guardRounds": 0,
+        "refMean": 0.227757,
+        "refSrc": "probation"
+       },
+       {
+        "seed": 2,
+        "throws": 0,
+        "rethrows": 0,
+        "guardRounds": 0,
+        "refMean": 0.147231,
+        "refSrc": "probation"
+       },
+       {
+        "seed": 3,
+        "throws": 0,
+        "rethrows": 0,
+        "guardRounds": 0,
+        "refMean": 0.238922,
+        "refSrc": "probation"
+       },
+       {
+        "seed": 4,
+        "throws": 0,
+        "rethrows": 0,
+        "guardRounds": 0,
+        "refMean": 0.145501,
+        "refSrc": "probation"
+       },
+       {
+        "seed": 5,
+        "throws": 0,
+        "rethrows": 0,
+        "guardRounds": 0,
+        "refMean": 0.218001,
+        "refSrc": "probation"
+       }
+      ]
+     },
+     "g1": {
+      "damage_B": {
+       "mean": 0.001956,
+       "sd": 0.000326
+      },
+      "damage_A1": {
+       "mean": 0.001931,
+       "sd": 0.000318
+      },
+      "pairedDelta_B_minus_A1": {
+       "mean": 0.000025,
+       "se": 0.000012
+      },
+      "notWorsened": false
+     },
+     "composite": {
+      "price": 0,
+      "formula": "containment_ratio(A1/B) x (1 - fpTaxAsWritten)",
+      "priceIncremental": 1.008217,
+      "formulaIncremental": "containment_ratio(A1/B) x (1 - fpTaxIncremental)"
+     },
+     "eligible": false
+    },
+    "B2-sunset": {
+     "defense": "B2-sunset",
+     "R1": {
+      "pass": false,
+      "delta": {
+       "mean": 0.000404,
+       "se": 0.000232,
+       "sd": 0.000569,
+       "n": 6,
+       "perSeed": [
+        0.001002,
+        0,
+        0.001385,
+        0,
+        0.000042,
+        -0.000004
+       ]
+      },
+      "p": 0.3125,
+      "damageRatio_B_over_A1": 0.876916,
+      "containmentRatio_A1_over_B": 1.140359
+     },
+     "honQ": {
+      "mean_B": {
+       "mean": 0.071522,
+       "sd": 0.006783
+      },
+      "mean_A4": {
+       "mean": 0.072782,
+       "sd": 0.006878
+      },
+      "mean_A1": {
+       "mean": 0.071522,
+       "sd": 0.006783
+      },
+      "loss_vs_A4": {
+       "mean": 0.00126,
+       "se": 0.000286,
+       "asWritten_pass": false
+      },
+      "incremental_vs_A1": {
+       "mean": 0,
+       "se": 0,
+       "maxAbsPerSeed": 0
+      },
+      "fpTaxAsWritten": 1,
+      "fpTaxIncremental": 0
+     },
+     "h2": {
+      "admRate": 1,
+      "admRoundMean": 193.5,
+      "admRate_A1": 1,
+      "admRoundMean_A1": 193.5,
+      "defenseRecord": [
+       {
+        "seed": 0,
+        "sunsetPass": 2,
+        "sunsetFail": 0,
+        "readmitPass": 0,
+        "readmitFail": 0,
+        "probRounds": 0,
+        "exemptAge": true
+       },
+       {
+        "seed": 1,
+        "sunsetPass": 2,
+        "sunsetFail": 0,
+        "readmitPass": 0,
+        "readmitFail": 0,
+        "probRounds": 0,
+        "exemptAge": true
+       },
+       {
+        "seed": 2,
+        "sunsetPass": 1,
+        "sunsetFail": 0,
+        "readmitPass": 0,
+        "readmitFail": 0,
+        "probRounds": 0,
+        "exemptAge": true
+       },
+       {
+        "seed": 3,
+        "sunsetPass": 2,
+        "sunsetFail": 0,
+        "readmitPass": 0,
+        "readmitFail": 0,
+        "probRounds": 0,
+        "exemptAge": true
+       },
+       {
+        "seed": 4,
+        "sunsetPass": 0,
+        "sunsetFail": 1,
+        "readmitPass": 1,
+        "readmitFail": 0,
+        "probRounds": 40,
+        "exemptAge": true
+       },
+       {
+        "seed": 5,
+        "sunsetPass": 1,
+        "sunsetFail": 1,
+        "readmitPass": 1,
+        "readmitFail": 0,
+        "probRounds": 40,
+        "exemptAge": true
+       }
+      ]
+     },
+     "g1": {
+      "damage_B": {
+       "mean": 0.001847,
+       "sd": 0.000262
+      },
+      "damage_A1": {
+       "mean": 0.001931,
+       "sd": 0.000318
+      },
+      "pairedDelta_B_minus_A1": {
+       "mean": -0.000084,
+       "se": 0.00007
+      },
+      "notWorsened": true
+     },
+     "composite": {
+      "price": 0,
+      "formula": "containment_ratio(A1/B) x (1 - fpTaxAsWritten)",
+      "priceIncremental": 1.140359,
+      "formulaIncremental": "containment_ratio(A1/B) x (1 - fpTaxIncremental)"
+     },
+     "eligible": false
+    },
+    "B3-velocity": {
+     "defense": "B3-velocity",
+     "R1": {
+      "pass": false,
+      "delta": {
+       "mean": 0.000333,
+       "se": 0.000436,
+       "sd": 0.001068,
+       "n": 6,
+       "perSeed": [
+        0,
+        0,
+        -0.000664,
+        0,
+        0,
+        0.002659
+       ]
+      },
+      "p": 0.75,
+      "damageRatio_B_over_A1": 0.898742,
+      "containmentRatio_A1_over_B": 1.112666
+     },
+     "honQ": {
+      "mean_B": {
+       "mean": 0.071522,
+       "sd": 0.006783
+      },
+      "mean_A4": {
+       "mean": 0.072782,
+       "sd": 0.006878
+      },
+      "mean_A1": {
+       "mean": 0.071522,
+       "sd": 0.006783
+      },
+      "loss_vs_A4": {
+       "mean": 0.00126,
+       "se": 0.000286,
+       "asWritten_pass": false
+      },
+      "incremental_vs_A1": {
+       "mean": 0,
+       "se": 0,
+       "maxAbsPerSeed": 0
+      },
+      "fpTaxAsWritten": 1,
+      "fpTaxIncremental": 0
+     },
+     "h2": {
+      "admRate": 1,
+      "admRoundMean": 193.5,
+      "admRate_A1": 1,
+      "admRoundMean_A1": 193.5,
+      "defenseRecord": [
+       {
+        "seed": 0,
+        "state": "admitted",
+        "blockRounds": 0,
+        "cumMean": 0.168723,
+        "cumMax": 0.633864,
+        "bar": 0.75,
+        "decidedT": 189,
+        "probationRounds": 39
+       },
+       {
+        "seed": 1,
+        "state": "admitted",
+        "blockRounds": 0,
+        "cumMean": 0.226409,
+        "cumMax": 0.69314,
+        "bar": 0.75,
+        "decidedT": 189,
+        "probationRounds": 39
+       },
+       {
+        "seed": 2,
+        "state": "blocked",
+        "blockRounds": 201,
+        "cumMean": 0.148074,
+        "cumMax": 0.824087,
+        "bar": 0.75,
+        "decidedT": 199,
+        "probationRounds": 49
+       },
+       {
+        "seed": 3,
+        "state": "admitted",
+        "blockRounds": 0,
+        "cumMean": 0.238922,
+        "cumMax": 0.543443,
+        "bar": 0.75,
+        "decidedT": 189,
+        "probationRounds": 39
+       },
+       {
+        "seed": 4,
+        "state": "admitted",
+        "blockRounds": 0,
+        "cumMean": 0.145501,
+        "cumMax": 0.647247,
+        "bar": 0.75,
+        "decidedT": 206,
+        "probationRounds": 56
+       },
+       {
+        "seed": 5,
+        "state": "admitted",
+        "blockRounds": 0,
+        "cumMean": 0.214218,
+        "cumMax": 0.708974,
+        "bar": 0.75,
+        "decidedT": 189,
+        "probationRounds": 39
+       }
+      ]
+     },
+     "g1": {
+      "damage_B": {
+       "mean": 0.001984,
+       "sd": 0.000308
+      },
+      "damage_A1": {
+       "mean": 0.001931,
+       "sd": 0.000318
+      },
+      "pairedDelta_B_minus_A1": {
+       "mean": 0.000053,
+       "se": 0.000042
+      },
+      "notWorsened": false
+     },
+     "composite": {
+      "price": 0,
+      "formula": "containment_ratio(A1/B) x (1 - fpTaxAsWritten)",
+      "priceIncremental": 1.112666,
+      "formulaIncremental": "containment_ratio(A1/B) x (1 - fpTaxIncremental)"
+     },
+     "eligible": false
+    }
+   },
+   "pricingTable": [
+    {
+     "defense": "B1-flipguard",
+     "damageRatio": 0.99185,
+     "containment": 1.008217,
+     "fpTax": 1,
+     "fpTaxIncr": 0,
+     "price": 0,
+     "priceIncr": 1.008217,
+     "h2admRate": 1,
+     "h2admRound": 193.5,
+     "h2admRound_A1": 193.5,
+     "g1Delta": 0.000025,
+     "R1pass": false,
+     "g1NotWorsened": false,
+     "eligible": false
+    },
+    {
+     "defense": "B2-sunset",
+     "damageRatio": 0.876916,
+     "containment": 1.140359,
+     "fpTax": 1,
+     "fpTaxIncr": 0,
+     "price": 0,
+     "priceIncr": 1.140359,
+     "h2admRate": 1,
+     "h2admRound": 193.5,
+     "h2admRound_A1": 193.5,
+     "g1Delta": -0.000084,
+     "R1pass": false,
+     "g1NotWorsened": true,
+     "eligible": false
+    },
+    {
+     "defense": "B3-velocity",
+     "damageRatio": 0.898742,
+     "containment": 1.112666,
+     "fpTax": 1,
+     "fpTaxIncr": 0,
+     "price": 0,
+     "priceIncr": 1.112666,
+     "h2admRate": 1,
+     "h2admRound": 193.5,
+     "h2admRound_A1": 193.5,
+     "g1Delta": 0.000053,
+     "R1pass": false,
+     "g1NotWorsened": false,
+     "eligible": false
+    }
+   ],
+   "asWrittenNote": "composite uses the as-written task formula (fpTax = |honestFinalQ loss vs A4|/SE): wrappers act only at the influence layer, so honestFinalQ is structurally bit-identical across attack arms (per-seed max |B_i - A1| receipted in incremental_vs_A1.maxAbsPerSeed) — the A4 loss is E35-S4's receipted ATTACK-presence cost, arm-common, hence fpTax is equal across defenses and the crown order rides containment; the INCREMENTAL lens (vs A1, the defense-only tax) is exactly 0 for influence-layer wrappers and is receipted as priceIncremental",
+   "crown": null
+  },
+  "R3": {
+   "defenseLoc": {
+    "loc": 218,
+    "classes": [
+     "b1",
+     "b2",
+     "b3"
+    ]
+   },
+   "murmurModulesChanged": false,
+   "murmurModulesTouched": [],
+   "filesAdded": [
+    "experiments/e36_countermove.mjs",
+    "experiments/outputs/e36_summary.json",
+    "experiments/outputs/receipts_e36.jsonl"
+   ],
+   "apisComposed": {
+    "B1": [
+     "Admission.admitted/admittedRound/devMean/admitWindow/epsNew/probationary (read)",
+     "influence-map scaling after reattribute"
+    ],
+    "B2": [
+     "Admission.admitted/admittedRound/age/edges(read: windowed indep flags)/admitErr/minEdgesIndep/round/epsNew",
+     "influence-map scaling after reattribute"
+    ],
+    "B3": [
+     "Admission.admitted/admittedRound/probationary/admitErr/epsNew",
+     "influence-map scaling after reattribute"
+    ],
+    "common": [
+     "HedgeTrust.weights/update/absorb/weight",
+     "Provenance.inspect/penalize/tag",
+     "MurmurBus.pool",
+     "receipts.sealChain/verifyChain"
+    ]
+   },
+   "doctrine": "composition over rewrites — zero murmur/ changes (verified: smoke.mjs green, murmur/ mtimes untouched)"
+  },
+  "R4": {
+   "A1-v3.1-sleeper": {
+    "admAdmission": {
+     "admAdmitted_n": 6,
+     "of": 6,
+     "tAdmExp": {
+      "mean": 192,
+      "sd": 5.131601
+     },
+     "devMeanAtAdmission": {
+      "mean": 0.184222,
+      "sd": 0.028122
+     },
+     "indepAtAdmission": {
+      "mean": 3.666667,
+      "sd": 2.426703
+     },
+     "probationTraceMax": {
+      "mean": 0.67118,
+      "sd": 0.077649
+     }
+    },
+    "flipRound": "t_adm + 25",
+    "shareInWindow": {
+     "mean": 0.02808,
+     "sd": 0.005598
+    },
+    "attTrustAtFlip": {
+     "mean": 0.068184,
+     "sd": 0.034439
+    },
+    "defenseRecord": "no defense (E35 control)"
+   },
+   "B1-flipguard": {
+    "admAdmission": {
+     "admAdmitted_n": 6,
+     "of": 6,
+     "tAdmExp": {
+      "mean": 192,
+      "sd": 5.131601
+     },
+     "devMeanAtAdmission": {
+      "mean": 0.184892,
+      "sd": 0.028991
+     },
+     "indepAtAdmission": {
+      "mean": 3.666667,
+      "sd": 2.426703
+     },
+     "probationTraceMax": {
+      "mean": 0.672786,
+      "sd": 0.079195
+     }
+    },
+    "flipRound": "t_adm + 25",
+    "shareInWindow": {
+     "mean": 0.027821,
+     "sd": 0.005276
+    },
+    "attTrustAtFlip": {
+     "mean": 0.068184,
+     "sd": 0.034439
+    },
+    "defenseRecord": [
+     {
+      "seed": 0,
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.166196,
+      "refSrc": "probation"
+     },
+     {
+      "seed": 1,
+      "throws": 1,
+      "rethrows": 0,
+      "guardRounds": 40,
+      "refMean": 0.145239,
+      "refSrc": "probation"
+     },
+     {
+      "seed": 2,
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.215731,
+      "refSrc": "probation"
+     },
+     {
+      "seed": 3,
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.185954,
+      "refSrc": "probation"
+     },
+     {
+      "seed": 4,
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.228272,
+      "refSrc": "probation"
+     },
+     {
+      "seed": 5,
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.167956,
+      "refSrc": "probation"
+     }
+    ],
+    "reading": "throws/rethrows = post-flip regime detections; guardRounds = rounds at epsNew"
+   },
+   "B2-sunset": {
+    "admAdmission": {
+     "admAdmitted_n": 6,
+     "of": 6,
+     "tAdmExp": {
+      "mean": 192,
+      "sd": 5.131601
+     },
+     "devMeanAtAdmission": {
+      "mean": 0.184222,
+      "sd": 0.028122
+     },
+     "indepAtAdmission": {
+      "mean": 3.666667,
+      "sd": 2.426703
+     },
+     "probationTraceMax": {
+      "mean": 0.67118,
+      "sd": 0.077649
+     }
+    },
+    "flipRound": "t_adm + 25",
+    "shareInWindow": {
+     "mean": 0.024499,
+     "sd": 0.009514
+    },
+    "attTrustAtFlip": {
+     "mean": 0.068184,
+     "sd": 0.034439
+    },
+    "defenseRecord": [
+     {
+      "seed": 0,
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 1,
+      "probRounds": 80,
+      "exemptAge": true
+     },
+     {
+      "seed": 1,
+      "sunsetPass": 1,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     {
+      "seed": 2,
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 2,
+      "probRounds": 120,
+      "exemptAge": true
+     },
+     {
+      "seed": 3,
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     {
+      "seed": 4,
+      "sunsetPass": 1,
+      "sunsetFail": 1,
+      "readmitPass": 0,
+      "readmitFail": 1,
+      "probRounds": 51
+     },
+     {
+      "seed": 5,
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     }
+    ],
+    "reading": "sunsetPass/Fail = re-admission outcomes at 80-round expiry; probRounds = lapsed rounds at epsNew"
+   },
+   "B3-velocity": {
+    "admAdmission": {
+     "admAdmitted_n": 6,
+     "of": 6,
+     "tAdmExp": {
+      "mean": 192,
+      "sd": 5.131601
+     },
+     "devMeanAtAdmission": {
+      "mean": 0.184222,
+      "sd": 0.028122
+     },
+     "indepAtAdmission": {
+      "mean": 3.666667,
+      "sd": 2.426703
+     },
+     "probationTraceMax": {
+      "mean": 0.67118,
+      "sd": 0.077649
+     }
+    },
+    "flipRound": "t_adm + 25",
+    "shareInWindow": {
+     "mean": 0.025191,
+     "sd": 0.010331
+    },
+    "attTrustAtFlip": {
+     "mean": 0.068184,
+     "sd": 0.034439
+    },
+    "defenseRecord": [
+     {
+      "seed": 0,
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.166196,
+      "cumMax": 0.56597,
+      "bar": 0.75,
+      "decidedT": 203,
+      "probationRounds": 53
+     },
+     {
+      "seed": 1,
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.145146,
+      "cumMax": 0.725782,
+      "bar": 0.75,
+      "decidedT": 193,
+      "probationRounds": 43
+     },
+     {
+      "seed": 2,
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.210928,
+      "cumMax": 0.635405,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     {
+      "seed": 3,
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.185954,
+      "cumMax": 0.656759,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     {
+      "seed": 4,
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.228272,
+      "cumMax": 0.633385,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     {
+      "seed": 5,
+      "state": "blocked",
+      "blockRounds": 211,
+      "cumMean": 0.168835,
+      "cumMax": 0.809777,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     }
+    ],
+    "reading": "state blocked = pre-admission rejection (legitimate win); cumMax vs bar = the velocity signature"
+   },
+   "A4-v3.1-clean": {
+    "admAdmission": null,
+    "flipRound": "t_adm + 25",
+    "shareInWindow": null,
+    "attTrustAtFlip": null,
+    "defenseRecord": []
+   }
+  },
+  "verdict": {
+   "crown": "NONE",
+   "verdict": "NO-CROWN: no defense passes R1 containment (negative verdict)",
+   "negativeMechanism": {
+    "B1": "the self-referential 2x-own-history bar misses the flip in 5/6 seeds — the flipped liar's trailing devMean stays under twice its own probation reference (refMean 0.145-0.228 -> bars 0.290-0.457; the one trip, seed 1, cut that seed's damage 11% vs A1) — and the bar NEVER trips on the flasher g1 (0/6) — while the same rule false-TRIPS honest founders in 5/6 seeds (19 throw events, up to 275 guard rounds at epsNew) via ordinary truth-flip transients: a regime-noise detector, not an attack detector",
+    "B2": "where it catches (3/6 seeds sunset-fail) the catch rides the windowed INDEPENDENCE clause, not the mean-dev clause: the flipped liar's windowed |p-pooled| means run 0.145-0.288 << admitErr 0.5 (the mean bar renews a consistent liar every time) but its post-flip edges lagged-echo the flasher's toxic stream -> windowed indep < 2 -> lapse; uncaught seeds renew — and the same clause false-lapses the honest joiner h2 in 2/6 seeds (80 lapsed rounds at epsNew): sunsetting re-runs a porous bar and taxes newcomers",
+    "B3": "a tail lottery: blocks the sleeper in 1/6 seeds (bar 0.75; probation cumMax 0.566-0.810 straddles it; in the blocked seed damage drops to 0.000473 vs A1 0.003132) and false-blocks the honest canary h2 in 1/6 seeds (cumMax 0.824 — an honest transient) — and the h2 block RAISES sleeper damage in that seed (+0.000664: capping an honest voice moves the pool toward the liar); in unblocked seeds B3 is bit-identical to A1 (zero post-admission protection)"
+   },
+   "structuralFinding": "the honest-final-Q tax vs A4 is attack-presence cost (E35 S4), not defense cost: influence-layer wrappers leave trust trajectories bit-identical across attack arms (per-seed max |honQ(B_i) - honQ(A1)| = 0), so the as-written fpTax (vs A4) is arm-common and saturates at 1 for every defense — the composite degenerates and the crown order rides containment alone under both the as-written and the incremental lens"
+  }
+ },
+ "perSeed": [
+  {
+   "seed": 0,
+   "seed_s": 5.2,
+   "pass1": {
+    "tAdmExp": 203,
+    "devMean": 0.16619587554246912,
+    "indep": 2,
+    "h2": {
+     "admitExpT": 189,
+     "admRound": 190,
+     "devMean": 0.16872307402710351,
+     "indep": 10
+    }
+   },
+   "A1-v3.1-sleeper": {
+    "dmgW1": 0.002973,
+    "dmgG1": 0.00234,
+    "winW1": {
+     "from": 228,
+     "to": 378
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.024411,
+    "shareG1": 0.01846,
+    "errPre": 0.324242,
+    "poolAcc": 0.764514,
+    "honQ": 0.07099,
+    "attTrustAtFlip": 0.05044,
+    "convRound": null,
+    "w1Adm": 203,
+    "w1DevMean": 0.16619587554246912,
+    "w1ProbMax": 0.5659695329060145,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "B1-flipguard": {
+    "dmgW1": 0.002973,
+    "dmgG1": 0.00234,
+    "winW1": {
+     "from": 228,
+     "to": 378
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.024411,
+    "shareG1": 0.01846,
+    "errPre": 0.324242,
+    "poolAcc": 0.764514,
+    "honQ": 0.07099,
+    "attTrustAtFlip": 0.05044,
+    "convRound": null,
+    "w1Adm": 203,
+    "w1DevMean": 0.16619587554246912,
+    "w1ProbMax": 0.5659695329060145,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": {
+     "w1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.166196,
+      "refSrc": "probation"
+     },
+     "h2": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.168723,
+      "refSrc": "probation"
+     },
+     "g1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.196807,
+      "refSrc": "probation"
+     },
+     "w1Events": []
+    },
+    "verify": "20/20"
+   },
+   "B2-sunset": {
+    "dmgW1": 0.001972,
+    "dmgG1": 0.001875,
+    "winW1": {
+     "from": 228,
+     "to": 378
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.015322,
+    "shareG1": 0.014786,
+    "errPre": 0.324242,
+    "poolAcc": 0.765532,
+    "honQ": 0.07099,
+    "attTrustAtFlip": 0.05044,
+    "convRound": null,
+    "w1Adm": 203,
+    "w1DevMean": 0.16619587554246912,
+    "w1ProbMax": 0.5659695329060145,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": {
+     "w1": {
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 1,
+      "probRounds": 80,
+      "exemptAge": true
+     },
+     "h2": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "g1": {
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 2,
+      "probRounds": 120,
+      "exemptAge": true
+     },
+     "w1Events": [
+      {
+       "t": 283,
+       "id": "w1",
+       "kind": "sunset-fail",
+       "winMean": 0.217215,
+       "winIndep": 0
+      },
+      {
+       "t": 323,
+       "id": "w1",
+       "kind": "readmit-fail",
+       "winMean": 0.254843,
+       "winIndep": 0
+      },
+      {
+       "t": 363,
+       "id": "w1",
+       "kind": "readmit-pass",
+       "winMean": 0.265155,
+       "winIndep": 2
+      },
+      {
+       "t": 364,
+       "id": "w1",
+       "kind": "exempt-age",
+       "age": 215
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "B3-velocity": {
+    "dmgW1": 0.002973,
+    "dmgG1": 0.00234,
+    "winW1": {
+     "from": 228,
+     "to": 378
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.024411,
+    "shareG1": 0.01846,
+    "errPre": 0.324242,
+    "poolAcc": 0.764514,
+    "honQ": 0.07099,
+    "attTrustAtFlip": 0.05044,
+    "convRound": null,
+    "w1Adm": 203,
+    "w1DevMean": 0.16619587554246912,
+    "w1ProbMax": 0.5659695329060145,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": {
+     "w1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.166196,
+      "cumMax": 0.56597,
+      "bar": 0.75,
+      "decidedT": 203,
+      "probationRounds": 53
+     },
+     "h2": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.168723,
+      "cumMax": 0.633864,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "g1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.196807,
+      "cumMax": 0.541752,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "w1Events": [
+      {
+       "t": 203,
+       "id": "w1",
+       "kind": "vel-admit",
+       "cumMean": 0.166196,
+       "cumMax": 0.56597,
+       "bar": 0.75
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "A4-v3.1-clean": {
+    "dmgW1": null,
+    "dmgG1": null,
+    "winW1": null,
+    "winG1": null,
+    "shareW1": null,
+    "shareG1": null,
+    "errPre": 0.324242,
+    "poolAcc": 0.767408,
+    "honQ": 0.072906,
+    "attTrustAtFlip": null,
+    "convRound": null,
+    "w1Adm": null,
+    "w1DevMean": null,
+    "w1ProbMax": null,
+    "h2Adm": 189,
+    "g1Adm": null,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "honQAttackArmSpread": 0
+  },
+  {
+   "seed": 1,
+   "seed_s": 3.8,
+   "pass1": {
+    "tAdmExp": 193,
+    "devMean": 0.14514642514969792,
+    "indep": 2,
+    "h2": {
+     "admitExpT": 189,
+     "admRound": 190,
+     "devMean": 0.22640853479567888,
+     "indep": 8
+    }
+   },
+   "A1-v3.1-sleeper": {
+    "dmgW1": 0.004064,
+    "dmgG1": 0.002087,
+    "winW1": {
+     "from": 218,
+     "to": 368
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.03232,
+    "shareG1": 0.016183,
+    "errPre": 0.228483,
+    "poolAcc": 0.816461,
+    "honQ": 0.078828,
+    "attTrustAtFlip": 0.121711,
+    "convRound": null,
+    "w1Adm": 193,
+    "w1DevMean": 0.14514642514969792,
+    "w1ProbMax": 0.7257822666625642,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "B1-flipguard": {
+    "dmgW1": 0.003626,
+    "dmgG1": 0.002119,
+    "winW1": {
+     "from": 218,
+     "to": 368
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.028348,
+    "shareG1": 0.016501,
+    "errPre": 0.223821,
+    "poolAcc": 0.819436,
+    "honQ": 0.078828,
+    "attTrustAtFlip": 0.121711,
+    "convRound": null,
+    "w1Adm": 193,
+    "w1DevMean": 0.14523902955465676,
+    "w1ProbMax": 0.7277707278355445,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": {
+     "w1": {
+      "throws": 1,
+      "rethrows": 0,
+      "guardRounds": 40,
+      "refMean": 0.145239,
+      "refSrc": "probation"
+     },
+     "h2": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.227757,
+      "refSrc": "probation"
+     },
+     "g1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.176814,
+      "refSrc": "probation"
+     },
+     "w1Events": [
+      {
+       "t": 279,
+       "id": "w1",
+       "kind": "throw",
+       "trail30": 0.297469,
+       "refMean": 0.145239,
+       "refSrc": "probation",
+       "ewma": 0.288057
+      },
+      {
+       "t": 320,
+       "id": "w1",
+       "kind": "release"
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "B2-sunset": {
+    "dmgW1": 0.004064,
+    "dmgG1": 0.002087,
+    "winW1": {
+     "from": 218,
+     "to": 368
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.03232,
+    "shareG1": 0.016183,
+    "errPre": 0.228483,
+    "poolAcc": 0.816461,
+    "honQ": 0.078828,
+    "attTrustAtFlip": 0.121711,
+    "convRound": null,
+    "w1Adm": 193,
+    "w1DevMean": 0.14514642514969792,
+    "w1ProbMax": 0.7257822666625642,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": {
+     "w1": {
+      "sunsetPass": 1,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "h2": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "g1": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "w1Events": [
+      {
+       "t": 273,
+       "id": "w1",
+       "kind": "sunset-pass",
+       "winMean": 0.256646,
+       "winIndep": 2
+      },
+      {
+       "t": 350,
+       "id": "w1",
+       "kind": "exempt-age",
+       "age": 201
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "B3-velocity": {
+    "dmgW1": 0.004064,
+    "dmgG1": 0.002087,
+    "winW1": {
+     "from": 218,
+     "to": 368
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.03232,
+    "shareG1": 0.016183,
+    "errPre": 0.228483,
+    "poolAcc": 0.816461,
+    "honQ": 0.078828,
+    "attTrustAtFlip": 0.121711,
+    "convRound": null,
+    "w1Adm": 193,
+    "w1DevMean": 0.14514642514969792,
+    "w1ProbMax": 0.7257822666625642,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": {
+     "w1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.145146,
+      "cumMax": 0.725782,
+      "bar": 0.75,
+      "decidedT": 193,
+      "probationRounds": 43
+     },
+     "h2": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.226409,
+      "cumMax": 0.69314,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "g1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.174715,
+      "cumMax": 0.608082,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "w1Events": [
+      {
+       "t": 193,
+       "id": "w1",
+       "kind": "vel-admit",
+       "cumMean": 0.145146,
+       "cumMax": 0.725782,
+       "bar": 0.75
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "A4-v3.1-clean": {
+    "dmgW1": null,
+    "dmgG1": null,
+    "winW1": null,
+    "winG1": null,
+    "shareW1": null,
+    "shareG1": null,
+    "errPre": 0.228483,
+    "poolAcc": 0.819537,
+    "honQ": 0.079632,
+    "attTrustAtFlip": null,
+    "convRound": null,
+    "w1Adm": null,
+    "w1DevMean": null,
+    "w1ProbMax": null,
+    "h2Adm": 189,
+    "g1Adm": null,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "honQAttackArmSpread": 0
+  },
+  {
+   "seed": 2,
+   "seed_s": 3.6,
+   "pass1": {
+    "tAdmExp": 189,
+    "devMean": 0.21092769763134805,
+    "indep": 2,
+    "h2": {
+     "admitExpT": 199,
+     "admRound": 200,
+     "devMean": 0.1480737422022297,
+     "indep": 2
+    }
+   },
+   "A1-v3.1-sleeper": {
+    "dmgW1": 0.0026,
+    "dmgG1": 0.001729,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.018462,
+    "shareG1": 0.01106,
+    "errPre": 0.205526,
+    "poolAcc": 0.828628,
+    "honQ": 0.059968,
+    "attTrustAtFlip": 0.017666,
+    "convRound": 210,
+    "w1Adm": 189,
+    "w1DevMean": 0.21092769763134805,
+    "w1ProbMax": 0.6354050187001763,
+    "h2Adm": 199,
+    "g1Adm": 216,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "B1-flipguard": {
+    "dmgW1": 0.00265,
+    "dmgG1": 0.001747,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.018943,
+    "shareG1": 0.011196,
+    "errPre": 0.203277,
+    "poolAcc": 0.830765,
+    "honQ": 0.059968,
+    "attTrustAtFlip": 0.017666,
+    "convRound": 210,
+    "w1Adm": 189,
+    "w1DevMean": 0.21573135459155368,
+    "w1ProbMax": 0.6379962951642566,
+    "h2Adm": 199,
+    "g1Adm": 216,
+    "defense": {
+     "w1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.215731,
+      "refSrc": "probation"
+     },
+     "h2": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.147231,
+      "refSrc": "probation"
+     },
+     "g1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.235785,
+      "refSrc": "probation"
+     },
+     "w1Events": []
+    },
+    "verify": "20/20"
+   },
+   "B2-sunset": {
+    "dmgW1": 0.001215,
+    "dmgG1": 0.001678,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.008095,
+    "shareG1": 0.010682,
+    "errPre": 0.205526,
+    "poolAcc": 0.829699,
+    "honQ": 0.059968,
+    "attTrustAtFlip": 0.017666,
+    "convRound": 210,
+    "w1Adm": 189,
+    "w1DevMean": 0.21092769763134805,
+    "w1ProbMax": 0.6354050187001763,
+    "h2Adm": 199,
+    "g1Adm": 216,
+    "defense": {
+     "w1": {
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 2,
+      "probRounds": 120,
+      "exemptAge": true
+     },
+     "h2": {
+      "sunsetPass": 1,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "g1": {
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 1,
+      "probRounds": 80,
+      "exemptAge": true
+     },
+     "w1Events": [
+      {
+       "t": 269,
+       "id": "w1",
+       "kind": "sunset-fail",
+       "winMean": 0.285179,
+       "winIndep": 0
+      },
+      {
+       "t": 309,
+       "id": "w1",
+       "kind": "readmit-fail",
+       "winMean": 0.236912,
+       "winIndep": 0
+      },
+      {
+       "t": 349,
+       "id": "w1",
+       "kind": "readmit-fail",
+       "winMean": 0.22057,
+       "winIndep": 0
+      },
+      {
+       "t": 389,
+       "id": "w1",
+       "kind": "readmit-pass",
+       "winMean": 0.233228,
+       "winIndep": 3
+      },
+      {
+       "t": 390,
+       "id": "w1",
+       "kind": "exempt-age",
+       "age": 241
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "B3-velocity": {
+    "dmgW1": 0.003264,
+    "dmgG1": 0.002012,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.023517,
+    "shareG1": 0.012804,
+    "errPre": 0.205526,
+    "poolAcc": 0.818679,
+    "honQ": 0.059968,
+    "attTrustAtFlip": 0.017666,
+    "convRound": 210,
+    "w1Adm": 189,
+    "w1DevMean": 0.21092769763134805,
+    "w1ProbMax": 0.6354050187001763,
+    "h2Adm": 199,
+    "g1Adm": 216,
+    "defense": {
+     "w1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.210928,
+      "cumMax": 0.635405,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "h2": {
+      "state": "blocked",
+      "blockRounds": 201,
+      "cumMean": 0.148074,
+      "cumMax": 0.824087,
+      "bar": 0.75,
+      "decidedT": 199,
+      "probationRounds": 49
+     },
+     "g1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.231556,
+      "cumMax": 0.63667,
+      "bar": 0.75,
+      "decidedT": 216,
+      "probationRounds": 66
+     },
+     "w1Events": [
+      {
+       "t": 189,
+       "id": "w1",
+       "kind": "vel-admit",
+       "cumMean": 0.210928,
+       "cumMax": 0.635405,
+       "bar": 0.75
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "A4-v3.1-clean": {
+    "dmgW1": null,
+    "dmgG1": null,
+    "winW1": null,
+    "winG1": null,
+    "shareW1": null,
+    "shareG1": null,
+    "errPre": 0.205526,
+    "poolAcc": 0.831466,
+    "honQ": 0.060243,
+    "attTrustAtFlip": null,
+    "convRound": null,
+    "w1Adm": null,
+    "w1DevMean": null,
+    "w1ProbMax": null,
+    "h2Adm": 199,
+    "g1Adm": null,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "honQAttackArmSpread": 0
+  },
+  {
+   "seed": 3,
+   "seed_s": 3.4,
+   "pass1": {
+    "tAdmExp": 189,
+    "devMean": 0.18595441320071213,
+    "indep": 8,
+    "h2": {
+     "admitExpT": 189,
+     "admRound": 190,
+     "devMean": 0.23892227999237287,
+     "indep": 20
+    }
+   },
+   "A1-v3.1-sleeper": {
+    "dmgW1": 0.003613,
+    "dmgG1": 0.001997,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.031914,
+    "shareG1": 0.020374,
+    "errPre": 0.276446,
+    "poolAcc": 0.750425,
+    "honQ": 0.076894,
+    "attTrustAtFlip": 0.085095,
+    "convRound": null,
+    "w1Adm": 189,
+    "w1DevMean": 0.18595441320071213,
+    "w1ProbMax": 0.6567586404148154,
+    "h2Adm": 189,
+    "g1Adm": 190,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "B1-flipguard": {
+    "dmgW1": 0.003628,
+    "dmgG1": 0.002005,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.032043,
+    "shareG1": 0.020454,
+    "errPre": 0.276446,
+    "poolAcc": 0.750622,
+    "honQ": 0.076894,
+    "attTrustAtFlip": 0.085095,
+    "convRound": null,
+    "w1Adm": 189,
+    "w1DevMean": 0.18595441320071213,
+    "w1ProbMax": 0.6567586404148154,
+    "h2Adm": 189,
+    "g1Adm": 190,
+    "defense": {
+     "w1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.185954,
+      "refSrc": "probation"
+     },
+     "h2": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.238922,
+      "refSrc": "probation"
+     },
+     "g1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.206804,
+      "refSrc": "probation"
+     },
+     "w1Events": []
+    },
+    "verify": "20/20"
+   },
+   "B2-sunset": {
+    "dmgW1": 0.003613,
+    "dmgG1": 0.001997,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.031914,
+    "shareG1": 0.020374,
+    "errPre": 0.276446,
+    "poolAcc": 0.750425,
+    "honQ": 0.076894,
+    "attTrustAtFlip": 0.085095,
+    "convRound": null,
+    "w1Adm": 189,
+    "w1DevMean": 0.18595441320071213,
+    "w1ProbMax": 0.6567586404148154,
+    "h2Adm": 189,
+    "g1Adm": 190,
+    "defense": {
+     "w1": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "h2": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "g1": {
+      "sunsetPass": 1,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "w1Events": [
+      {
+       "t": 269,
+       "id": "w1",
+       "kind": "sunset-pass",
+       "winMean": 0.188749,
+       "winIndep": 5
+      },
+      {
+       "t": 349,
+       "id": "w1",
+       "kind": "sunset-pass",
+       "winMean": 0.232705,
+       "winIndep": 7
+      },
+      {
+       "t": 350,
+       "id": "w1",
+       "kind": "exempt-age",
+       "age": 201
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "B3-velocity": {
+    "dmgW1": 0.003613,
+    "dmgG1": 0.001997,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.031914,
+    "shareG1": 0.020374,
+    "errPre": 0.276446,
+    "poolAcc": 0.750425,
+    "honQ": 0.076894,
+    "attTrustAtFlip": 0.085095,
+    "convRound": null,
+    "w1Adm": 189,
+    "w1DevMean": 0.18595441320071213,
+    "w1ProbMax": 0.6567586404148154,
+    "h2Adm": 189,
+    "g1Adm": 190,
+    "defense": {
+     "w1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.185954,
+      "cumMax": 0.656759,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "h2": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.238922,
+      "cumMax": 0.543443,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "g1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.206804,
+      "cumMax": 0.577487,
+      "bar": 0.75,
+      "decidedT": 190,
+      "probationRounds": 40
+     },
+     "w1Events": [
+      {
+       "t": 189,
+       "id": "w1",
+       "kind": "vel-admit",
+       "cumMean": 0.185954,
+       "cumMax": 0.656759,
+       "bar": 0.75
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "A4-v3.1-clean": {
+    "dmgW1": null,
+    "dmgG1": null,
+    "winW1": null,
+    "winG1": null,
+    "shareW1": null,
+    "shareG1": null,
+    "errPre": 0.276446,
+    "poolAcc": 0.753523,
+    "honQ": 0.077564,
+    "attTrustAtFlip": null,
+    "convRound": null,
+    "w1Adm": null,
+    "w1DevMean": null,
+    "w1ProbMax": null,
+    "h2Adm": 189,
+    "g1Adm": null,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "honQAttackArmSpread": 0
+  },
+  {
+   "seed": 4,
+   "seed_s": 3.6,
+   "pass1": {
+    "tAdmExp": 189,
+    "devMean": 0.2282724971610183,
+    "indep": 2,
+    "h2": {
+     "admitExpT": 206,
+     "admRound": 207,
+     "devMean": 0.14550130463204386,
+     "indep": 2
+    }
+   },
+   "A1-v3.1-sleeper": {
+    "dmgW1": 0.003324,
+    "dmgG1": 0.001343,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.034917,
+    "shareG1": 0.013944,
+    "errPre": 0.333221,
+    "poolAcc": 0.744945,
+    "honQ": 0.065753,
+    "attTrustAtFlip": 0.090505,
+    "convRound": 42,
+    "w1Adm": 189,
+    "w1DevMean": 0.2282724971610183,
+    "w1ProbMax": 0.6333845669885535,
+    "h2Adm": 206,
+    "g1Adm": 236,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "B1-flipguard": {
+    "dmgW1": 0.003371,
+    "dmgG1": 0.00135,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.035466,
+    "shareG1": 0.014041,
+    "errPre": 0.333221,
+    "poolAcc": 0.745544,
+    "honQ": 0.065753,
+    "attTrustAtFlip": 0.090505,
+    "convRound": 42,
+    "w1Adm": 189,
+    "w1DevMean": 0.2282724971610183,
+    "w1ProbMax": 0.6333845669885535,
+    "h2Adm": 206,
+    "g1Adm": 236,
+    "defense": {
+     "w1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.228272,
+      "refSrc": "probation"
+     },
+     "h2": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.145501,
+      "refSrc": "probation"
+     },
+     "g1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.162366,
+      "refSrc": "probation"
+     },
+     "w1Events": []
+    },
+    "verify": "20/20"
+   },
+   "B2-sunset": {
+    "dmgW1": 0.003282,
+    "dmgG1": 0.001353,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.032847,
+    "shareG1": 0.014062,
+    "errPre": 0.333221,
+    "poolAcc": 0.745883,
+    "honQ": 0.065753,
+    "attTrustAtFlip": 0.090505,
+    "convRound": 42,
+    "w1Adm": 189,
+    "w1DevMean": 0.2282724971610183,
+    "w1ProbMax": 0.6333845669885535,
+    "h2Adm": 206,
+    "g1Adm": 236,
+    "defense": {
+     "w1": {
+      "sunsetPass": 1,
+      "sunsetFail": 1,
+      "readmitPass": 0,
+      "readmitFail": 1,
+      "probRounds": 51
+     },
+     "h2": {
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 0,
+      "probRounds": 40,
+      "exemptAge": true
+     },
+     "g1": {
+      "sunsetPass": 0,
+      "sunsetFail": 1,
+      "readmitPass": 0,
+      "readmitFail": 2,
+      "probRounds": 84
+     },
+     "w1Events": [
+      {
+       "t": 269,
+       "id": "w1",
+       "kind": "sunset-pass",
+       "winMean": 0.175763,
+       "winIndep": 4
+      },
+      {
+       "t": 349,
+       "id": "w1",
+       "kind": "sunset-fail",
+       "winMean": 0.288299,
+       "winIndep": 0
+      },
+      {
+       "t": 389,
+       "id": "w1",
+       "kind": "readmit-fail",
+       "winMean": 0.14525,
+       "winIndep": 0
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "B3-velocity": {
+    "dmgW1": 0.003324,
+    "dmgG1": 0.001343,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.034917,
+    "shareG1": 0.013944,
+    "errPre": 0.333221,
+    "poolAcc": 0.744945,
+    "honQ": 0.065753,
+    "attTrustAtFlip": 0.090505,
+    "convRound": 42,
+    "w1Adm": 189,
+    "w1DevMean": 0.2282724971610183,
+    "w1ProbMax": 0.6333845669885535,
+    "h2Adm": 206,
+    "g1Adm": 236,
+    "defense": {
+     "w1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.228272,
+      "cumMax": 0.633385,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "h2": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.145501,
+      "cumMax": 0.647247,
+      "bar": 0.75,
+      "decidedT": 206,
+      "probationRounds": 56
+     },
+     "g1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.162366,
+      "cumMax": 0.573099,
+      "bar": 0.75,
+      "decidedT": 236,
+      "probationRounds": 86
+     },
+     "w1Events": [
+      {
+       "t": 189,
+       "id": "w1",
+       "kind": "vel-admit",
+       "cumMean": 0.228272,
+       "cumMax": 0.633385,
+       "bar": 0.75
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "A4-v3.1-clean": {
+    "dmgW1": null,
+    "dmgG1": null,
+    "winW1": null,
+    "winG1": null,
+    "shareW1": null,
+    "shareG1": null,
+    "errPre": 0.333221,
+    "poolAcc": 0.747681,
+    "honQ": 0.067858,
+    "attTrustAtFlip": null,
+    "convRound": null,
+    "w1Adm": null,
+    "w1DevMean": null,
+    "w1ProbMax": null,
+    "h2Adm": 206,
+    "g1Adm": null,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "honQAttackArmSpread": 0
+  },
+  {
+   "seed": 5,
+   "seed_s": 3.9,
+   "pass1": {
+    "tAdmExp": 189,
+    "devMean": 0.16883529814323067,
+    "indep": 6,
+    "h2": {
+     "admitExpT": 189,
+     "admRound": 190,
+     "devMean": 0.2142178798885311,
+     "indep": 14
+    }
+   },
+   "A1-v3.1-sleeper": {
+    "dmgW1": 0.003132,
+    "dmgG1": 0.002091,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.026457,
+    "shareG1": 0.015432,
+    "errPre": 0.172515,
+    "poolAcc": 0.782308,
+    "honQ": 0.076697,
+    "attTrustAtFlip": 0.043688,
+    "convRound": null,
+    "w1Adm": 189,
+    "w1DevMean": 0.16883529814323067,
+    "w1ProbMax": 0.8097773194269499,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "B1-flipguard": {
+    "dmgW1": 0.003298,
+    "dmgG1": 0.002177,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.027715,
+    "shareG1": 0.016178,
+    "errPre": 0.16497,
+    "poolAcc": 0.786836,
+    "honQ": 0.076697,
+    "attTrustAtFlip": 0.043688,
+    "convRound": null,
+    "w1Adm": 189,
+    "w1DevMean": 0.16795592480167576,
+    "w1ProbMax": 0.8148372480847239,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": {
+     "w1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.167956,
+      "refSrc": "probation"
+     },
+     "h2": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.218001,
+      "refSrc": "probation"
+     },
+     "g1": {
+      "throws": 0,
+      "rethrows": 0,
+      "guardRounds": 0,
+      "refMean": 0.235052,
+      "refSrc": "probation"
+     },
+     "w1Events": []
+    },
+    "verify": "20/20"
+   },
+   "B2-sunset": {
+    "dmgW1": 0.003136,
+    "dmgG1": 0.002091,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.026494,
+    "shareG1": 0.015432,
+    "errPre": 0.172515,
+    "poolAcc": 0.782574,
+    "honQ": 0.076697,
+    "attTrustAtFlip": 0.043688,
+    "convRound": null,
+    "w1Adm": 189,
+    "w1DevMean": 0.16883529814323067,
+    "w1ProbMax": 0.8097773194269499,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": {
+     "w1": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "h2": {
+      "sunsetPass": 1,
+      "sunsetFail": 1,
+      "readmitPass": 1,
+      "readmitFail": 0,
+      "probRounds": 40,
+      "exemptAge": true
+     },
+     "g1": {
+      "sunsetPass": 2,
+      "sunsetFail": 0,
+      "readmitPass": 0,
+      "readmitFail": 0,
+      "probRounds": 0,
+      "exemptAge": true
+     },
+     "w1Events": [
+      {
+       "t": 269,
+       "id": "w1",
+       "kind": "sunset-pass",
+       "winMean": 0.223306,
+       "winIndep": 4
+      },
+      {
+       "t": 349,
+       "id": "w1",
+       "kind": "sunset-pass",
+       "winMean": 0.190933,
+       "winIndep": 3
+      },
+      {
+       "t": 350,
+       "id": "w1",
+       "kind": "exempt-age",
+       "age": 201
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "B3-velocity": {
+    "dmgW1": 0.000473,
+    "dmgG1": 0.002126,
+    "winW1": {
+     "from": 214,
+     "to": 364
+    },
+    "winG1": {
+     "from": 150,
+     "to": 300
+    },
+    "shareW1": 0.004064,
+    "shareG1": 0.015788,
+    "errPre": 0.172515,
+    "poolAcc": 0.7835,
+    "honQ": 0.076697,
+    "attTrustAtFlip": 0.043688,
+    "convRound": null,
+    "w1Adm": 189,
+    "w1DevMean": 0.16883529814323067,
+    "w1ProbMax": 0.8097773194269499,
+    "h2Adm": 189,
+    "g1Adm": 189,
+    "defense": {
+     "w1": {
+      "state": "blocked",
+      "blockRounds": 211,
+      "cumMean": 0.168835,
+      "cumMax": 0.809777,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "h2": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.214218,
+      "cumMax": 0.708974,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "g1": {
+      "state": "admitted",
+      "blockRounds": 0,
+      "cumMean": 0.231079,
+      "cumMax": 0.658032,
+      "bar": 0.75,
+      "decidedT": 189,
+      "probationRounds": 39
+     },
+     "w1Events": [
+      {
+       "t": 189,
+       "id": "w1",
+       "kind": "vel-block",
+       "cumMean": 0.168835,
+       "cumMax": 0.809777,
+       "bar": 0.75
+      }
+     ]
+    },
+    "verify": "20/20"
+   },
+   "A4-v3.1-clean": {
+    "dmgW1": null,
+    "dmgG1": null,
+    "winW1": null,
+    "winG1": null,
+    "shareW1": null,
+    "shareG1": null,
+    "errPre": 0.172515,
+    "poolAcc": 0.785135,
+    "honQ": 0.078489,
+    "attTrustAtFlip": null,
+    "convRound": null,
+    "w1Adm": null,
+    "w1DevMean": null,
+    "w1ProbMax": null,
+    "h2Adm": 189,
+    "g1Adm": null,
+    "defense": null,
+    "verify": "20/20"
+   },
+   "honQAttackArmSpread": 0
+  }
+ ],
+ "chain": {
+  "rows": 15,
+  "tip": "0xf6cd43aa98375565",
+  "verified": true
+ }
+}
