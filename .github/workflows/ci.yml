@@ -37,7 +37,7 @@ jobs:
       - name: E23 whole-tree gardener (offline)
         run: node experiments/e23_tree_gardener.mjs
       - name: Charts
-        run: python3 charts.py
+        run: pip install matplotlib && python3 charts.py
       - name: Verify receipt chains
         run: |
           node --input-type=module -e "

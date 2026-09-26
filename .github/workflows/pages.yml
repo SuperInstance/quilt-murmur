@@ -20,6 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
       - run: npm install --no-audit --no-fund
+      - run: pip install matplotlib
       - run: node experiments/smoke.mjs
       - run: python3 charts.py
       - uses: actions/upload-pages-artifact@v3
