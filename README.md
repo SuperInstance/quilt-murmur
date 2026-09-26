@@ -20,6 +20,7 @@ findings.
 | `spreader.mjs` | branch (cell copy + seed mutation) / prune / graft | git-agent-system, decomp-agents, Spreader-tool |
 | `resonance.mjs` | Kuramoto order parameter — agreement as physics | MOTHquantum × engine-ensign |
 | `gardener.mjs` | meta-bandit over bold/steady/timid gardening policies | git-agent's O-P-E-C-R loop |
+| `provenance.mjs` | murmur-protocol-v3: origin claims, echo conviction, relay economics | murmur-agent's anti-gossip stance, lau-git-agent's provenance entries |
 | `moth.mjs` | entropy vault (harvest once, stretch honestly, per-seed streams) | quilt-learn doctrine |
 | `receipts.mjs` | fnv1a64 witness chain | the fleet canon |
 
@@ -33,6 +34,8 @@ npm run e15     # adventure gardener: branch/prune/graft story generation
 npm run e16     # resonance as lie detector (nexus's lying-node problem)
 npm run e17     # gossip trust dynamics + the echo vulnerability
 npm run e18     # LLM authors the sheet at setup; the mesh runs LLM-free
+node experiments/e19_provenance_protocol.mjs   # murmur-protocol-v3 under fire
+node experiments/e20_long_seasons.mjs          # the gardener given time to garden
 ```
 
 Outputs land in `experiments/outputs/` (receipt chains + summaries).
@@ -53,6 +56,21 @@ a mock never pretends to be quantum.
 - **The pricing mesh runs LLM-free**: 140 cells decide, a listener reflex
   writes its own memory, the vault elects, the gardener prunes. Five honest
   protocol iterations are receipted on the road to learned trust.
+- **murmur-protocol-v3 defeats the echo amplification attack** (E19): the
+  provenance envelope `{topic, from, origin, p, n, ttl}` + edge-precedence
+  attribution collapse one observer's amplified voice mass from 3.55× to
+  2.28×, halve window-end trust theft (0.961 → 0.514), recover boundary
+  accuracy (+1.5pp), verify relays 24/24, with ZERO persistent false
+  convictions in 190 honest runs — while the sheet's pool math stays
+  byte-identical (480/480). Two receipted detector-design findings: content
+  matching cannot attribute direction (autocorrelation is
+  direction-symmetric), and edge COUNT convicts innocents where edge RATE
+  does not. See [PROTOCOL-V3.md](./PROTOCOL-V3.md).
+- **Graft starvation is structural, not temporal** (E20): coherence-gated
+  selection saturates coherence at 1.0, so coherence-raising transplants
+  starve at any season length; re-specifying the graft bar to QUALITY blooms
+  the operator (17 vs 4 transplants in ×10 seasons) — when a signal
+  saturates, change the signal, not the season.
 
 ## Provenance
 

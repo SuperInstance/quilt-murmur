@@ -8,6 +8,7 @@ import { Resonance, agreementMatrix } from '../murmur/resonance.mjs';
 import { Gardener } from '../murmur/gardener.mjs';
 import { MothVault } from '../murmur/moth.mjs';
 import { fnv1a64, sealChain, verifyChain } from '../murmur/receipts.mjs';
+import { Provenance } from '../murmur/provenance.mjs';
 
 let fails = 0;
 const ok = (name, cond) => { console.log(`${cond ? '✓' : '✗'} ${name}`); if (!cond) fails++; };
@@ -70,6 +71,32 @@ ok(`vault: stream ~U(0,1) (mean ${mean.toFixed(3)}, sd ${sd.toFixed(3)})`, Math.
 const rows = [{ seq: 1, kind: 'smoke.a' }, { seq: 2, kind: 'smoke.b' }];
 const v = verifyChain(sealChain(rows));
 ok(`receipts: chain verified (${rows.length} rows)`, v.ok && fnv1a64('x').startsWith('0x'));
+
+// 9. provenance (murmur-protocol-v3): relay verified, echo convicted, tags unstick
+{
+  const pv = new Provenance({ window: 20, aw: 40, minEdges: 2, confirm: 0.8, confirmEdges: 0.8 });
+  // a1 = source: alternating strong signal (period-4 novelty, big jumps)
+  // r1 = honest relay of a1 (declared, lag 2); e1 = plagiarist of a1 (no claim, lag 1)
+  const src = (t) => (Math.floor(t / 4) % 2 === 0 ? 0.9 : 0.1);
+  const murs = (t) => [
+    { from: 'a1', origin: null, p: src(t) },
+    { from: 'r1', origin: 'a1', p: t >= 2 ? src(t - 2) : src(t) },
+    { from: 'e1', origin: null, p: t >= 1 ? src(t - 1) : src(t) },
+  ];
+  for (let t = 0; t < 60; t++) pv.inspect(murs(t));
+  ok('provenance: declared relay verified', pv.tag('r1') === 'relay');
+  ok('provenance: undeclared copier convicted', pv.tag('e1') === 'echo');
+  ok('provenance: source stays clean', pv.tag('a1') === 'clean');
+  // influence re-attribution (checked while convicted): echo discounted, relay rides origin
+  {
+    const w = new Map([['a1', 0.6], ['r1', 0.2], ['e1', 0.2]]);
+    const infl = pv.influence(w, [{ from: 'a1' }, { from: 'r1' }, { from: 'e1' }]);
+    ok('provenance: influence discounted (echo 0.15x, relay rides origin)', Math.abs(infl.get('e1') - 0.03) < 1e-9 && Math.abs(infl.get('r1') - 0.12) < 1e-9);
+  }
+  // the echo reforms: after t=60 it stops copying (goes flat)
+  for (let t = 60; t < 110; t++) pv.inspect([{ from: 'a1', origin: null, p: src(t) }, { from: 'r1', origin: 'a1', p: src(t - 2) }, { from: 'e1', origin: null, p: 0.5 }]);
+  ok('provenance: conviction unsticks when copying stops', pv.tag('e1') !== 'echo');
+}
 
 console.log(fails === 0 ? 'SMOKE OK' : `SMOKE FAILED (${fails})`);
 process.exit(fails === 0 ? 0 : 1);

@@ -31,6 +31,15 @@ export class HedgeTrust {
     return new Map(this.w);
   }
 
+  // Overwrite the trust state with the given map (e.g. a protocol layer's
+  // penalized weights). Missing ids keep their weight; values renormalized.
+  absorb(m) {
+    for (const [id, v] of m) if (this.w.has(id)) this.w.set(id, v);
+    const Z = [...this.w.values()].reduce((a, b) => a + b, 0) || 1;
+    for (const id of this.ids) this.w.set(id, this.w.get(id) / Z);
+    return this.weights();
+  }
+
   weight(id) {
     return this.w.get(id) ?? 0;
   }

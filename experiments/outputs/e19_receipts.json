@@ -1,0 +1,556 @@
+{
+  "rows": [
+    {
+      "seq": 1,
+      "kind": "run.config",
+      "task": "E19",
+      "name": "the provenance protocol (murmur-protocol-v3 under fire)",
+      "T": 400,
+      "N": 8,
+      "voices": 12,
+      "seeds": 24,
+      "world": {
+        "stateFlipP": 0.02,
+        "skillRerollP": 0.01,
+        "qRange": [
+          0.5,
+          0.95
+        ]
+      },
+      "attack": {
+        "window": {
+          "from": 100,
+          "to": 300
+        },
+        "echoes": [
+          {
+            "id": "e1",
+            "source": "a1",
+            "lag": 1
+          },
+          {
+            "id": "e2",
+            "source": "a1",
+            "lag": 1
+          },
+          {
+            "id": "e3",
+            "source": "a1",
+            "lag": 2
+          }
+        ],
+        "relay": {
+          "id": "r1",
+          "source": "a2",
+          "lag": 2
+        },
+        "note": "echo block copies a1 at lags 2/3/5 (undeclared origin = plagiarism); r1 re-broadcasts a2 with declared origin (honest relay)"
+      },
+      "protocol": {
+        "envelope": "{topic, from, origin, p, n, ttl}",
+        "detector": {
+          "maxLag": 6,
+          "tol": 0.03,
+          "window": 30,
+          "confirm": 0.8,
+          "dupSigma": 0.02
+        },
+        "discounts": {
+          "echo": 0.15,
+          "dup": 0.5,
+          "relay": 0.2,
+          "penalty": 0.15,
+          "floor": 0.02
+        }
+      },
+      "arms": [
+        "hedge",
+        "hedge+prov",
+        "hedge+prov+pen"
+      ],
+      "hedge": {
+        "eta": 0.25,
+        "share": 0.02
+      },
+      "reward": "r_i = 1 - |p_i - s_t| (supervised pool)",
+      "vault": {
+        "mock": true,
+        "digest": "0xd93adc08741478a5"
+      },
+      "engine": "vendored quilt dist (QuiltEngine)",
+      "sheetVerifyTol": 1e-9
+    },
+    {
+      "seq": 2,
+      "kind": "detector.receipt",
+      "confusion": {
+        "clean->clean": 190,
+        "echo->clean": 72,
+        "relay->relay": 24,
+        "clean->dup": 2
+      },
+      "truth": {
+        "e1": "echo",
+        "e2": "echo",
+        "e3": "echo",
+        "r1": "relay",
+        "a1..a8": "clean"
+      },
+      "detectionLatencyRoundsAfterWindowStart": {
+        "e1": 96.375,
+        "e2": 96.416667,
+        "e3": 96.416667,
+        "expected": "~window+1 = 31"
+      },
+      "relayConfirmedSeeds": "24/24",
+      "honestEchoFalsePositives": 0
+    },
+    {
+      "seq": 3,
+      "kind": "C1.amplification",
+      "claim": "one observer (a1 + 3 near-sync copies) speaks with ~4x its own mass under plain hedge; v3 collapses the factor toward 1",
+      "ampFactorWin": {
+        "hedge": {
+          "mean": 3.549068,
+          "sd": 0.379947,
+          "unamplified": 1
+        },
+        "prov": {
+          "mean": 2.365369,
+          "sd": 0.443453,
+          "unamplified": 1
+        },
+        "pen": {
+          "mean": 2.276345,
+          "sd": 0.478283,
+          "unamplified": 1
+        }
+      },
+      "blockShareWin2": {
+        "hedge": {
+          "mean": 0.228382,
+          "sd": 0.15556
+        },
+        "prov": {
+          "mean": 0.129539,
+          "sd": 0.111509
+        },
+        "pen": {
+          "mean": 0.118319,
+          "sd": 0.114295
+        }
+      },
+      "verdict": "CONFIRMED"
+    },
+    {
+      "seq": 4,
+      "kind": "C2.theft",
+      "claim": "at window end (t=300) plain hedge lets echoes reach ~0.9 of source trust; the v3 penalty holds them near the floor",
+      "theftAt300": {
+        "hedge": {
+          "mean": 0.961069,
+          "sd": 0.087637
+        },
+        "prov": {
+          "mean": 0.961069,
+          "sd": 0.087637
+        },
+        "pen": {
+          "mean": 0.514009,
+          "sd": 0.39072
+        }
+      },
+      "wAt300": {
+        "hedge": {
+          "src": 0.064732,
+          "echo": 0.059845
+        },
+        "hedge+prov": {
+          "src": 0.064732,
+          "echo": 0.059845
+        },
+        "hedge+prov+pen": {
+          "src": 0.091539,
+          "echo": 0.02041
+        }
+      },
+      "postScript": "post-window (t=399) echoes reform and trust re-mixes — theftRatioFinal reported for completeness",
+      "theftRatioFinal": {
+        "hedge": {
+          "mean": 0.764102,
+          "sd": 0.368188
+        },
+        "prov": {
+          "mean": 0.764102,
+          "sd": 0.368188
+        },
+        "pen": {
+          "mean": 0.750172,
+          "sd": 0.373899
+        }
+      },
+      "verdict": "CONFIRMED"
+    },
+    {
+      "seq": 5,
+      "kind": "C3.boundaryPrice",
+      "claim": "stale amplified content costs accuracy at regime flips; v3 recovers it",
+      "boundaryAcc": {
+        "hedge": {
+          "mean": 0.704621,
+          "sd": 0.070119
+        },
+        "prov": {
+          "mean": 0.718177,
+          "sd": 0.066302
+        },
+        "pen": {
+          "mean": 0.720045,
+          "sd": 0.065067
+        }
+      },
+      "verdict": "CONFIRMED"
+    },
+    {
+      "seq": 6,
+      "kind": "C4.relayEconomics",
+      "claim": "honest relay r1 rides its origin's trust (influence = eps_relay × w_a2), correctly tagged",
+      "prov_r1Influence_vs_a2": 0.2,
+      "relayConfirmedSeeds": "24/24",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "seq": 7,
+      "kind": "C5.detectorHonesty",
+      "claim": "FP on honest senders bounded: worst case dup (gentle), never penalized echo",
+      "confusion": {
+        "clean->clean": 190,
+        "echo->clean": 72,
+        "relay->relay": 24,
+        "clean->dup": 2
+      },
+      "verdict": "CONFIRMED"
+    },
+    {
+      "seq": 8,
+      "kind": "C6.sheetUntouched",
+      "claim": "identical pool formulas across arms; only arriving weights differ",
+      "sheetVerify": {
+        "hedge": {
+          "checks": 480,
+          "pass": 480
+        },
+        "hedge+prov": {
+          "checks": 480,
+          "pass": 480
+        },
+        "hedge+prov+pen": {
+          "checks": 480,
+          "pass": 480
+        }
+      },
+      "verdict": "CONFIRMED"
+    },
+    {
+      "seq": 9,
+      "kind": "run.summary",
+      "arms": {
+        "hedge": {
+          "poolAcc": {
+            "mean": 0.731117,
+            "sd": 0.053124
+          },
+          "regret": {
+            "mean": 4.479479,
+            "sd": 9.89247
+          },
+          "boundaryAcc": {
+            "mean": 0.704621,
+            "sd": 0.070119
+          },
+          "blockShareWin": {
+            "mean": 0.216528,
+            "sd": 0.131336,
+            "fairShare": 0.333333
+          },
+          "blockShareWin2": {
+            "mean": 0.228382,
+            "sd": 0.15556
+          },
+          "ampFactorWin": {
+            "mean": 3.549068,
+            "sd": 0.379947,
+            "unamplified": 1
+          },
+          "effVoices": {
+            "mean": 5.555125,
+            "maxPossible": 12
+          },
+          "theftAt300": {
+            "mean": 0.961069,
+            "sd": 0.087637
+          },
+          "theftRatioFinal": {
+            "mean": 0.764102,
+            "sd": 0.368188
+          },
+          "wEchoMaxAt300": 0.059845,
+          "wSourceAt300": 0.064732,
+          "wEchoMaxFinal": 0.030215,
+          "wSourceFinal": 0.063496,
+          "sheetVerify": {
+            "checks": 480,
+            "pass": 480
+          }
+        },
+        "hedge+prov": {
+          "poolAcc": {
+            "mean": 0.732293,
+            "sd": 0.054109
+          },
+          "regret": {
+            "mean": 4.00934,
+            "sd": 9.422705
+          },
+          "boundaryAcc": {
+            "mean": 0.718177,
+            "sd": 0.066302
+          },
+          "blockShareWin": {
+            "mean": 0.167633,
+            "sd": 0.111966,
+            "fairShare": 0.333333
+          },
+          "blockShareWin2": {
+            "mean": 0.129539,
+            "sd": 0.111509
+          },
+          "ampFactorWin": {
+            "mean": 2.365369,
+            "sd": 0.443453,
+            "unamplified": 1
+          },
+          "effVoices": {
+            "mean": 4.994599,
+            "maxPossible": 12
+          },
+          "theftAt300": {
+            "mean": 0.961069,
+            "sd": 0.087637
+          },
+          "theftRatioFinal": {
+            "mean": 0.764102,
+            "sd": 0.368188
+          },
+          "wEchoMaxAt300": 0.059845,
+          "wSourceAt300": 0.064732,
+          "wEchoMaxFinal": 0.030215,
+          "wSourceFinal": 0.063496,
+          "sheetVerify": {
+            "checks": 480,
+            "pass": 480
+          }
+        },
+        "hedge+prov+pen": {
+          "poolAcc": {
+            "mean": 0.733408,
+            "sd": 0.053428
+          },
+          "regret": {
+            "mean": 3.563394,
+            "sd": 9.467612
+          },
+          "boundaryAcc": {
+            "mean": 0.720045,
+            "sd": 0.065067
+          },
+          "blockShareWin": {
+            "mean": 0.16164,
+            "sd": 0.114016,
+            "fairShare": 0.333333
+          },
+          "blockShareWin2": {
+            "mean": 0.118319,
+            "sd": 0.114295
+          },
+          "ampFactorWin": {
+            "mean": 2.276345,
+            "sd": 0.478283,
+            "unamplified": 1
+          },
+          "effVoices": {
+            "mean": 4.781941,
+            "maxPossible": 12
+          },
+          "theftAt300": {
+            "mean": 0.514009,
+            "sd": 0.39072
+          },
+          "theftRatioFinal": {
+            "mean": 0.750172,
+            "sd": 0.373899
+          },
+          "wEchoMaxAt300": 0.02041,
+          "wSourceAt300": 0.091539,
+          "wEchoMaxFinal": 0.029518,
+          "wSourceFinal": 0.06496,
+          "sheetVerify": {
+            "checks": 480,
+            "pass": 480
+          }
+        }
+      }
+    },
+    {
+      "seq": 10,
+      "kind": "headline",
+      "finding": null
+    }
+  ],
+  "summary": {
+    "hedge": {
+      "poolAcc": {
+        "mean": 0.731117,
+        "sd": 0.053124
+      },
+      "regret": {
+        "mean": 4.479479,
+        "sd": 9.89247
+      },
+      "boundaryAcc": {
+        "mean": 0.704621,
+        "sd": 0.070119
+      },
+      "blockShareWin": {
+        "mean": 0.216528,
+        "sd": 0.131336,
+        "fairShare": 0.333333
+      },
+      "blockShareWin2": {
+        "mean": 0.228382,
+        "sd": 0.15556
+      },
+      "ampFactorWin": {
+        "mean": 3.549068,
+        "sd": 0.379947,
+        "unamplified": 1
+      },
+      "effVoices": {
+        "mean": 5.555125,
+        "maxPossible": 12
+      },
+      "theftAt300": {
+        "mean": 0.961069,
+        "sd": 0.087637
+      },
+      "theftRatioFinal": {
+        "mean": 0.764102,
+        "sd": 0.368188
+      },
+      "wEchoMaxAt300": 0.059845,
+      "wSourceAt300": 0.064732,
+      "wEchoMaxFinal": 0.030215,
+      "wSourceFinal": 0.063496,
+      "sheetVerify": {
+        "checks": 480,
+        "pass": 480
+      }
+    },
+    "hedge+prov": {
+      "poolAcc": {
+        "mean": 0.732293,
+        "sd": 0.054109
+      },
+      "regret": {
+        "mean": 4.00934,
+        "sd": 9.422705
+      },
+      "boundaryAcc": {
+        "mean": 0.718177,
+        "sd": 0.066302
+      },
+      "blockShareWin": {
+        "mean": 0.167633,
+        "sd": 0.111966,
+        "fairShare": 0.333333
+      },
+      "blockShareWin2": {
+        "mean": 0.129539,
+        "sd": 0.111509
+      },
+      "ampFactorWin": {
+        "mean": 2.365369,
+        "sd": 0.443453,
+        "unamplified": 1
+      },
+      "effVoices": {
+        "mean": 4.994599,
+        "maxPossible": 12
+      },
+      "theftAt300": {
+        "mean": 0.961069,
+        "sd": 0.087637
+      },
+      "theftRatioFinal": {
+        "mean": 0.764102,
+        "sd": 0.368188
+      },
+      "wEchoMaxAt300": 0.059845,
+      "wSourceAt300": 0.064732,
+      "wEchoMaxFinal": 0.030215,
+      "wSourceFinal": 0.063496,
+      "sheetVerify": {
+        "checks": 480,
+        "pass": 480
+      }
+    },
+    "hedge+prov+pen": {
+      "poolAcc": {
+        "mean": 0.733408,
+        "sd": 0.053428
+      },
+      "regret": {
+        "mean": 3.563394,
+        "sd": 9.467612
+      },
+      "boundaryAcc": {
+        "mean": 0.720045,
+        "sd": 0.065067
+      },
+      "blockShareWin": {
+        "mean": 0.16164,
+        "sd": 0.114016,
+        "fairShare": 0.333333
+      },
+      "blockShareWin2": {
+        "mean": 0.118319,
+        "sd": 0.114295
+      },
+      "ampFactorWin": {
+        "mean": 2.276345,
+        "sd": 0.478283,
+        "unamplified": 1
+      },
+      "effVoices": {
+        "mean": 4.781941,
+        "maxPossible": 12
+      },
+      "theftAt300": {
+        "mean": 0.514009,
+        "sd": 0.39072
+      },
+      "theftRatioFinal": {
+        "mean": 0.750172,
+        "sd": 0.373899
+      },
+      "wEchoMaxAt300": 0.02041,
+      "wSourceAt300": 0.091539,
+      "wEchoMaxFinal": 0.029518,
+      "wSourceFinal": 0.06496,
+      "sheetVerify": {
+        "checks": 480,
+        "pass": 480
+      }
+    }
+  }
+}
