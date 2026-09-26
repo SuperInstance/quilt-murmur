@@ -49,19 +49,23 @@ export class Gardener {
       case 'bold':
         temp = Math.max(0.02, 0.08 + 0.10 * r);
         pruneFloor = 3;
-        spawn = alive < this.maxBranches && this.credits > 0 && (r < 0.55 || H > 0.85);
+        // GAUNTLET FIX (22-c): credit floors (>=1/2/3 instead of >0/1/2).
+        // Identical for integer credits, but fractional refills (0.5 — what
+        // every experiment uses) could drive credits NEGATIVE (receipted:
+        // bold at credits=0.5 spawned down to -0.9): the hard budget leaked.
+        spawn = alive < this.maxBranches && this.credits >= 1 && (r < 0.55 || H > 0.85);
         graftAggr = 2;
         break;
       case 'timid':
         temp = 0.25 + 0.25 * r;
         pruneFloor = 6;
-        spawn = alive < this.maxBranches && this.credits > 2 && r < 0.35;
+        spawn = alive < this.maxBranches && this.credits >= 3 && r < 0.35;
         graftAggr = 1;
         break;
       default: // steady
         temp = Math.max(0.05, 0.15 - 0.10 * g + 0.08 * r);
         pruneFloor = 4;
-        spawn = alive < this.maxBranches && this.credits > 1 && (r < 0.45 || regretDr > 0);
+        spawn = alive < this.maxBranches && this.credits >= 2 && (r < 0.45 || regretDr > 0);
         graftAggr = 1;
     }
     if (spawn) this.credits--;

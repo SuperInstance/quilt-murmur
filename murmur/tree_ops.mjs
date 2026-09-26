@@ -89,6 +89,11 @@ export function graftView(view, xId, pId) {
   const offs = new Map();
   const collect = (n, off) => { offs.set(n.id, off); for (const m of v2) if (m.parent === n.id) collect(m, off + 1); };
   collect(x, 0);
+  // GAUNTLET FIX (22-c): pId inside x's own subtree would create a parent
+  // cycle in the candidate view — silent topology corruption whose path walk
+  // in scoreTree never terminates. Reject with the same contract as a missing
+  // node (null); callers already skip null candidates.
+  if (offs.has(pId)) return null;
   for (const n of v2) if (offs.has(n.id)) { if (offs.get(n.id) === 0) n.parent = pId; n.depth = base + offs.get(n.id); }
   return { view: v2, moved: offs.size, rootDepthDelta: base - oldDepth };
 }
@@ -118,6 +123,13 @@ export function graftSubtree(T, id, newParentId) {
   const n = T.get(id); const oldParent = n.parent;
   const sub = T.subtree(id); const offs = sub.map((m) => m.depth - n.depth);
   const oldRootDepth = n.depth;
+  // GAUNTLET FIX (22-c): re-rooting into one's own subtree creates a parent
+  // cycle (a.parent=b, b.parent=a) — the tree is silently corrupted and
+  // rootPath()/lineageDiversity() loop FOREVER (receipted: child-process repro
+  // hung until killed). Fail safe: throw. No legal caller hits this —
+  // acceptance-scoring callers evaluate candidates via graftView, which now
+  // rejects the same case with null.
+  if (sub.some((m) => m.id === newParentId)) throw new Error(`graftSubtree: ${newParentId} is inside the subtree of ${id} — illegal re-root (cycle)`);
   n.parent = newParentId; const base = T.get(newParentId).depth + 1;
   sub.forEach((m, i) => { m.depth = base + offs[i]; });
   return { node: id, oldParent, newParent: newParentId, moved: sub.length, rootDepthDelta: n.depth - oldRootDepth };

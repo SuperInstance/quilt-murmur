@@ -1,0 +1,96 @@
+{
+ "task": "22-c tools gauntlet (main-agent completion)",
+ "probes": 42,
+ "fails": 0,
+ "verdictGrid": {
+  "receipts": {
+   "T1": "PASS",
+   "T2": "PASS",
+   "T3": "PASS",
+   "probes": 2,
+   "fails": 0
+  },
+  "moth": {
+   "T1": "PASS",
+   "T2": "PASS",
+   "T3": "PASS",
+   "probes": 5,
+   "fails": 0
+  },
+  "admission": {
+   "T1": "PASS",
+   "T2": "PASS",
+   "T3": "PASS",
+   "probes": 7,
+   "fails": 0
+  },
+  "provenance": {
+   "T1": "PASS",
+   "T2": "PASS",
+   "T3": "PASS",
+   "probes": 4,
+   "fails": 0
+  },
+  "trust": {
+   "T1": "PASS",
+   "T2": "PASS",
+   "T3": "PASS",
+   "probes": 3,
+   "fails": 0
+  },
+  "gardener": {
+   "T1": "PASS",
+   "T2": "PASS",
+   "T3": "PASS",
+   "probes": 4,
+   "fails": 0
+  },
+  "tree_ops": {
+   "T1": "PASS",
+   "T2": "PASS",
+   "T3": "PASS",
+   "probes": 7,
+   "fails": 0
+  },
+  "bus": {
+   "T1": "PASS",
+   "T2": "PASS",
+   "T3": "PASS",
+   "probes": 4,
+   "fails": 0
+  },
+  "engine": {
+   "T1": "PASS",
+   "T2": "PASS",
+   "T3": "PASS",
+   "probes": 6,
+   "fails": 0
+  }
+ },
+ "overall": "receipts:OK moth:OK admission:OK provenance:OK trust:OK gardener:OK tree_ops:OK bus:OK engine:OK",
+ "duration_s": 1,
+ "mathRandomCalls": 2,
+ "patchValidations": {
+  "bus_nan_envelope": "validated (probe: NaN rejected loudly)",
+  "bus_log_snapshot": "validated (probe: log ttl stays 3 after 2 pulses)",
+  "gardener_credit_floors": "validated (probe: 60 seasons at 0.5 credits under bold, never negative)",
+  "tree_ops_graft_cycles": "validated (probes: graftView null + graftSubtree throw, tree uncorrupted)",
+  "moth_weightedpick_u0": "validated (probe: [0,10,0] never returns a zero-weight index, any u; positive-weight behavior bit-identical)"
+ },
+ "bugCandidates": [],
+ "findings": [
+  "gardener.choose() consumes page Math.random directly — determinism hazard owned by the harness monkey-patch (probe receipted with consumption count)",
+  "engine cycle rejection leaks 0 unhandled promise rejection(s) internally (fail-safe: the get() call itself throws, but the refresh path also rejects unobserved) — harness collects them; upstream quilt finding",
+  "engine is cell-id FORMAT AGNOSTIC: one-part ids work; the two-part form is fleet convention, not enforcement",
+  "engine multi-statement formulas fail safe via cell status:error (visible error envelope), not by throwing",
+  "receipts: a chain PREFIX is internally valid — completeness is an expected-tip comparison, not verifyChain's job",
+  "provenance dup contract: flat AND redundant (a non-redundant flat voice stays clean)"
+ ],
+ "unhandledRejections": 0,
+ "chain": {
+  "rows": 42,
+  "tip": "0x0b7fd78d55363d63",
+  "verified": true
+ },
+ "runtime_s": 1
+}

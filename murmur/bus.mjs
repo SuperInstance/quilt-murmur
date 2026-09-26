@@ -35,9 +35,20 @@ export class MurmurBus {
   }
 
   whisper({ topic, from, p, n = 1, ttl }) {
+    // GAUNTLET FIX (22-c): fail-safe at the envelope boundary. A non-finite p
+    // or n previously poisoned the WHOLE topic: infl = w*n stays finite while
+    // logit(NaN p) makes L NaN -> posterior NaN (one bad voice silently
+    // destroyed every other voice's evidence), and a NaN n makes W NaN ->
+    // posterior silently 0.5. Both repros receipted; now loud throws.
+    if (!Number.isFinite(+p)) throw new Error(`whisper: p must be finite, got ${p}`);
+    if (!Number.isFinite(+n)) throw new Error(`whisper: n must be finite, got ${n}`);
     const m = { topic, from, p, n, ttl: ttl ?? this.ttlDefault, t: this.integrations };
     this.live.push(m);
-    this.log.push(m);
+    // GAUNTLET FIX (22-c): snapshot the envelope into the log. pulse() decays
+    // ttl IN PLACE on the live members, and live/log used to share object
+    // references — the provenance log ("every murmur ever whispered") silently
+    // aged with the live queue (receipted: log.ttl 3 -> 1 after two pulses).
+    this.log.push({ ...m });
     return m;
   }
 
@@ -84,6 +95,7 @@ export class MurmurBus {
   // The sheet computes the same pooling with formula cells; these exist so the
   // harness can verify the sheet's pooled cells against the reference math.
   static pool(ps, ws) {
+    for (const p of ps) if (!Number.isFinite(+p)) throw new Error(`pool: p must be finite, got ${p}`); // GAUNTLET FIX (22-c): NaN in -> NaN out was silent
     let L = 0, W = 0;
     for (let i = 0; i < ps.length; i++) {
       const w = ws[i] ?? 1 / ps.length;

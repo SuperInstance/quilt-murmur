@@ -157,8 +157,20 @@ export class MothVault {
   weightedPick(weights, u) {
     const total = weights.reduce((a, b) => a + Math.max(0, b), 0);
     if (!(total > 0)) return Math.floor(u * weights.length) % weights.length;
+    // GAUNTLET FIX (22-c): u = 0.0 is a REAL draw of streamFor's u32/2^32
+    // mapping, and the old loop returned index 0 even when weights[0] === 0
+    // (x starts at 0, subtracting 0 leaves x <= 0 -> immediate return on a
+    // ZERO-weight branch). Skip non-positive weights; fall through to the
+    // last positive-weight index if floating rounding lands x exactly at 0
+    // past the final entry. Positive-weight behavior is bit-identical.
     let x = u * total;
-    for (let i = 0; i < weights.length; i++) { x -= Math.max(0, weights[i]); if (x <= 0) return i; }
+    for (let i = 0; i < weights.length; i++) {
+      const w = Math.max(0, weights[i]);
+      if (w <= 0) continue;
+      x -= w;
+      if (x <= 0) return i;
+    }
+    for (let i = weights.length - 1; i >= 0; i--) if (Math.max(0, weights[i]) > 0) return i;
     return weights.length - 1;
   }
 }
