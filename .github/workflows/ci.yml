@@ -26,6 +26,16 @@ jobs:
         run: node experiments/e14_pricing_mesh.mjs 3
       - name: E18 llm-setup (mock author, 2 seeds)
         run: node experiments/e18_llm_setup.mjs 2
+      - name: E19 provenance protocol (offline)
+        run: node experiments/e19_provenance_protocol.mjs
+      - name: E20 long seasons (offline)
+        run: node experiments/e20_long_seasons.mjs
+      - name: E21 cold-start admission (offline, 6 seeds)
+        run: node experiments/e21_coldstart_admission.mjs 6
+      - name: E22 cross-fleet bracket (offline, 4 seeds)
+        run: node experiments/e22_crossfleet_bracket.mjs 4
+      - name: E23 whole-tree gardener (offline)
+        run: node experiments/e23_tree_gardener.mjs
       - name: Charts
         run: python3 charts.py
       - name: Verify receipt chains
@@ -34,7 +44,7 @@ jobs:
           import { readFileSync } from 'node:fs';
           import { verifyChain } from './murmur/receipts.mjs';
           let bad = 0;
-          for (const f of ['receipts','receipts_e15','receipts_e16','receipts_e17','receipts_e18']) {
+          for (const f of ['receipts','receipts_e15','receipts_e16','receipts_e17','receipts_e18','receipts_e20','receipts_e21','receipts_e22','receipts_e23']) {
             try {
               const rows = readFileSync('./experiments/outputs/' + f + '.jsonl','utf8').trim().split('\n').map(JSON.parse);
               const v = verifyChain(rows);
